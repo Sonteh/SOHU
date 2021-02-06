@@ -9,31 +9,46 @@ public class Fireball : MonoBehaviour
     [SerializeField]
     private float _outOfRange = 2.0f;
 
+    private void Start()
+    {
+        //target = transform.position;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        
+        Vector3 mouse = Input.mousePosition;
+        Ray ray = Camera.main.ScreenPointToRay(mouse);
+        RaycastHit hit;
+        Physics.Raycast(ray, out hit);
+
+        Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+
+        transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
+        
+
+        /*
+        Plane plane = new Plane(Vector3.up, 0);
+
+        float distance;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (plane.Raycast(ray, out distance))
         {
-            Vector3 mouse = Input.mousePosition;
-            Ray ray = Camera.main.ScreenPointToRay(mouse);
-            RaycastHit hit;
-            Physics.Raycast(ray, out hit);
-
-            Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-
-            
+            worldPosition = ray.GetPoint(distance);
         }
 
-        //transform.position = Vector3.MoveTowards(transform.position, ray.origin, _speed * Time.deltaTime);
+        transform.Translate(worldPosition * _speed * Time.deltaTime);
+        */
 
+        /*
+        Vector3 MyScreenPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 target = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, MyScreenPos.z));
+        
 
-        Ray ray2 = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit2;
-        Physics.Raycast(ray2, out hit2);
-     
-        transform.Translate(ray2.origin * _speed * Time.deltaTime);
-   
-
+        transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
+        */
+        
 
         Destroy(this.gameObject, _outOfRange);
   
