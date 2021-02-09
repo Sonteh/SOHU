@@ -16,7 +16,6 @@ public class Fireball : MonoBehaviour
         _mouse = Input.mousePosition;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(_mouse);

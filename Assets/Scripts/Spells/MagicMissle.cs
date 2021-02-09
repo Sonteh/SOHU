@@ -9,7 +9,6 @@ public class MagicMissle : MonoBehaviour
     [SerializeField]
     private float _outOfRange = 3.0f;
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 mouse = Input.mousePosition;
