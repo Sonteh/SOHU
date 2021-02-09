@@ -14,8 +14,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _magicMissleCooldown = 1.0f;
     private float _canUseMagicMissle = 1.0f;
+    private int _lives = 3;
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q) && Time.time > _canUseFireball)
@@ -26,6 +26,25 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && Time.time > _canUseMagicMissle)
         {
             UseMagicMissle();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Spell")
+        {
+            Damage();
+            Destroy(other.gameObject);
+        }
+    }
+
+    private void Damage()
+    {
+        _lives--;
+
+        if (_lives < 1)
+        {
+            Destroy(this.gameObject);
         }
     }
 
