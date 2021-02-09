@@ -10,17 +10,19 @@ public class Fireball : MonoBehaviour
     private float _outOfRange = 2.0f;
 
     private Vector3 _mouse;
+    private Ray _ray;
 
     private void Start()
     {
         _mouse = Input.mousePosition;
+        _ray = Camera.main.ScreenPointToRay(_mouse);
+        
     }
 
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(_mouse);
         RaycastHit hit;
-        Physics.Raycast(ray, out hit);
+        Physics.Raycast(_ray, out hit);
 
         Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
 
