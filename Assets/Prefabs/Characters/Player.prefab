@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8933714208194632223}
   - component: {fileID: 3342572391134161209}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f40115d18a7c9a41aff0c4ad2d30025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!114 &-9057554382914602234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +125,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireballPrefab: {fileID: 6187910128149532311, guid: 9ccfa4ec2ee7b354abd4aa2067f371fa,
     type: 3}
+  _magicMisslePrefab: {fileID: 370511022442885530, guid: 0b3f3e09ee1183c438ce407ef8e4e25f,
+    type: 3}
   _fireballCooldown: 1
+  _magicMissleCooldown: 1
 --- !u!195 &7323893258503626348
 NavMeshAgent:
   m_ObjectHideFlags: 0

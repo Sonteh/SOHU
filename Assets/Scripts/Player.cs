@@ -7,8 +7,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _fireballPrefab;
     [SerializeField]
+    private GameObject _magicMisslePrefab;
+    [SerializeField]
     private float _fireballCooldown = 0.5f;
     private float _canUseFireball = -1.0f;
+    [SerializeField]
+    private float _magicMissleCooldown = 1.0f;
+    private float _canUseMagicMissle = 1.0f;
 
     // Update is called once per frame
     void Update()
@@ -17,13 +22,22 @@ public class Player : MonoBehaviour
         {
             UseFireball();
         }
+
+        if (Input.GetKeyDown(KeyCode.W) && Time.time > _canUseMagicMissle)
+        {
+            UseMagicMissle();
+        }
     }
 
     private void UseFireball()
     {
         _canUseFireball = _fireballCooldown + Time.time;
         Instantiate(_fireballPrefab, transform.position + Vector3.forward, Quaternion.identity);
+    }
 
-        
+    private void UseMagicMissle()
+    {
+        _canUseMagicMissle = _magicMissleCooldown + Time.time;
+        Instantiate(_magicMisslePrefab, transform.position + Vector3.forward, Quaternion.identity);
     }
 }
