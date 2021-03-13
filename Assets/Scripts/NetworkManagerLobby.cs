@@ -167,7 +167,6 @@ public class NetworkManagerLobby : NetworkManager
     {
         if (sceneName.StartsWith("Arena"))
         {
-            Debug.Log("dupa");
             GameObject playerSpawnSystemInstance = Instantiate(playerSpawnSystem);
             NetworkServer.Spawn(playerSpawnSystemInstance);
         }

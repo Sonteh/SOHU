@@ -39,15 +39,15 @@ public class Player : NetworkBehaviour
     {
         RpcMove();
 
-        if (Input.GetKeyDown(KeyCode.Q) && Time.time > _canUseFireball)
-        {
-            UseFireball();
-        }
+        //if (Input.GetKeyDown(KeyCode.Q) && Time.time > _canUseFireball)
+        //{
+        //    UseFireball();
+        //}
 
-        if (Input.GetKeyDown(KeyCode.W) && Time.time > _canUseMagicMissle)
-        {
-            UseMagicMissle();
-        }
+        //if (Input.GetKeyDown(KeyCode.W) && Time.time > _canUseMagicMissle)
+        //{
+        //    UseMagicMissle();
+        //}
     }
 
     [ClientRpc]
