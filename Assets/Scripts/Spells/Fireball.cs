@@ -21,6 +21,7 @@ public class Fireball : MonoBehaviour
 
     void Update()
     {
+
         RaycastHit hit;
         Physics.Raycast(_ray, out hit);
 
@@ -28,7 +29,9 @@ public class Fireball : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);      
 
-        Destroy(this.gameObject, _outOfRange);
+        Destroy(gameObject, _outOfRange);
   
     }
 }
+
+

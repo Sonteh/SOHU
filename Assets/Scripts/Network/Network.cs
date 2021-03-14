@@ -133,9 +133,11 @@ public class Network : NetworkManager
 
     public void StartGame()
     {
-        if (SceneManager.GetActiveScene().name == menuScene)
 
-            if (!IsReadyToStart()) { return; }
+        if (SceneManager.GetActiveScene().path == menuScene)
+        {
+            //if (!IsReadyToStart()) { return; }
+        }
 
         //logic to implemenet map choosing
         ServerChangeScene("Arena01");
