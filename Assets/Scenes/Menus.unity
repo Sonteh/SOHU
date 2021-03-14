@@ -187,16 +187,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1577658504 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7658008013407653228, guid: 8088990bb057541e7b255f161845dcd6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7658008011885817767}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1577658505 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7658008013407653239, guid: 8088990bb057541e7b255f161845dcd6,
     type: 3}
   m_PrefabInstance: {fileID: 7658008011885817767}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1577658504}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d50cbc18a74c040b0b5cf160520fcad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1658891578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4841566762616067679, guid: 8088990bb057541e7b255f161845dcd6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7658008011885817767}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1834247323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6958881481828106093, guid: 8088990bb057541e7b255f161845dcd6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7658008011885817767}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1942572279
@@ -279,7 +309,7 @@ MonoBehaviour:
   showDebugMessages: 0
   serverTickRate: 30
   offlineScene: 
-  onlineScene: Assets/Scenes/Menus.unity
+  onlineScene: 
   transport: {fileID: 1942572280}
   networkAddress: localhost
   maxConnections: 4
@@ -403,6 +433,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6590137795188705967, guid: 8088990bb057541e7b255f161845dcd6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958881481828106093, guid: 8088990bb057541e7b255f161845dcd6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7658008011885817769}
+    - target: {fileID: 6958881481828106093, guid: 8088990bb057541e7b255f161845dcd6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: JoinLobby
+      objectReference: {fileID: 0}
     - target: {fileID: 7658008012308967314, guid: 8088990bb057541e7b255f161845dcd6,
         type: 3}
       propertyPath: m_RootOrder
@@ -468,6 +513,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonBack
       objectReference: {fileID: 0}
+    - target: {fileID: 7658008012833665172, guid: 8088990bb057541e7b255f161845dcd6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658008012833665172, guid: 8088990bb057541e7b255f161845dcd6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658008012833665172, guid: 8088990bb057541e7b255f161845dcd6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7658008011885817768}
+    - target: {fileID: 7658008012833665172, guid: 8088990bb057541e7b255f161845dcd6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658008012833665172, guid: 8088990bb057541e7b255f161845dcd6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658008012833665172, guid: 8088990bb057541e7b255f161845dcd6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658008012833665172, guid: 8088990bb057541e7b255f161845dcd6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7658008013407653239, guid: 8088990bb057541e7b255f161845dcd6,
         type: 3}
       propertyPath: networkManager
@@ -503,5 +583,32 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8406061598295050704, guid: 8088990bb057541e7b255f161845dcd6,
+        type: 3}
+      propertyPath: m_Text
+      value: localhost
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8088990bb057541e7b255f161845dcd6, type: 3}
+--- !u!1 &7658008011885817768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6590137795188705967, guid: 8088990bb057541e7b255f161845dcd6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7658008011885817767}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7658008011885817769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7658008011885817768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6d81290111ff4807bace4a9c9e96385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkManager: {fileID: 1942572281}
+  startMenu: {fileID: 1577658504}
+  ipAddressInputField: {fileID: 1658891578}
+  joinButton: {fileID: 1834247323}

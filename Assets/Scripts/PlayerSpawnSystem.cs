@@ -20,10 +20,10 @@ public class PlayerSpawnSystem : NetworkBehaviour
     }
     public static void RemoveSpawnPoint(Transform transform) => spawnPoints.Remove(transform);
 
-    public override void OnStartServer() => NetworkManagerLobby.OnServerReadied += SpawnPlayer;
+    public override void OnStartServer() => Network.OnServerReadied += SpawnPlayer;
 
     [ServerCallback]
-    private void OnDestroy() => NetworkManagerLobby.OnServerReadied -= SpawnPlayer;
+    private void OnDestroy() => Network.OnServerReadied -= SpawnPlayer;
 
     [Server]
     public void SpawnPlayer(NetworkConnection conn)

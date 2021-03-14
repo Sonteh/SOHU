@@ -443,6 +443,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1957981301816100678, guid: e6a497918d098466f8e6a79a33354256,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2377430247550501288, guid: e6a497918d098466f8e6a79a33354256,
         type: 3}
       propertyPath: m_fontSize
