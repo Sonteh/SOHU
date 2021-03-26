@@ -1,13 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Join : MonoBehaviour
 {
-    [Header("Network Manager")]
-    [SerializeField] private Network networkManager = null;
-
     [Header("UI")]
     [SerializeField] private GameObject startMenu = null;
     [SerializeField] private InputField ipAddressInputField = null;
@@ -16,24 +14,25 @@ public class Join : MonoBehaviour
 
     private void OnEnable()
     {
-        Network.OnClientConnected += HandleClientConnected;
-        Network.OnClientDisconnected += HandleClientDisconnected;
+        Network.ClientOnConnected += HandleClientConnected;
+        Network.ClientOnDisconnected += HandleClientDisconnected;
     }
 
     private void OnDisable()
     {
-        Network.OnClientConnected -= HandleClientConnected;
-        Network.OnClientDisconnected -= HandleClientDisconnected;
+        Network.ClientOnConnected -= HandleClientConnected;
+        Network.ClientOnDisconnected -= HandleClientDisconnected;
     }
 
     public void JoinLobby()
     {
         string ipAddress = ipAddressInputField.text;
 
-        networkManager.networkAddress = ipAddress;
-        networkManager.StartClient();
+        NetworkManager.singleton.networkAddress = ipAddress;
+        NetworkManager.singleton.StartClient();
 
-        joinButton.interactable = true;
+        joinButton.interactable = false;
+
     }
 
     public void CloseIpDialog()

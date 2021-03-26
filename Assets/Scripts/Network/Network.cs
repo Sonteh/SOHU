@@ -21,8 +21,8 @@ public class Network : NetworkManager
     [SerializeField] private GameObject playerSpawnSystem = null;
 
     // Network Events
-    public static event Action OnClientConnected;
-    public static event Action OnClientDisconnected;
+    public static event Action ClientOnConnected;
+    public static event Action ClientOnDisconnected;
     public static event Action<NetworkConnection> OnServerReadied;
 
     // List of Players in the Lobby
@@ -50,7 +50,7 @@ public class Network : NetworkManager
     {
         base.OnClientConnect(conn);
 
-        OnClientConnected?.Invoke();
+        ClientOnConnected?.Invoke();
 
     }
 
@@ -58,7 +58,7 @@ public class Network : NetworkManager
     {
         base.OnClientDisconnect(conn);
 
-        OnClientDisconnected?.Invoke();
+        ClientOnDisconnected?.Invoke();
     }
 
     public override void OnServerConnect(NetworkConnection conn)
