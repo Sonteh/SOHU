@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Join : MonoBehaviour
 {
+    [Header("Network Manager")]
     [SerializeField] private Network networkManager = null;
 
     [Header("UI")]

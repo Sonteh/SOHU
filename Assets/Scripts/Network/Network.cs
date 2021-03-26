@@ -7,11 +7,11 @@ using System.Collections.Generic;
 
 public class Network : NetworkManager
 {
+    [Header("Custom Properties")]
     [SerializeField] private int minPlayers = 2;
 
-    // drag the scene name from the inspector
+    [Header("Menu Scene")]
     [Scene] [SerializeField] private string menuScene = string.Empty;
-
 
     [Header("Room")]
     [SerializeField] private NetworkRoom roomPlayerPrefab = null;
@@ -20,14 +20,19 @@ public class Network : NetworkManager
     [SerializeField] private NetworkPlayer gamePlayerPrefab = null;
     [SerializeField] private GameObject playerSpawnSystem = null;
 
+    // Network Events
     public static event Action OnClientConnected;
     public static event Action OnClientDisconnected;
     public static event Action<NetworkConnection> OnServerReadied;
 
+    // List of Players in the Lobby
     public List<NetworkRoom> RoomPlayers { get; } = new List<NetworkRoom>();
+
+    // List of Players in the Game
     public List<NetworkPlayer> GamePlayers { get; } = new List<NetworkPlayer>();
 
-    // prefabs creation - depending on whether it's client or server
+
+
     public override void OnStartServer() => spawnPrefabs = Resources.LoadAll<GameObject>("SpawnablePrefabs").ToList();
 
     public override void OnStartClient()
@@ -60,13 +65,15 @@ public class Network : NetworkManager
     {
         if (numPlayers >= maxConnections)
         {
+            // TODO Load Start Menu Canvas
             conn.Disconnect();
             return;
         }
 
-        // stops players from joining if the game is currently in progress
+        // Stops players from joining if the game is currently in progress
         if (SceneManager.GetActiveScene().path != menuScene)
         {
+            // TODO Load Start Menu Canvas
             conn.Disconnect();
             return;
         }
