@@ -11,6 +11,7 @@ public class Join : MonoBehaviour
     [SerializeField] private GameObject startMenu = null;
     [SerializeField] private InputField ipAddressInputField = null;
     [SerializeField] private Button joinButton = null;
+    [SerializeField] private Button closeButton = null;
 
     private void OnEnable()
     {
@@ -32,6 +33,12 @@ public class Join : MonoBehaviour
         networkManager.StartClient();
 
         joinButton.interactable = true;
+    }
+
+    public void CloseIpDialog()
+    {
+        gameObject.SetActive(false);
+        startMenu.SetActive(true);
     }
 
     private void HandleClientConnected()

@@ -14,8 +14,10 @@ public class StartMenu : MonoBehaviour
     void Start()
     {
         Button buttonBack = transform.Find("ButtonBack").GetComponent<Button>();
+        Button buttonRefresh = transform.Find("ButtonRefresh").GetComponent<Button>();
 
         buttonBack.onClick.AddListener(GoBack);
+        buttonRefresh.onClick.AddListener(Refresh);
 
     }
 
@@ -31,6 +33,15 @@ public class StartMenu : MonoBehaviour
 
         startMenu.SetActive(false);
 
+    }
+
+    public void Refresh()
+    {
+        Debug.Log("here");
+
+        var pd = APIHelper.GetPlayers();
+
+        Debug.Log(pd.data[0].IP);
     }
 
 }
