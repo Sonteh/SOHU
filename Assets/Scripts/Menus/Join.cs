@@ -37,8 +37,10 @@ public class Join : MonoBehaviour
 
     public void CloseIpDialog()
     {
+        Debug.Log("here");
         gameObject.SetActive(false);
         startMenu.SetActive(true);
+        Debug.Log("here after");
     }
 
     private void HandleClientConnected()

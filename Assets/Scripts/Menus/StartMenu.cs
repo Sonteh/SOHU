@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StartMenu : MonoBehaviour
 {
-    [SerializeField] private Network networkManager = null;
+    //[SerializeField] private Network networkManager = null;
 
     [Header("Menu")]
     [SerializeField] private GameObject main = null;
@@ -29,9 +30,11 @@ public class StartMenu : MonoBehaviour
 
     public void HostLobby()
     {
-        networkManager.StartHost();
+        //networkManager.StartHost();
 
         startMenu.SetActive(false);
+
+        NetworkManager.singleton.StartHost();
 
     }
 
