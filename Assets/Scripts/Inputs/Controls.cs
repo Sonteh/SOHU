@@ -27,9 +27,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Cast"",
+                    ""name"": ""CastFireball"",
                     ""type"": ""Button"",
                     ""id"": ""5b818859-57ff-45ac-ab7e-93d0578f26a9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""CastMagicMissile"",
+                    ""type"": ""Button"",
+                    ""id"": ""e201e00a-431b-43bb-a5b0-6f2bfc0113b2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
@@ -50,11 +58,22 @@ public class @Controls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""47c33e02-e986-4ee2-a58e-1bf15413251e"",
-                    ""path"": ""<Keyboard>/#(q)"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Spells"",
-                    ""action"": ""Cast"",
+                    ""action"": ""CastFireball"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94664af4-7be6-4588-8bdb-37867e60c8e0"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Spells"",
+                    ""action"": ""CastMagicMissile"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -89,7 +108,8 @@ public class @Controls : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Cast = m_Player.FindAction("Cast", throwIfNotFound: true);
+        m_Player_CastFireball = m_Player.FindAction("CastFireball", throwIfNotFound: true);
+        m_Player_CastMagicMissile = m_Player.FindAction("CastMagicMissile", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -140,13 +160,15 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Cast;
+    private readonly InputAction m_Player_CastFireball;
+    private readonly InputAction m_Player_CastMagicMissile;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Cast => m_Wrapper.m_Player_Cast;
+        public InputAction @CastFireball => m_Wrapper.m_Player_CastFireball;
+        public InputAction @CastMagicMissile => m_Wrapper.m_Player_CastMagicMissile;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -159,9 +181,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Cast.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCast;
-                @Cast.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCast;
-                @Cast.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCast;
+                @CastFireball.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCastFireball;
+                @CastFireball.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCastFireball;
+                @CastFireball.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCastFireball;
+                @CastMagicMissile.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCastMagicMissile;
+                @CastMagicMissile.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCastMagicMissile;
+                @CastMagicMissile.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCastMagicMissile;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -169,9 +194,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Cast.started += instance.OnCast;
-                @Cast.performed += instance.OnCast;
-                @Cast.canceled += instance.OnCast;
+                @CastFireball.started += instance.OnCastFireball;
+                @CastFireball.performed += instance.OnCastFireball;
+                @CastFireball.canceled += instance.OnCastFireball;
+                @CastMagicMissile.started += instance.OnCastMagicMissile;
+                @CastMagicMissile.performed += instance.OnCastMagicMissile;
+                @CastMagicMissile.canceled += instance.OnCastMagicMissile;
             }
         }
     }
@@ -197,6 +225,7 @@ public class @Controls : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnCast(InputAction.CallbackContext context);
+        void OnCastFireball(InputAction.CallbackContext context);
+        void OnCastMagicMissile(InputAction.CallbackContext context);
     }
 }

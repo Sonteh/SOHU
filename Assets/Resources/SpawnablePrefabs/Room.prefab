@@ -104,6 +104,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasLobby
       objectReference: {fileID: 0}
+    - target: {fileID: 3799372269726912958, guid: 82d18d3d8d1bc4c34bee31174eae2540,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2659728637667410020}
+    - target: {fileID: 3799372269726912958, guid: 82d18d3d8d1bc4c34bee31174eae2540,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LeaveLobby
+      objectReference: {fileID: 0}
     - target: {fileID: 4561784744625551016, guid: 82d18d3d8d1bc4c34bee31174eae2540,
         type: 3}
       propertyPath: m_Pivot.x

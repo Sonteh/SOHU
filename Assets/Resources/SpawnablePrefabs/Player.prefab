@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3342572391134161209}
   - component: {fileID: 4243847485925181419}
   - component: {fileID: 4368177073275600656}
+  - component: {fileID: 4492503505604275158}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -205,3 +206,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c401310d8b174351a09bb3379c7c93f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+--- !u!114 &4492503505604275158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2240174198917530758}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c00f2b6f89d94ef3bba0c01cbdccb0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  _fireballPrefab: {fileID: 6187910128149532311, guid: 9ccfa4ec2ee7b354abd4aa2067f371fa,
+    type: 3}
+  _fireballCooldown: 0.5
+  _magicMissilePrefab: {fileID: 370511022442885530, guid: 0b3f3e09ee1183c438ce407ef8e4e25f,
+    type: 3}

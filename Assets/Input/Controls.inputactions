@@ -14,9 +14,17 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Cast",
+                    "name": "CastFireball",
                     "type": "Button",
                     "id": "5b818859-57ff-45ac-ab7e-93d0578f26a9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "CastMagicMissile",
+                    "type": "Button",
+                    "id": "e201e00a-431b-43bb-a5b0-6f2bfc0113b2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
@@ -37,11 +45,22 @@
                 {
                     "name": "",
                     "id": "47c33e02-e986-4ee2-a58e-1bf15413251e",
-                    "path": "<Keyboard>/#(q)",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "Spells",
-                    "action": "Cast",
+                    "action": "CastFireball",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "94664af4-7be6-4588-8bdb-37867e60c8e0",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Spells",
+                    "action": "CastMagicMissile",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
