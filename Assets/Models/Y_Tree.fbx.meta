@@ -1,14 +1,17 @@
 fileFormatVersion: 2
-guid: 7903217550d87e14a84bd016f452c507
+guid: 0b0893b189f31214d9e1e5d646290fb4
 ModelImporter:
   serializedVersion: 19301
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 6881838330954562252
+    second: Tree.004|IcosphereAction.004
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Leaf.001
-    second: {fileID: 2100000, guid: 768daae8cc50e3a448c57ecfc0bc9d22, type: 2}
+      name: Green1
+    second: {fileID: 2100000, guid: b6768c9fc4bb87943ae117ceea2d5a7a, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
