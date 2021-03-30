@@ -7,7 +7,7 @@ public class MagicMissle : MonoBehaviour
     [SerializeField]
     private float _speed = 10.0f;
     [SerializeField]
-    private float _outOfRange = 3.0f;
+    private float _outOfRange = 60.0f;
 
     void Update()
     {
