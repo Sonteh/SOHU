@@ -28,6 +28,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "Dupa",
+                    "type": "Button",
+                    "id": "db6efdfd-82c4-4c2c-9a55-305cb912188a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -61,6 +69,17 @@
                     "processors": "",
                     "groups": "Spells",
                     "action": "CastMagicMissile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "147c99bd-ec51-4e3a-9aee-a43a37346be4",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Spells",
+                    "action": "Dupa",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

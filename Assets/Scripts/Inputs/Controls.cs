@@ -41,6 +41,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Dupa"",
+                    ""type"": ""Button"",
+                    ""id"": ""db6efdfd-82c4-4c2c-9a55-305cb912188a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -74,6 +82,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Spells"",
                     ""action"": ""CastMagicMissile"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""147c99bd-ec51-4e3a-9aee-a43a37346be4"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Spells"",
+                    ""action"": ""Dupa"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -110,6 +129,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_CastFireball = m_Player.FindAction("CastFireball", throwIfNotFound: true);
         m_Player_CastMagicMissile = m_Player.FindAction("CastMagicMissile", throwIfNotFound: true);
+        m_Player_Dupa = m_Player.FindAction("Dupa", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -162,6 +182,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_CastFireball;
     private readonly InputAction m_Player_CastMagicMissile;
+    private readonly InputAction m_Player_Dupa;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -169,6 +190,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @CastFireball => m_Wrapper.m_Player_CastFireball;
         public InputAction @CastMagicMissile => m_Wrapper.m_Player_CastMagicMissile;
+        public InputAction @Dupa => m_Wrapper.m_Player_Dupa;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -187,6 +209,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @CastMagicMissile.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCastMagicMissile;
                 @CastMagicMissile.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCastMagicMissile;
                 @CastMagicMissile.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCastMagicMissile;
+                @Dupa.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDupa;
+                @Dupa.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDupa;
+                @Dupa.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDupa;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -200,6 +225,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @CastMagicMissile.started += instance.OnCastMagicMissile;
                 @CastMagicMissile.performed += instance.OnCastMagicMissile;
                 @CastMagicMissile.canceled += instance.OnCastMagicMissile;
+                @Dupa.started += instance.OnDupa;
+                @Dupa.performed += instance.OnDupa;
+                @Dupa.canceled += instance.OnDupa;
             }
         }
     }
@@ -227,5 +255,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnCastFireball(InputAction.CallbackContext context);
         void OnCastMagicMissile(InputAction.CallbackContext context);
+        void OnDupa(InputAction.CallbackContext context);
     }
 }

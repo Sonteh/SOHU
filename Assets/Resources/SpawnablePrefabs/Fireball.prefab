@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7960404885246405226}
   - component: {fileID: 6684138348517542571}
   - component: {fileID: -6498020868825989585}
-  - component: {fileID: -3183877210547247297}
+  - component: {fileID: -5282273510465208261}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Spell
@@ -145,7 +145,7 @@ MonoBehaviour:
   serverOnly: 0
   m_AssetId: 
   hasSpawned: 0
---- !u!114 &-3183877210547247297
+--- !u!114 &-5282273510465208261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,34 +154,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 6187910128149532311}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 741bbe11f5357b44593b15c0d11b16bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c6e8001e79980341af98dc404133ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  clientAuthority: 1
-  excludeOwnerUpdate: 0
-  syncPosition: 1
-  syncRotation: 1
-  syncScale: 1
-  interpolatePosition: 1
-  interpolateRotation: 1
-  interpolateScale: 1
-  localPositionSensitivity: 0.01
-  localRotationSensitivity: 0.01
-  localScaleSensitivity: 0.01
-  lastPosition: {x: 0, y: 0, z: 0}
-  lastRotation: {x: 0, y: 0, z: 0, w: 0}
-  lastScale: {x: 0, y: 0, z: 0}
-  start:
-    timeStamp: 0
-    localPosition: {x: 0, y: 0, z: 0}
-    localRotation: {x: 0, y: 0, z: 0, w: 0}
-    localScale: {x: 0, y: 0, z: 0}
-    movementSpeed: 0
-  goal:
-    timeStamp: 0
-    localPosition: {x: 0, y: 0, z: 0}
-    localRotation: {x: 0, y: 0, z: 0, w: 0}
-    localScale: {x: 0, y: 0, z: 0}
-    movementSpeed: 0
+  _useLocalSpace: 1
+  _intervalType: 0
+  _synchronizeInterval: 0.1
+  _reliable: 1
+  _resendUnreliable: 0
+  _smoothingLoop: 1
+  _interpolationFallbehind: 0.06
+  _extrapolationSpan: 0
+  _teleportThreshold: 0
+  _clientAuthoritative: 1
+  _synchronizeToOwner: 1
+  _compressSmall: 1
+  _synchronizePosition: 0
+  _snapPosition: 0
+  _synchronizeRotation: 0
+  _snapRotation: 0
+  _synchronizeScale: 0
+  _snapScale: 0
