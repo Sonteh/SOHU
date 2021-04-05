@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1885171486094318099}
   - component: {fileID: 3130136544044684998}
+  - component: {fileID: -4859582603653345864}
   - component: {fileID: 1689929433860541794}
   - component: {fileID: 8696478665569224243}
   - component: {fileID: 7323893258503626348}
   - component: {fileID: 8933714208194632223}
-  - component: {fileID: 3342572391134161209}
   - component: {fileID: 4243847485925181419}
   - component: {fileID: 4368177073275600656}
   - component: {fileID: 4492503505604275158}
@@ -47,6 +47,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2240174198917530758}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &-4859582603653345864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2240174198917530758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6e8001e79980341af98dc404133ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  _useLocalSpace: 1
+  _intervalType: 0
+  _synchronizeInterval: 0.1
+  _reliable: 1
+  _resendUnreliable: 0
+  _smoothingLoop: 1
+  _interpolationFallbehind: 0.06
+  _extrapolationSpan: 0
+  _teleportThreshold: 0
+  _clientAuthoritative: 1
+  _synchronizeToOwner: 1
+  _compressSmall: 1
+  _synchronizePosition: 0
+  _snapPosition: 0
+  _synchronizeRotation: 0
+  _snapRotation: 0
+  _synchronizeScale: 0
+  _snapScale: 0
 --- !u!23 &1689929433860541794
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -138,46 +170,6 @@ MonoBehaviour:
   serverOnly: 0
   m_AssetId: 
   hasSpawned: 0
---- !u!114 &3342572391134161209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2240174198917530758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 741bbe11f5357b44593b15c0d11b16bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 1
-  excludeOwnerUpdate: 0
-  syncPosition: 1
-  syncRotation: 1
-  syncScale: 1
-  interpolatePosition: 1
-  interpolateRotation: 1
-  interpolateScale: 1
-  localPositionSensitivity: 0.01
-  localRotationSensitivity: 0.01
-  localScaleSensitivity: 0.01
-  lastPosition: {x: 0, y: 0, z: 0}
-  lastRotation: {x: 0, y: 0, z: 0, w: 0}
-  lastScale: {x: 0, y: 0, z: 0}
-  start:
-    timeStamp: 0
-    localPosition: {x: 0, y: 0, z: 0}
-    localRotation: {x: 0, y: 0, z: 0, w: 0}
-    localScale: {x: 0, y: 0, z: 0}
-    movementSpeed: 0
-  goal:
-    timeStamp: 0
-    localPosition: {x: 0, y: 0, z: 0}
-    localRotation: {x: 0, y: 0, z: 0, w: 0}
-    localScale: {x: 0, y: 0, z: 0}
-    movementSpeed: 0
 --- !u!54 &4243847485925181419
 Rigidbody:
   m_ObjectHideFlags: 0
