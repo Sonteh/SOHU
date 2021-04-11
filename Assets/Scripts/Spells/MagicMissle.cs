@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class MagicMissle : MonoBehaviour
+public class MagicMissle : NetworkBehaviour
 {
     [SerializeField]
     private float _speed = 10.0f;
     [SerializeField]
     private float _outOfRange = 60.0f;
 
+    [ClientRpc]
     void Update()
     {
         Vector3 mouse = Input.mousePosition;
