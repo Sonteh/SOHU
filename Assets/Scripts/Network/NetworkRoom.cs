@@ -2,13 +2,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class NetworkRoom : NetworkBehaviour
 {
     [Header("UI")]
     [SerializeField] private GameObject lobbyUI = null;
-    [SerializeField] private Text[] playerNameTexts = new Text[4];
-    [SerializeField] private Text[] playerReadyTexts = new Text[4];
+    [SerializeField] private TMP_Text[] playerNameTexts = new TMP_Text[8];
+    [SerializeField] private TMP_Text[] playerReadyTexts = new TMP_Text[8];
     [SerializeField] private Button startGameButton = null;
 
     [SyncVar(hook = nameof(HandleDisplayNameChanged))]
@@ -38,7 +39,9 @@ public class NetworkRoom : NetworkBehaviour
 
     public override void OnStartAuthority()
     {
-        CmdSetDisplayName(PlayerName.displayName);
+        Debug.Log(PlayerPrefs.GetString("PlayerName"));
+        //CmdSetDisplayName(PlayerName.displayName);
+        CmdSetDisplayName(PlayerPrefs.GetString("PlayerName"));
 
         lobbyUI.SetActive(true);
     }
@@ -81,16 +84,17 @@ public class NetworkRoom : NetworkBehaviour
 
         for (int i = 0; i < playerNameTexts.Length; i++)
         {
-            playerNameTexts[i].text = "Waiting For Player...";
-            playerReadyTexts[i].text = string.Empty;
+            playerNameTexts[i].text = "WAITING...";
+            //playerReadyTexts[i].text = string.Empty;
         }
 
         for (int i = 0; i < Room.RoomPlayers.Count; i++)
         {
+            Debug.Log(DisplayName);
             playerNameTexts[i].text = Room.RoomPlayers[i].DisplayName;
-            playerReadyTexts[i].text = Room.RoomPlayers[i].IsReady ?
-                "<color=green>Ready</color>" :
-                "<color=red>Not Ready</color>";
+            //playerReadyTexts[i].text = Room.RoomPlayers[i].IsReady ?
+            //    "<color=green>Ready</color>" :
+            //    "<color=red>Not Ready</color>";
         }
     }
 

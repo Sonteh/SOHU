@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public class Network : NetworkManager
 {
     [Header("Custom Properties")]
-    [SerializeField] private int minPlayers = 2;
+    [SerializeField] private int minPlayers = 1;
 
     [Header("Menu Scene")]
     [Scene] [SerializeField] private string menuScene = string.Empty;
