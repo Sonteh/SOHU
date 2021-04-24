@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public class Network : NetworkManager
 {
     [Header("Custom Properties")]
-    [SerializeField] private int minPlayers = 2;
+    [SerializeField] private int minPlayers = 1;
 
     [Header("Menu Scene")]
     [Scene] [SerializeField] private string menuScene = string.Empty;
@@ -19,19 +19,19 @@ public class Network : NetworkManager
     [Header("Game")]
     [SerializeField] private NetworkPlayer gamePlayerPrefab = null;
     [SerializeField] private GameObject playerSpawnSystem = null;
+    [SerializeField] private GameObject roundSystem = null;
 
     // Network Events
     public static event Action ClientOnConnected;
     public static event Action ClientOnDisconnected;
     public static event Action<NetworkConnection> OnServerReadied;
+    public static event Action OnServerStopped;
 
     // List of Players in the Lobby
     public List<NetworkRoom> RoomPlayers { get; } = new List<NetworkRoom>();
 
     // List of Players in the Game
     public List<NetworkPlayer> GamePlayers { get; } = new List<NetworkPlayer>();
-
-
 
     public override void OnStartServer() => spawnPrefabs = Resources.LoadAll<GameObject>("SpawnablePrefabs").ToList();
 
@@ -113,7 +113,10 @@ public class Network : NetworkManager
 
     public override void OnStopServer()
     {
+        OnServerStopped?.Invoke();
+
         RoomPlayers.Clear();
+        GamePlayers.Clear();
     }
 
     public void NotifyPlayersOfReadyState()
@@ -124,7 +127,6 @@ public class Network : NetworkManager
         }
 
     }
-
 
     private bool IsReadyToStart()
     {
@@ -178,6 +180,9 @@ public class Network : NetworkManager
         {
             GameObject playerSpawnSystemInstance = Instantiate(playerSpawnSystem);
             NetworkServer.Spawn(playerSpawnSystemInstance);
+
+            GameObject roundSystemInstance = Instantiate(roundSystem);
+            NetworkServer.Spawn(roundSystemInstance);
         }
     }
 

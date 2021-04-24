@@ -22,6 +22,7 @@ public class Fireball : NetworkBehaviour
         
     }
 
+    [ClientRpc]
     void Update()
     {
 
@@ -33,7 +34,7 @@ public class Fireball : NetworkBehaviour
         transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
 
         Destroy(gameObject, _outOfRange);
-
+        
         //CmdFireballNetwork();
   
     }

@@ -52,6 +52,7 @@ public class CastSpell : NetworkBehaviour
         //_canUseFireball = _fireballCooldown + Time.time;
         GameObject fireball = Instantiate(_fireballPrefab, spellDirection, quat);
         NetworkServer.Spawn(fireball, connectionToClient);
+    
     }
 
     [Client]

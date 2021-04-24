@@ -168,7 +168,7 @@ MonoBehaviour:
   _interpolationFallbehind: 0.06
   _extrapolationSpan: 0
   _teleportThreshold: 0
-  _clientAuthoritative: 1
+  _clientAuthoritative: 0
   _synchronizeToOwner: 1
   _compressSmall: 1
   _synchronizePosition: 0

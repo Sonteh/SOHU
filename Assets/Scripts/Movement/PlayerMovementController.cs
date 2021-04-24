@@ -27,7 +27,11 @@ public class PlayerMovementController : NetworkBehaviour
     }
 
     [ClientCallback]
-    private void Update() => Move();
+    private void Update()
+    {
+        Move();
+        UpdateAnimator();
+    } 
 
     [Client]
     private void SetMovement(float movement) => previousInput = movement;
@@ -56,5 +60,14 @@ public class PlayerMovementController : NetworkBehaviour
                 GetComponent<NavMeshAgent>().destination = hit.point;
             }
         }
+    }
+
+    [Client]
+    private void UpdateAnimator()
+    {
+        Vector3 velocity =  GetComponent<NavMeshAgent>().velocity;
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        float speed = localVelocity.z;
+        GetComponent<Animator>().SetFloat("forwardSpeed", speed);
     }
 }
