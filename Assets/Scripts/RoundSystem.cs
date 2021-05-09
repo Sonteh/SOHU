@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using System.Linq;
+using UnityEngine.UI;
 
 public class RoundSystem : NetworkBehaviour
 {
-    [SerializeField] private Animator animator = null;
+    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject gameMenu;
 
     private Network room;
     private Network Room
@@ -21,6 +23,7 @@ public class RoundSystem : NetworkBehaviour
     public void CountdownEnded()
     {
         animator.enabled = false;
+        gameMenu.SetActive(false);
     }
 
     #region Server
@@ -47,12 +50,14 @@ public class RoundSystem : NetworkBehaviour
         RpcStartRound();
     }
 
+    //TODO: Naprawić wyświetlanie się canvasu GameMenu w tym skrypcie, jak i w Network.cs
     [Server]
     private void CheckToStartRound(NetworkConnection conn)
     {
         if (Room.GamePlayers.Count(x => x.connectionToClient.isReady) != Room.GamePlayers.Count) {return;}
 
         animator.enabled = true;
+        gameMenu.SetActive(true);
 
         RpcStartCountdown();
     }
@@ -65,6 +70,7 @@ public class RoundSystem : NetworkBehaviour
     private void RpcStartCountdown()
     {
         animator.enabled = true;
+        gameMenu.SetActive(true);
     }
 
     [ClientRpc]

@@ -14,12 +14,13 @@ public class Network : NetworkManager
     [Scene] [SerializeField] private string menuScene = string.Empty;
 
     [Header("Room")]
-    [SerializeField] private NetworkRoom roomPlayerPrefab = null;
+    [SerializeField] private NetworkRoom roomPlayerPrefab;
 
     [Header("Game")]
-    [SerializeField] private NetworkPlayer gamePlayerPrefab = null;
-    [SerializeField] private GameObject playerSpawnSystem = null;
-    [SerializeField] private GameObject roundSystem = null;
+    [SerializeField] private NetworkPlayer gamePlayerPrefab;
+    [SerializeField] private GameObject playerSpawnSystem;
+    [SerializeField] private GameObject roundSystem;
+    [SerializeField] private GameObject gameMenu;
 
     // Network Events
     public static event Action ClientOnConnected;
@@ -183,6 +184,9 @@ public class Network : NetworkManager
 
             GameObject roundSystemInstance = Instantiate(roundSystem);
             NetworkServer.Spawn(roundSystemInstance);
+
+            GameObject gameMenuInstance = Instantiate(gameMenu);
+            NetworkServer.Spawn(gameMenuInstance);
         }
     }
 

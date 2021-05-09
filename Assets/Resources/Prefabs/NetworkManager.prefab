@@ -72,6 +72,8 @@ MonoBehaviour:
     type: 3}
   roundSystem: {fileID: 3945616786797551703, guid: 6e213916e803fec4988f4db7e70fbf2a,
     type: 3}
+  gameMenu: {fileID: 7664774323451187169, guid: bd85c519fd6db0341a6bafe46316c4a2,
+    type: 3}
 --- !u!114 &1425867272826150975
 MonoBehaviour:
   m_ObjectHideFlags: 0

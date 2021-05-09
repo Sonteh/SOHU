@@ -46,4 +46,14 @@ public class Health : NetworkBehaviour
     }
 
     #endregion
+
+    //TODO: Raczej trzeba przerobić to na skrypt, który rejestruje obrażenia po stronie servera.
+    //Również nie jest to ostateczna wersja tylko wczesne testy.
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Spell")
+        {
+            Destroy(other.gameObject);
+        }
+    }
 }

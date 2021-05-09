@@ -10,8 +10,8 @@ public class CastSpell : NetworkBehaviour
     private float _canUseFireball = -1.0f;
 
     [SerializeField] private GameObject _magicMissilePrefab;
-    //[SerializeField] private float _fireballCooldown = 0.5f;
-    //private float _canUseFireball = -1.0f;
+    [SerializeField] private float _magicMissleCooldown = 1.0f;
+    private float _canUseMagicMissle = -1.0f;
 
     //private float previousInput;
 
@@ -49,10 +49,12 @@ public class CastSpell : NetworkBehaviour
     [Command]
     private void CmdCastFireball(Vector3 spellDirection, Quaternion quat)
     {
-        //_canUseFireball = _fireballCooldown + Time.time;
-        GameObject fireball = Instantiate(_fireballPrefab, spellDirection, quat);
-        NetworkServer.Spawn(fireball, connectionToClient);
-    
+        if (Time.time > _canUseFireball)
+        {
+            _canUseFireball = _fireballCooldown + Time.time;
+            GameObject fireball = Instantiate(_fireballPrefab, spellDirection, quat);
+            NetworkServer.Spawn(fireball, connectionToClient);
+        }
     }
 
     [Client]
@@ -65,9 +67,12 @@ public class CastSpell : NetworkBehaviour
     [Command]
     private void CmdCastMagicMissile(Vector3 spellDirection, Quaternion quat)
     {
-        //_canUseFireball = _fireballCooldown + Time.time;
-        GameObject magicMissile = Instantiate(_magicMissilePrefab, spellDirection, quat);
-        NetworkServer.Spawn(magicMissile, connectionToClient);
+        if (Time.time > _canUseMagicMissle)
+        {
+            _canUseMagicMissle = _magicMissleCooldown + Time.time;
+            GameObject magicMissile = Instantiate(_magicMissilePrefab, spellDirection, quat);
+            NetworkServer.Spawn(magicMissile, connectionToClient);
+        }
     }
 }
 
