@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class RoundSystem : NetworkBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private GameObject gameMenu;
 
     private Network room;
     private Network Room
@@ -23,7 +22,6 @@ public class RoundSystem : NetworkBehaviour
     public void CountdownEnded()
     {
         animator.enabled = false;
-        gameMenu.SetActive(false);
     }
 
     #region Server
@@ -57,7 +55,6 @@ public class RoundSystem : NetworkBehaviour
         if (Room.GamePlayers.Count(x => x.connectionToClient.isReady) != Room.GamePlayers.Count) {return;}
 
         animator.enabled = true;
-        gameMenu.SetActive(true);
 
         RpcStartCountdown();
     }
@@ -70,7 +67,6 @@ public class RoundSystem : NetworkBehaviour
     private void RpcStartCountdown()
     {
         animator.enabled = true;
-        gameMenu.SetActive(true);
     }
 
     [ClientRpc]
