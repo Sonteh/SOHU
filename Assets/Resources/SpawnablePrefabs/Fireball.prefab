@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 4548034526146100620}
   - component: {fileID: 8636865798241569488}
   - component: {fileID: 2724271702633766278}
-  - component: {fileID: 7960404885246405226}
   - component: {fileID: 6684138348517542571}
   - component: {fileID: -6498020868825989585}
   - component: {fileID: -5282273510465208261}
+  - component: {fileID: 7960404885246405226}
+  - component: {fileID: 2842293561831026762}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Spell
@@ -97,22 +98,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7960404885246405226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6187910128149532311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a43951a0f24907428efebdf60f323df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  _speed: 7
-  _outOfRange: 2
 --- !u!54 &6684138348517542571
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -177,3 +162,32 @@ MonoBehaviour:
   _snapRotation: 0
   _synchronizeScale: 0
   _snapScale: 0
+--- !u!114 &7960404885246405226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6187910128149532311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a43951a0f24907428efebdf60f323df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  _speed: 7
+  _outOfRange: 2
+--- !u!114 &2842293561831026762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6187910128149532311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bccae2ea055453c4ba48461396fea9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellDamage: 10

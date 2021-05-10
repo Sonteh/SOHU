@@ -21,8 +21,8 @@ public class HealthDisplay : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void HandleHealthChanged(int currentHealth, int maxHealth)
+    private void HandleHealthChanged(float currentHealth, float maxHealth)
     {
-        healthBarImage.fillAmount = (float)currentHealth / maxHealth;
+        healthBarImage.fillAmount = currentHealth / maxHealth;
     }
 }

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -5099324298563554708}
   - component: {fileID: -5806140375059233789}
   - component: {fileID: -2836033025840331747}
+  - component: {fileID: 4371364389443365332}
   m_Layer: 0
   m_Name: MagicMissle
   m_TagString: Spell
@@ -177,3 +178,16 @@ MonoBehaviour:
   _snapRotation: 0
   _synchronizeScale: 0
   _snapScale: 0
+--- !u!114 &4371364389443365332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370511022442885530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bccae2ea055453c4ba48461396fea9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellDamage: 40

@@ -6,20 +6,20 @@ using Mirror;
 public class Health : NetworkBehaviour 
 {
     [Header("Settings")]
-    [SerializeField] private int maxHealth = 100;
-    [SerializeField] private int damageTest = 10;
+    [SerializeField] private float maxHealth = 100f;
+    private float damage;
 
     [SyncVar]
-    private int currentHealth;
+    private float currentHealth;
 
-    public delegate void HealthUpdateDelegate(int currentHealth, int maxHealth);
+    public delegate void HealthUpdateDelegate(float currentHealth, float maxHealth);
 
     public event HealthUpdateDelegate EventHealthUpdate;
 
     #region Server
     
     [Server]
-    private void SetHealth(int value)
+    private void SetHealth(float value)
     {
         currentHealth = value;
         EventHealthUpdate?.Invoke(currentHealth, maxHealth);
@@ -28,8 +28,10 @@ public class Health : NetworkBehaviour
     public override void OnStartServer() => SetHealth(maxHealth);
 
     [Command]
-    private void CmdDealDamage() => SetHealth(Mathf.Max(currentHealth - damageTest, 0));
-
+    private void CmdDealDamage(float value)
+    {
+        SetHealth(Mathf.Max(currentHealth - value, 0));
+    }
 
     #endregion
 
@@ -42,18 +44,34 @@ public class Health : NetworkBehaviour
 
         if(!Input.GetKeyDown(KeyCode.Space)) {return;}
 
-        CmdDealDamage();
+        //CmdDealDamage();
+    }
+    
+    [ClientCallback]
+    private void OnTriggerEnter(Collider other)
+    {
+        if(!hasAuthority) {return;}
+
+        if (other.tag == "Spell")
+        {
+            damage = other.gameObject.GetComponent<SpellDamage>().spellDamage;
+            CmdDealDamage(damage);
+            Destroy(other.gameObject);
+        }
     }
 
     #endregion
 
     //TODO: Raczej trzeba przerobić to na skrypt, który rejestruje obrażenia po stronie servera.
     //Również nie jest to ostateczna wersja tylko wczesne testy.
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Spell")
         {
+            damage = other.gameObject.GetComponent<SpellDamage>().spellDamage;
+            CmdDealDamage(damage);
             Destroy(other.gameObject);
         }
     }
+    */
 }
