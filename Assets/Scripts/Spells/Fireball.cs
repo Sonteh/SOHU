@@ -16,43 +16,45 @@ public class Fireball : NetworkBehaviour
     //[Client]
     private void Start()
     {
-        //if (!hasAuthority) { enabled = false; }
+        //if (!isLocalPlayer) {return;}
+
         _mouse = Input.mousePosition;
         _ray = Camera.main.ScreenPointToRay(_mouse);
         
     }
 
-    [ClientRpc]
     void Update()
     {
+       // RaycastHit hit;
+       // Physics.Raycast(_ray, out hit);
 
+       // Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+
+       // transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
+
+       // Destroy(gameObject, _outOfRange);
+
+        CmdShootProjectile();
+  
+    }
+
+    [Command]
+    void CmdShootProjectile()
+    {
+        RpcUseFireball();
+    }
+
+    [ClientRpc]
+    void RpcUseFireball()
+    {
         RaycastHit hit;
         Physics.Raycast(_ray, out hit);
 
         Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-
         transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
 
         Destroy(gameObject, _outOfRange);
-        
-        //CmdFireballNetwork();
-  
     }
-
-    //[Command]
-    //private void CmdFireballNetwork()
-    //{
-    //    RaycastHit hit;
-    //    Physics.Raycast(_ray, out hit);
-
-    //    Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-
-    //    transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
-
-    //    Destroy(gameObject, _outOfRange);
-
-    //    //NetworkServer.Destroy(gameObject, _out);
-    //}
 
 }
 

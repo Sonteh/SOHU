@@ -13,8 +13,6 @@ public class CastSpell : NetworkBehaviour
     [SerializeField] private float _magicMissleCooldown = 1.0f;
     private float _canUseMagicMissle = -1.0f;
 
-    //private float previousInput;
-
     private static Controls controls;
     public static Controls Controls
     {
