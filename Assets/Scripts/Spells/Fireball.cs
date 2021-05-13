@@ -33,10 +33,20 @@ public class Fireball : NetworkBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
 
+        if (gameObject.transform.position == target){
+            Destroy();
+        }
+
         Destroy(gameObject, _outOfRange);
         
         //CmdFireballNetwork();
   
+    }
+    
+    [Command]
+    void Destroy()
+    {
+            Destroy(gameObject);
     }
 
     //[Command]
