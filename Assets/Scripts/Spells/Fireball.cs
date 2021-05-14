@@ -12,6 +12,19 @@ public class Fireball : NetworkBehaviour
 
     private Vector3 _mouse;
     private Ray _ray;
+
+    private void Update() 
+    {
+       // if (!isLocalPlayer) {return;}
+      //GetComponent<Rigidbody>().velocity = transform.forward * 15.0f; 
+        
+        
+
+       // Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+
+      //  transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime); 
+    }
+
 /*
     //[Client]
     private void Start()

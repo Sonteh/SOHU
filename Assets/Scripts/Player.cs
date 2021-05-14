@@ -16,6 +16,15 @@ public class Player : NetworkBehaviour
     // code is run only by the client
 
     //Wycentrowanie kamery na gracza
+
+    public static RaycastHit MousePosition()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        Physics.Raycast(ray, out hit);
+        return hit;
+    }
+    
     public override void OnStartLocalPlayer()
     {
         Vector3 playerPosition = transform.position;
@@ -33,26 +42,29 @@ public class Player : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q) && Time.time > _canUseFireball)
         {
-            UseFireball();
+            CmdUseFireball();
         }
 
     }
 
      private void MoveToCursor()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        bool hasHit = Physics.Raycast(ray, out hit);
+        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //RaycastHit hit;
+        //bool hasHit = Physics.Raycast(ray, out hit);
         //var offset = hit.point - transform.position;
 
-        if (hasHit)
-        {
-            GetComponent<NavMeshAgent>().destination = hit.point;
-        }
+        RaycastHit hit = MousePosition();
+        GetComponent<NavMeshAgent>().destination = hit.point;
+
+        //if (hasHit)
+        //{
+        //    GetComponent<NavMeshAgent>().destination = hit.point;
+        //}
     }
 
     [Command]
-    private void UseFireball()
+    private void CmdUseFireball()
     {
         RpcUseFireball();
     }
@@ -60,15 +72,29 @@ public class Player : NetworkBehaviour
     [ClientRpc]
     private void RpcUseFireball()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        bool hasHit = Physics.Raycast(ray, out hit);
-        Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //RaycastHit hit;
+        //bool hasHit = Physics.Raycast(ray, out hit);
+        //Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
 
         _canUseFireball = _fireballCooldown + Time.time;
         var fireball = (GameObject)Instantiate(_fireballPrefab, transform.position + Vector3.forward, Quaternion.identity);
 
-        fireball.GetComponent<Rigidbody>().velocity = fireball.transform.forward * 15.0f; 
+        RaycastHit hit = MousePosition();
+        Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+        Vector3 myPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        //fireball.GetComponent<Transform>().Translate(target * Time.deltaTime * 7.0f);
+        Vector3 direction = target - myPosition;
+        direction.Normalize();
+        fireball.GetComponent<Rigidbody>().velocity = direction * 7.0f;
+        
+        //Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+       // var fireballTransform = fireball.transform.position;
+        //fireballTransform = Vector3.MoveTowards(fireballTransform, target, 7.0f * Time.deltaTime);
+        //GetComponent<Rigidbody>().velocity = transform.forward * 15.0f; 
+        //MoveToPosition(fireball);
+        //fireball.GetComponent<Transform>().position = Vector3.MoveTowards(transform.position, target, 7.0f * Time.deltaTime); 
+ 
 
         /*
         if (hasHit)
@@ -81,6 +107,13 @@ public class Player : NetworkBehaviour
             }
         }
         */
+    }
+
+    private void MoveToPosition(GameObject fireball)
+    {
+        RaycastHit hit = MousePosition();
+        Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+        fireball.GetComponent<Transform>().position = Vector3.MoveTowards(fireball.transform.position, target, 7.0f * Time.deltaTime);
     }
 }
 
