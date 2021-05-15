@@ -5,79 +5,62 @@ using Mirror;
 
 public class Fireball : NetworkBehaviour
 {
-    [SerializeField]
-    private float _speed = 7.0f;
-    [SerializeField]
-    private float _outOfRange = 10.0f;
-
-    private Vector3 _mouse;
-    private Ray _ray;
-
+    [SerializeField] private GameObject fireballPrefab;
+    [SerializeField] private float speed = 7.0f;
+    [SerializeField] private float outOfRange = 10.0f;
+    [SerializeField] private float fireballCooldown = 0.5f;
+    private float canUseFireball = -1.0f;
+    
     private void Update() 
     {
-       // if (!isLocalPlayer) {return;}
-      //GetComponent<Rigidbody>().velocity = transform.forward * 15.0f; 
-        
-        
+        if (!isLocalPlayer) {return;}
 
-       // Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-
-      //  transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime); 
+        if (Input.GetButtonDown("Fireball") && Time.time > canUseFireball)
+        {
+            canUseFireball = fireballCooldown + Time.time;
+            Vector3 mouseDirection = GetPlayerMouseDirection();
+            CmdUseFireball(mouseDirection);
+        }
     }
 
-/*
-    //[Client]
-    private void Start()
+    private void OnTriggerEnter(Collider collider) 
     {
-        //if (!hasAuthority) { enabled = false; }
-        if (!isLocalPlayer) {return;}
-        _mouse = Input.mousePosition;
-        _ray = Camera.main.ScreenPointToRay(_mouse);
-        
+        if (collider.tag == "Spell")
+        {
+            Destroy(collider.gameObject);
+        }
+    }
+
+    private Vector3 GetPlayerMousePosition()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Physics.Raycast(ray, out hit);
+        Vector3 mousePosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+
+        return mousePosition;
+    }
+
+    private Vector3 GetPlayerMouseDirection()
+    {   
+        Vector3 mousePosition = GetPlayerMousePosition();
+        Vector3 playerPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        Vector3 mouseDirection = mousePosition - playerPosition;
+        mouseDirection.Normalize();
+
+        return mouseDirection;
+    }
+
+    [Command]
+    private void CmdUseFireball(Vector3 mouseDirection)
+    {
+        RpcUseFireball(mouseDirection);
     }
 
     [ClientRpc]
-    void Update()
+    private void RpcUseFireball(Vector3 mouseDirection)
     {
-
-        RaycastHit hit;
-        Physics.Raycast(_ray, out hit);
-
-        Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-
-        transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
-
-        if (gameObject.transform.position == target){
-            Destroy();
-        }
-
-        Destroy(gameObject, _outOfRange);
-        
-        //CmdFireballNetwork();
-  
+        var fireball = (GameObject)Instantiate(fireballPrefab, transform.position + Vector3.forward, Quaternion.identity);
+        fireball.GetComponent<Rigidbody>().velocity = mouseDirection * 7.0f;
     }
-    
-    [Command]
-    void Destroy()
-    {
-            Destroy(gameObject);
-    }
-*/
-    //[Command]
-    //private void CmdFireballNetwork()
-    //{
-    //    RaycastHit hit;
-    //    Physics.Raycast(_ray, out hit);
-
-    //    Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-
-    //    transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
-
-    //    Destroy(gameObject, _outOfRange);
-
-    //    //NetworkServer.Destroy(gameObject, _out);
-    //}
-
 }
-
-

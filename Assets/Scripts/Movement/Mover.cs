@@ -1,13 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
+using Mirror;
 
-public class Mover : MonoBehaviour
+public class Mover : NetworkBehaviour
 {
-    void Update()
+    private void Update()
     {
-        if (Input.GetMouseButton(1))
+        if (!isLocalPlayer) {return;}
+
+        if (Input.GetButton("Fire2"))
         {
             MoveToCursor();
         }
@@ -15,13 +16,16 @@ public class Mover : MonoBehaviour
 
     private void MoveToCursor()
     {
+        RaycastHit hit = GetPlayerMousePosition();
+        
+        GetComponent<NavMeshAgent>().destination = hit.point;
+    }
+    private RaycastHit GetPlayerMousePosition()
+    {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        bool hasHit = Physics.Raycast(ray, out hit);
+        Physics.Raycast(ray, out hit);
 
-        if (hasHit)
-        {
-            GetComponent<NavMeshAgent>().destination = hit.point;
-        }
+        return hit;
     }
 }
