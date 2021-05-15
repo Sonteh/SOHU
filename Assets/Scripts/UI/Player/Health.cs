@@ -47,7 +47,7 @@ public class Health : NetworkBehaviour
 
         if (collider.tag == "Spell")
         {   
-            damage = collider.gameObject.GetComponent<SpellDamage>().spellDamage;
+            damage = collider.gameObject.GetComponent<SpellData>().spellDamage;
             CmdDealDamage(damage);
         }
     }

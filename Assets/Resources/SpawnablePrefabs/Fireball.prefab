@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6684138348517542571}
   - component: {fileID: -6498020868825989585}
   - component: {fileID: -5282273510465208261}
-  - component: {fileID: 2842293561831026762}
+  - component: {fileID: -8164107495820762442}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Spell
@@ -161,7 +161,7 @@ MonoBehaviour:
   _snapRotation: 0
   _synchronizeScale: 0
   _snapScale: 0
---- !u!114 &2842293561831026762
+--- !u!114 &-8164107495820762442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,7 +170,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6187910128149532311}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bccae2ea055453c4ba48461396fea9da, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f7b27556eaeef64785420ba048c34b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spellDamage: 10
+  spellOutOfRange: 3

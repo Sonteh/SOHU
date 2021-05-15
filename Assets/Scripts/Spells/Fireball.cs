@@ -7,7 +7,6 @@ public class Fireball : NetworkBehaviour
 {
     [SerializeField] private GameObject fireballPrefab;
     [SerializeField] private float speed = 7.0f;
-    [SerializeField] private float outOfRange = 10.0f;
     [SerializeField] private float fireballCooldown = 0.5f;
     private float canUseFireball = -1.0f;
     

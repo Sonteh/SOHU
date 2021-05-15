@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5099324298563554708}
   - component: {fileID: -5806140375059233789}
   - component: {fileID: -2836033025840331747}
-  - component: {fileID: 4371364389443365332}
+  - component: {fileID: 1529761340923202694}
   m_Layer: 0
   m_Name: MagicMissle
   m_TagString: Spell
@@ -112,8 +112,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _speed: 10
-  _outOfRange: 3
+  magicMisslePrefab: {fileID: 0}
+  speed: 10
+  outOfRange: 60
+  magicMissleCooldown: 2
 --- !u!54 &-5099324298563554708
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -178,7 +180,7 @@ MonoBehaviour:
   _snapRotation: 0
   _synchronizeScale: 0
   _snapScale: 0
---- !u!114 &4371364389443365332
+--- !u!114 &1529761340923202694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +189,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 370511022442885530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bccae2ea055453c4ba48461396fea9da, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f7b27556eaeef64785420ba048c34b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellDamage: 40
+  spellDamage: 30
+  spellOutOfRange: 5

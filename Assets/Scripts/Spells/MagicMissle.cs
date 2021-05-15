@@ -5,7 +5,6 @@ public class MagicMissle : NetworkBehaviour
 {
     [SerializeField] private GameObject magicMisslePrefab;
     [SerializeField] private float speed = 10.0f;
-    [SerializeField] private float outOfRange = 60.0f;
     [SerializeField] private float magicMissleCooldown = 2.0f;
     private float canUseMagicMissle = -1.0f;
 
@@ -19,8 +18,6 @@ public class MagicMissle : NetworkBehaviour
             canUseMagicMissle =  magicMissleCooldown + Time.time;
             CmdUseMagicMissle(mousePosition);
         }
-
-       // Destroy(this.gameObject, _outOfRange);
     }
 
     private void OnTriggerEnter(Collider collider) 
