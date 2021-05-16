@@ -4,10 +4,12 @@ using UnityEngine;
 using Mirror;
 using System.Linq;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RoundSystem : NetworkBehaviour
 {
     [SerializeField] private Animator animator;
+    public int numberOfPlayersAlive;
 
     private Network room;
     private Network Room
@@ -52,11 +54,13 @@ public class RoundSystem : NetworkBehaviour
     [Server]
     private void CheckToStartRound(NetworkConnection conn)
     {
+        //Debug.Log("Liczba graczy: " + Room.numPlayers);
         if (Room.GamePlayers.Count(x => x.connectionToClient.isReady) != Room.GamePlayers.Count) {return;}
 
         animator.enabled = true;
 
         RpcStartCountdown();
+        numberOfPlayersAlive = Room.numPlayers;
     }
 
     #endregion
@@ -76,4 +80,24 @@ public class RoundSystem : NetworkBehaviour
     }
     
     #endregion
+
+    //TODO: Skończyć poprawne uruchamianie rundy
+    [Server]
+    public void OnDeath()
+    {
+        numberOfPlayersAlive--;
+        Debug.Log("OnDeath :" + numberOfPlayersAlive);
+        if (numberOfPlayersAlive == 1)
+        {
+            //HandleRoundEnd();
+            Room.StartGame();
+        }
+    }
+
+    [Command]
+    private void HandleRoundEnd()
+    {
+        //SceneManager.LoadScene("Arena01");
+        Room.StartGame();
+    }
 }

@@ -3099,6 +3099,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45776f26677c3b2478a712b3ce0fe2fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &575022491
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575022489}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: 131ca57b3e7596042a2a4f4782481ad4, type: 3}
 --- !u!1 &575073113
 GameObject:
   m_ObjectHideFlags: 0
@@ -7695,6 +7709,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: zone1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 131ca57b3e7596042a2a4f4782481ad4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Zone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 131ca57b3e7596042a2a4f4782481ad4, type: 3}

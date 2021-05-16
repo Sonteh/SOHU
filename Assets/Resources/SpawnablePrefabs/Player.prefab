@@ -378,7 +378,6 @@ MonoBehaviour:
   fireballPrefab: {fileID: 6187910128149532311, guid: 9ccfa4ec2ee7b354abd4aa2067f371fa,
     type: 3}
   speed: 7
-  outOfRange: 10
   fireballCooldown: 0.5
 --- !u!114 &-5924406194954916334
 MonoBehaviour:
@@ -397,7 +396,6 @@ MonoBehaviour:
   magicMisslePrefab: {fileID: 370511022442885530, guid: 0b3f3e09ee1183c438ce407ef8e4e25f,
     type: 3}
   speed: 10
-  outOfRange: 60
   magicMissleCooldown: 2
 --- !u!1 &2665291622024475613
 GameObject:

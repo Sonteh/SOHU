@@ -95,6 +95,7 @@ public class Network : NetworkManager
 
             // tie the connection to the game player object / prefab
             NetworkServer.AddPlayerForConnection(conn, roomPlayerInstance.gameObject);
+            //Debug.Log(numPlayers);
         }
     }
 
@@ -117,7 +118,7 @@ public class Network : NetworkManager
         OnServerStopped?.Invoke();
 
         RoomPlayers.Clear();
-        GamePlayers.Clear();
+        //GamePlayers.Clear();
     }
 
     public void NotifyPlayersOfReadyState()
@@ -141,6 +142,7 @@ public class Network : NetworkManager
         return true;
     }
 
+    //TODO: Stworzyć przeładowywanie mapy
     public void StartGame()
     {
 
@@ -155,8 +157,7 @@ public class Network : NetworkManager
 
     public override void ServerChangeScene(string newSceneName)
     {
-
-        if (SceneManager.GetActiveScene().name == menuScene && newSceneName.StartsWith("Arena"))
+        if (SceneManager.GetActiveScene().path == menuScene && newSceneName.StartsWith("Arena"))
         {
             for (int i = RoomPlayers.Count - 1; i >= 0; i--)
             {
@@ -164,12 +165,11 @@ public class Network : NetworkManager
                 var gameplayerInstance = Instantiate(gamePlayerPrefab);
                 gameplayerInstance.SetDisplayName(RoomPlayers[i].DisplayName);
 
-                NetworkServer.ReplacePlayerForConnection(conn, gameplayerInstance.gameObject);
-
                 NetworkServer.Destroy(conn.identity.gameObject);
 
-
+                //NetworkServer.ReplacePlayerForConnection(conn, gameplayerInstance.gameObject);
             }
+            
         }
 
         base.ServerChangeScene(newSceneName);
@@ -184,6 +184,7 @@ public class Network : NetworkManager
 
             GameObject roundSystemInstance = Instantiate(roundSystem);
             NetworkServer.Spawn(roundSystemInstance);
+            DontDestroyOnLoad(roundSystemInstance);
 
             //GameObject gameMenuInstance = Instantiate(gameMenu);
             //NetworkServer.Spawn(gameMenuInstance);
@@ -196,5 +197,15 @@ public class Network : NetworkManager
 
         OnServerReadied?.Invoke(conn);
     }
+
+/*
+    public override void OnClientSceneChanged(NetworkConnection conn)
+    {
+        GameObject playerSpawnSystem = GameObject.Find("SpawnSystem(Clone)");
+        playerSpawnSystem.GetComponent<PlayerSpawnSystem>().ResetPlayerPosition(conn);
+
+        base.OnClientSceneChanged(conn);
+    }
+    */
 
 }
