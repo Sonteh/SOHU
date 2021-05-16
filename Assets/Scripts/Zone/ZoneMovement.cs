@@ -9,6 +9,6 @@ public class ZoneMovement : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.forward * f * Time.deltaTime);
+        transform.Translate(Vector3.forward * GetComponent<ZoneData>().zoneSpeed * Time.deltaTime);
     }
 }

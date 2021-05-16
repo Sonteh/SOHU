@@ -9344,6 +9344,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7444097478763668210, guid: 01fa035243fca40478ec02eca625c05e,
         type: 3}
+      propertyPath: zoneSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444097478763668210, guid: 01fa035243fca40478ec02eca625c05e,
+        type: 3}
       propertyPath: zoneDamage
       value: 0.5
       objectReference: {fileID: 0}
