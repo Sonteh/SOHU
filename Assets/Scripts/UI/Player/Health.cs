@@ -48,12 +48,6 @@ public class Health : NetworkBehaviour
             damage = collider.gameObject.GetComponent<SpellData>().spellDamage;
             CmdDealDamage(damage);
         }
-
-        // if (collider.tag == "Zone")
-        // {   
-        //     damage = collider.gameObject.GetComponent<ZoneData>().zoneDamage;
-        //     CmdDealDamage(damage);
-        // }
     }
 
     private void OnTriggerStay(Collider collider) 

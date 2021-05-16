@@ -7,6 +7,6 @@ public class ZoneData : MonoBehaviour
 
     void Update()
     {
-        
+        //Empty here
     }
 }
