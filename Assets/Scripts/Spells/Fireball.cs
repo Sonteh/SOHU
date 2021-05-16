@@ -66,6 +66,6 @@ public class Fireball : NetworkBehaviour
     private void RpcUseFireball(Vector3 mouseDirection)
     {
         var fireball = (GameObject)Instantiate(fireballPrefab, transform.position + Vector3.forward, Quaternion.identity);
-        fireball.GetComponent<Rigidbody>().velocity = mouseDirection * 7.0f;
+        fireball.GetComponent<Rigidbody>().velocity = mouseDirection * speed;
     }
 }
