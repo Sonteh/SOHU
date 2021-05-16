@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Mirror;
 
 public class Health : NetworkBehaviour 
@@ -51,5 +49,6 @@ public class Health : NetworkBehaviour
             CmdDealDamage(damage);
         }
     }
+
     #endregion
 }
