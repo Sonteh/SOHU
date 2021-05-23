@@ -184,7 +184,7 @@ public class Network : NetworkManager
 
             GameObject roundSystemInstance = Instantiate(roundSystem);
             NetworkServer.Spawn(roundSystemInstance);
-            DontDestroyOnLoad(roundSystemInstance);
+            //DontDestroyOnLoad(roundSystemInstance);
 
             //GameObject gameMenuInstance = Instantiate(gameMenu);
             //NetworkServer.Spawn(gameMenuInstance);

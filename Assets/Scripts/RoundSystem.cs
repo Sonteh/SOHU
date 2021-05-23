@@ -21,7 +21,7 @@ public class RoundSystem : NetworkBehaviour
         }
     }
 
-    public void CountdownEnded()
+     public void CountdownEnded()
     {
         animator.enabled = false;
     }
@@ -60,7 +60,7 @@ public class RoundSystem : NetworkBehaviour
         animator.enabled = true;
 
         RpcStartCountdown();
-        numberOfPlayersAlive = Room.numPlayers;
+        //numberOfPlayersAlive = Room.numPlayers;
     }
 
     #endregion
@@ -71,6 +71,7 @@ public class RoundSystem : NetworkBehaviour
     private void RpcStartCountdown()
     {
         animator.enabled = true;
+        numberOfPlayersAlive = Room.numPlayers;
     }
 
     [ClientRpc]
@@ -98,6 +99,7 @@ public class RoundSystem : NetworkBehaviour
     private void HandleRoundEnd()
     {
         //SceneManager.LoadScene("Arena01");
+        numberOfPlayersAlive = Room.numPlayers;
         Room.StartGame();
     }
 }
