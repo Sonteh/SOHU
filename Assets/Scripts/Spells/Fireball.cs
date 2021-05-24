@@ -12,7 +12,8 @@ public class Fireball : NetworkBehaviour
     
     private void Update() 
     {
-        if (!isLocalPlayer) {return;}
+        //if (!isLocalPlayer) {return;}
+        if (!hasAuthority) {return;}
 
         if (Input.GetButtonDown("Fireball") && Time.time > canUseFireball)
         {

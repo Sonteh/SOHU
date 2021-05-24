@@ -10,7 +10,8 @@ public class MagicMissle : NetworkBehaviour
 
     void Update()
     {
-        if (!isLocalPlayer) {return;}
+        //if (!isLocalPlayer) {return;}
+        if (!hasAuthority) {return;}
         
         if (Input.GetButtonDown("MagicMissle"))
         {

@@ -21,6 +21,7 @@ public class Network : NetworkManager
     [SerializeField] private GameObject playerSpawnSystem;
     [SerializeField] private GameObject roundSystem;
     [SerializeField] private GameObject gameMenu;
+    private int playerPoints;
 
     // Network Events
     public static event Action ClientOnConnected;
@@ -118,7 +119,7 @@ public class Network : NetworkManager
         OnServerStopped?.Invoke();
 
         RoomPlayers.Clear();
-        //GamePlayers.Clear();
+        GamePlayers.Clear();
     }
 
     public void NotifyPlayersOfReadyState()
@@ -167,7 +168,7 @@ public class Network : NetworkManager
 
                 NetworkServer.Destroy(conn.identity.gameObject);
 
-                //NetworkServer.ReplacePlayerForConnection(conn, gameplayerInstance.gameObject);
+                NetworkServer.ReplacePlayerForConnection(conn, gameplayerInstance.gameObject);
             }
             
         }
@@ -207,5 +208,10 @@ public class Network : NetworkManager
         base.OnClientSceneChanged(conn);
     }
     */
+
+    public void OnRoundEnd()
+    {
+
+    }
 
 }

@@ -350,7 +350,9 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   animator: {fileID: 9013302242151298535}
-  gameMenu: {fileID: 7664774323451187169, guid: bd85c519fd6db0341a6bafe46316c4a2,
+  numberOfPlayersAlive: 0
+  remainingPlayers: []
+  networkPlayer: {fileID: 5815379166993546133, guid: d4b358e505a8e41a4a01acb404593f56,
     type: 3}
 --- !u!1 &3966190225369504215
 GameObject:

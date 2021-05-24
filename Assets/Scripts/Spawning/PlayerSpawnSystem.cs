@@ -41,8 +41,8 @@ public class PlayerSpawnSystem : NetworkBehaviour
         //GameObject playerInstance = Instantiate(playerPrefab, spawnPoints[nextIndex].position, spawnPoints[nextIndex].rotation);
         playerInstance = Instantiate(playerPrefab, spawnPoints[nextIndex].position, spawnPoints[nextIndex].rotation);
         //DontDestroyOnLoad(playerInstance);
-        //NetworkServer.Spawn(playerInstance, conn);
-        NetworkServer.AddPlayerForConnection(conn, playerInstance);
+        NetworkServer.Spawn(playerInstance, conn);
+        //NetworkServer.AddPlayerForConnection(conn, playerInstance);
 
         nextIndex++;
     }

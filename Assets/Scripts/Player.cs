@@ -3,12 +3,23 @@ using UnityEngine;
 
 public class Player : NetworkBehaviour
 {
+    /*
     public override void OnStartLocalPlayer()
     {
         Vector3 playerPosition = transform.position;
         Camera.main.transform.localPosition = new Vector3(playerPosition.x - 10, Camera.main.transform.localPosition.y, playerPosition.z); //Wycentrowanie kamery na gracza
     }
+    */
 
+    public override void OnStartAuthority()
+    {
+        Vector3 playerPosition = transform.position;
+        Camera.main.transform.localPosition = new Vector3(playerPosition.x - 10, Camera.main.transform.localPosition.y, playerPosition.z); //Wycentrowanie kamery na gracza
+
+        base.OnStartAuthority();
+    }
+
+    //TODO: Try creating method to remove this player from the remainingPlayer list to fix the player score.
     private void OnEnable() 
     {
         //transform.position = new Vector3(transform.position.x + 10, transform.position.y, transform.position.z + 10);

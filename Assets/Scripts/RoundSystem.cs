@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
@@ -10,7 +11,9 @@ public class RoundSystem : NetworkBehaviour
 {
     [SerializeField] private Animator animator;
     public int numberOfPlayersAlive;
-
+    //public List<GameObject> remainingPlayers;
+    public List<NetworkPlayer> remainingPlayers;
+    [SerializeField] private NetworkPlayer networkPlayer;
     private Network room;
     private Network Room
     {
@@ -59,6 +62,19 @@ public class RoundSystem : NetworkBehaviour
 
         animator.enabled = true;
 
+        remainingPlayers = Room.GamePlayers.ToList();
+        Debug.Log("Remaing Players: " + String.Join(",", remainingPlayers));
+        //var myObject = GameObject.FindGameObjectsWithTag("Player");
+       // for (var i=0; i < myObject.Length; i++)
+        //{
+       //     this.remainingPlayers.Add(myObject[i]);
+       //     Debug.Log("Testowy for: " + remainingPlayers.Count());
+       // } 
+       foreach (var testPlayer in remainingPlayers)
+       {
+           Debug.Log("Player score:" + testPlayer.playerScore);
+       }
+
         RpcStartCountdown();
         //numberOfPlayersAlive = Room.numPlayers;
     }
@@ -87,13 +103,50 @@ public class RoundSystem : NetworkBehaviour
     public void OnDeath()
     {
         numberOfPlayersAlive--;
+        Debug.Log("Testowe1 remaing players: " + remainingPlayers.Count());
+        //remainingPlayers.Remove(gameObject);
+        //remainingPlayers.Remove(networkPlayer);
+        
+        foreach (var player in remainingPlayers)
+        {
+            if (player.connectionToClient == connectionToClient)
+            {
+                remainingPlayers.Remove(player);
+                break;
+            }
+        }
+            
+        Debug.Log("Testowe2 remaing players: " + remainingPlayers.Count());
+        Debug.Log("Remaing Players: " + String.Join(",", remainingPlayers));
+        //remainingPlayers.Remove(this);
+        //Room.GamePlayers.Remove(this);
+        //Debug.Log("Remaing players before Player Death: " + remainingPlayers.Count());
+        
+        //networkPlayer.PlayerDeath();
+        //remainingPlayers.Remove(networkPlayer.netIdentity.connectionToClient);
+        //Debug.Log("Remaing players after Player Death: " + remainingPlayers.Count());
+        //remainingPlayers[this].
         Debug.Log("OnDeath :" + numberOfPlayersAlive);
         if (numberOfPlayersAlive == 1)
         {
-            //HandleRoundEnd();
-            Room.StartGame();
+            //Debug.Log("From OnDeath IF: " + Room.GamePlayers[0].connectionToClient);
+            HandleRoundEnd();
+            //Room.OnRoundEnd(Room.GamePlayers.);
+            //remainingPlayers[0].IncrementPlayerScore();
+            //Debug.Log("Player score: " + remainingPlayers[0].playerScore);
+            //Room.StartGame();
         }
     }
+
+    [Server]
+    private void HandleRoundEnd()
+    {
+        remainingPlayers[0].IncrementPlayerScore();
+        Debug.Log("Player score: " + remainingPlayers[0].playerScore);
+        Room.StartGame();
+    }
+
+    /*
 
     [Command]
     private void HandleRoundEnd()
@@ -102,4 +155,5 @@ public class RoundSystem : NetworkBehaviour
         numberOfPlayersAlive = Room.numPlayers;
         Room.StartGame();
     }
+    */
 }

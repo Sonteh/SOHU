@@ -6,7 +6,8 @@ public class Mover : NetworkBehaviour
 {
     private void Update()
     {
-        if (!isLocalPlayer) {return;}
+        //if (!isLocalPlayer) {return;}
+        if (!hasAuthority) {return;}
 
         if (Input.GetButton("Fire2"))
         {

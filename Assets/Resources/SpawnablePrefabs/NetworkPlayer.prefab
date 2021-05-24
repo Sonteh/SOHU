@@ -62,3 +62,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  playerScore: 0
+  roundSystem: {fileID: 217809834783040281, guid: 6e213916e803fec4988f4db7e70fbf2a,
+    type: 3}
