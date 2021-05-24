@@ -316,6 +316,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  networkPlayer: {fileID: 5815379166993546133, guid: d4b358e505a8e41a4a01acb404593f56,
+    type: 3}
 --- !u!114 &8071847983670555214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +333,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   maxHealth: 100
+  networkPlayer: {fileID: 5815379166993546133, guid: d4b358e505a8e41a4a01acb404593f56,
+    type: 3}
 --- !u!114 &1399352681072322890
 MonoBehaviour:
   m_ObjectHideFlags: 0

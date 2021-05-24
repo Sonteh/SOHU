@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Player : NetworkBehaviour
 {
+    [SerializeField] NetworkPlayer networkPlayer;
     /*
     public override void OnStartLocalPlayer()
     {
@@ -24,4 +25,11 @@ public class Player : NetworkBehaviour
     {
         //transform.position = new Vector3(transform.position.x + 10, transform.position.y, transform.position.z + 10);
     }
+
+/*
+    private void OnDisable() 
+    {
+        networkPlayer.isDead = true;
+    }
+    */
 }

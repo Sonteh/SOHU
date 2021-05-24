@@ -10,6 +10,9 @@ public class NetworkPlayer : NetworkBehaviour
     public int playerScore = 0;
 
     [SerializeField] RoundSystem roundSystem;
+    [SerializeField] GameObject player;
+    [SerializeField] Health health;
+    public bool isDead;
 
     private Network room;
     private Network Room
@@ -48,20 +51,16 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log("Player Score: " + displayName + " " + playerScore);
     }
 
+/*
     [Server]
-    public void PlayerDeath()
+    public void PlayerDeath(bool died)
     {
-        //Room.GamePlayers.Remove(this);
-        GameObject testObject = GameObject.Find("RoundSystem(Clone)");
-        Debug.Log("Testowe remaing players from Network Player before: " + testObject.GetComponent<RoundSystem>().remainingPlayers.Count);
-        //testObject.GetComponent<RoundSystem>().remainingPlayers.Remove(gameObject);
-        Debug.Log("Testowe remaing players from Network Player after: " + testObject.GetComponent<RoundSystem>().remainingPlayers.Count);
-        //Debug.Log("Remaing players from Network Player before delete: " + roundSystem.remainingPlayers.Count);
-        //roundSystem.remainingPlayers.Remove(this);
-        //Debug.Log("Remaing players from Network Player: " + roundSystem.remainingPlayers.Count);
-        //Debug.Log("Remaing players from Network Player before delete: " + testObject.GetComponent<RoundSystem>().remainingPlayers.Count);
-        //testObject.GetComponent<RoundSystem>().remainingPlayers.Remove(Room.Pla);
-        //Debug.Log("Remaing players from Network Player after delete: " + testObject.GetComponent<RoundSystem>().remainingPlayers.Count);
-    }
+        //if(!isLocalPlayer) {return;}
+        
+        Debug.Log("Before PlayerDeath(): " + isDead);
 
+        isDead = died;
+        Debug.Log("After PlayerDeath(): " + isDead);
+    }
+    */
 }

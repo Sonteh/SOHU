@@ -65,3 +65,6 @@ MonoBehaviour:
   playerScore: 0
   roundSystem: {fileID: 217809834783040281, guid: 6e213916e803fec4988f4db7e70fbf2a,
     type: 3}
+  player: {fileID: 2240174198917530758, guid: 860dd37201f402a48b80e92b92e5e4a5, type: 3}
+  health: {fileID: 8071847983670555214, guid: 860dd37201f402a48b80e92b92e5e4a5, type: 3}
+  isDead: 0
