@@ -8,6 +8,7 @@ public class Fireball : NetworkBehaviour
     [SerializeField] private GameObject fireballPrefab;
     [SerializeField] private float speed = 7.0f;
     [SerializeField] private float fireballCooldown = 0.5f;
+    [SerializeField] private GameObject spawnLocation;
     private float canUseFireball = -1.0f;
     
     private void Update() 
@@ -49,7 +50,7 @@ public class Fireball : NetworkBehaviour
     private Vector3 GetPlayerMouseDirection()
     {   
         Vector3 mousePosition = GetPlayerMousePosition();
-        Vector3 playerPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        Vector3 playerPosition = new Vector3(spawnLocation.transform.position.x, spawnLocation.transform.position.y, spawnLocation.transform.position.z);
         Vector3 mouseDirection = mousePosition - playerPosition;
         mouseDirection.Normalize();
 
@@ -65,7 +66,8 @@ public class Fireball : NetworkBehaviour
     [ClientRpc]
     private void RpcUseFireball(Vector3 mouseDirection)
     {
-        var fireball = (GameObject)Instantiate(fireballPrefab, transform.position + Vector3.forward, Quaternion.identity);
+        var fireball = (GameObject)Instantiate(fireballPrefab, spawnLocation.transform.position, Quaternion.identity);
+        Debug.Log(transform.Find("SpawnSpell").position);
         fireball.GetComponent<Rigidbody>().velocity = mouseDirection * speed;
     }
 }

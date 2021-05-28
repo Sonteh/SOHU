@@ -6,21 +6,20 @@ public class Mover : NetworkBehaviour
 {
 
     private Animator animator;
-    public Vector3 lastPos;
-    public Vector3 curPos;
 
     public Rigidbody rb;
     CharacterController controller;
-    NavMeshAgent test;
+    NavMeshAgent player;
 
     private void Awake() {
         animator = GetComponentInChildren<Animator> ();
     }
 
     void Start()
+    
     {
         rb = GetComponent<Rigidbody>();
-        test = GetComponent<NavMeshAgent>();
+        player = GetComponent<NavMeshAgent>();
     }
 
     [ClientCallback]
@@ -33,7 +32,7 @@ public class Mover : NetworkBehaviour
             MoveToCursor();
         }
 
-        if(test.velocity != Vector3.zero) 
+        if(player.velocity != Vector3.zero) 
         {
             animator.SetFloat("movement", 1);
         }
