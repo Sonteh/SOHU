@@ -34,11 +34,17 @@ public class Mover : NetworkBehaviour
 
         if(player.velocity != Vector3.zero) 
         {
-            animator.SetFloat("movement", 1);
+            animator.SetFloat("movement", 0.5f);
         }
         else
         {
             animator.SetFloat("movement", 0);
+        }
+
+        if (Input.GetButton("Fireball"))
+        {
+            //animator.SetFloat("movement", 1);
+            animator.SetTrigger("useSpell");
         }
     }
 
