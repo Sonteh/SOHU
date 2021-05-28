@@ -6,6 +6,7 @@ public class PlayerData
     public int ID;
     public string IP;
     public string PlayerName;
+    public string map;
 }
 
 [System.Serializable]
