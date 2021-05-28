@@ -43,7 +43,6 @@ public class Mover : NetworkBehaviour
 
         if (Input.GetButton("Fireball"))
         {
-            //animator.SetFloat("movement", 1);
             animator.SetTrigger("useSpell");
         }
     }
