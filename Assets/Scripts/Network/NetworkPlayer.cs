@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class NetworkPlayer : NetworkBehaviour
 {
     [SyncVar]
-    private string displayName = "Loading...";
+    public string displayName = "Loading...";
+    [SyncVar]
     public int playerScore = 0;
 
     [SerializeField] RoundSystem roundSystem;
@@ -37,6 +38,11 @@ public class NetworkPlayer : NetworkBehaviour
         Room.GamePlayers.Remove(this);
     }
 
+    public override void OnStartAuthority()
+    {
+        SetDisplayName(PlayerPrefs.GetString("PlayerName"));
+    }
+
     [Server]
     public void SetDisplayName(string displayName)
     {
@@ -48,7 +54,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
     
         playerScore++;
-        Debug.Log("Player Score: " + displayName + " " + playerScore);
+        Debug.Log("Player " + displayName + " Score: " + playerScore);
     }
 
 /*

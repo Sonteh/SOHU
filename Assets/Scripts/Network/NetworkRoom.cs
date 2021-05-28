@@ -128,7 +128,6 @@ public class NetworkRoom : NetworkBehaviour
 
     }
 
-
     public void LeaveLobby()
     {
         if (NetworkServer.active && NetworkClient.isConnected)
