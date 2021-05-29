@@ -92,9 +92,9 @@ public class NetworkRoom : NetworkBehaviour
         {
             Debug.Log(DisplayName);
             playerNameTexts[i].text = Room.RoomPlayers[i].DisplayName;
-            //playerReadyTexts[i].text = Room.RoomPlayers[i].IsReady ?
-            //    "<color=green>Ready</color>" :
-            //    "<color=red>Not Ready</color>";
+            playerNameTexts[i].color = Room.RoomPlayers[i].IsReady ?
+            playerNameTexts[i].color = Color.green:
+            playerNameTexts[i].color = Color.red;
         }
     }
 

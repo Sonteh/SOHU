@@ -149,7 +149,7 @@ public class Network : NetworkManager
 
         if (SceneManager.GetActiveScene().path == menuScene)
         {
-            //if (!IsReadyToStart()) { return; }
+            if (!IsReadyToStart()) {return;}
         }
 
         //logic to implemenet map choosing
