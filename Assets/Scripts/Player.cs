@@ -4,32 +4,28 @@ using UnityEngine;
 public class Player : NetworkBehaviour
 {
     [SerializeField] NetworkPlayer networkPlayer;
-    /*
-    public override void OnStartLocalPlayer()
+    [SerializeField] TextMesh playerNameText;
+
+    [SyncVar(hook = nameof(OnNameChanged))]
+    public string playerName;
+
+    private void OnNameChanged(string _Old, string _New) 
     {
-        Vector3 playerPosition = transform.position;
-        Camera.main.transform.localPosition = new Vector3(playerPosition.x - 10, Camera.main.transform.localPosition.y, playerPosition.z); //Wycentrowanie kamery na gracza
+        playerNameText.text = playerName;
     }
-    */
 
     public override void OnStartAuthority()
     {
         Vector3 playerPosition = transform.position;
         Camera.main.transform.localPosition = new Vector3(playerPosition.x - 10, Camera.main.transform.localPosition.y, playerPosition.z); //Wycentrowanie kamery na gracza
 
-        base.OnStartAuthority();
+        string name = PlayerPrefs.GetString("PlayerName");
+        CmdSetPlayerName(name);
     }
 
-    //TODO: Try creating method to remove this player from the remainingPlayer list to fix the player score.
-    private void OnEnable() 
+    [Command]
+    private void CmdSetPlayerName(string _name)
     {
-        //transform.position = new Vector3(transform.position.x + 10, transform.position.y, transform.position.z + 10);
+        playerName = _name;
     }
-
-/*
-    private void OnDisable() 
-    {
-        networkPlayer.isDead = true;
-    }
-    */
 }

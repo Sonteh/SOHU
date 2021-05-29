@@ -16,6 +16,7 @@ public class RoundSystem : NetworkBehaviour
     [SerializeField] private NetworkPlayer networkPlayer;
     //[SerializeField] private GameObject shopUI;
     [SerializeField] private PlayerShop playerShop;
+    [SerializeField] public int scoreToWin = 3;
     private Network room;
     private Network Room
     {
@@ -126,6 +127,11 @@ public class RoundSystem : NetworkBehaviour
         //Debug.Log("OnDeath :" + numberOfPlayersAlive);
         if (numberOfPlayersAlive == 1)
         {
+            if (remainingPlayers[0].playerScore == scoreToWin)
+            {
+                HandleGameEnd();
+            }
+
             HandleRoundEnd();
         }
     }
@@ -150,6 +156,12 @@ public class RoundSystem : NetworkBehaviour
         HandleRoundEnd();
     }
     */
+
+    [Server]
+    private void HandleGameEnd()
+    {
+        Debug.Log("Player " + remainingPlayers[0].displayName + " WON!");
+    }
 
     [Server]
     private void HandleRoundEnd()

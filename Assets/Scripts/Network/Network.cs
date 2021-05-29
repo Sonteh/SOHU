@@ -185,10 +185,6 @@ public class Network : NetworkManager
 
             GameObject roundSystemInstance = Instantiate(roundSystem);
             NetworkServer.Spawn(roundSystemInstance);
-            //DontDestroyOnLoad(roundSystemInstance);
-
-            //GameObject gameMenuInstance = Instantiate(gameMenu);
-            //NetworkServer.Spawn(gameMenuInstance);
         }
     }
 
@@ -198,20 +194,4 @@ public class Network : NetworkManager
 
         OnServerReadied?.Invoke(conn);
     }
-
-/*
-    public override void OnClientSceneChanged(NetworkConnection conn)
-    {
-        GameObject playerSpawnSystem = GameObject.Find("SpawnSystem(Clone)");
-        playerSpawnSystem.GetComponent<PlayerSpawnSystem>().ResetPlayerPosition(conn);
-
-        base.OnClientSceneChanged(conn);
-    }
-    */
-
-    public void OnRoundEnd()
-    {
-
-    }
-
 }
