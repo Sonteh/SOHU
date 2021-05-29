@@ -31,7 +31,7 @@ public class JoinToLobby : MonoBehaviour
         NetworkManager.singleton.networkAddress = ipAddress;
         NetworkManager.singleton.StartClient();
 
-        joinButton.interactable = false;
+        //joinButton.interactable = false;
 
     }
 
@@ -45,7 +45,7 @@ public class JoinToLobby : MonoBehaviour
 
     private void HandleClientConnected()
     {
-        joinButton.interactable = true;
+        //joinButton.interactable = true;
 
        // gameObject.SetActive(false);
        // startMenu.SetActive(false);
@@ -53,6 +53,6 @@ public class JoinToLobby : MonoBehaviour
 
     private void HandleClientDisconnected()
     {
-        joinButton.interactable = true;
+        //joinButton.interactable = true;
     }
 }
