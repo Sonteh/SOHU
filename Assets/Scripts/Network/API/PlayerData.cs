@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
 
 [System.Serializable]
-public class PlayerData
+public class ServerData
 {
     public int ID;
     public string IP;
     public string PlayerName;
+    public string map;
 }
 
 [System.Serializable]
-public class Players
+public class Servers
 {
-    public List<PlayerData> data;
+    public List<ServerData> data;
 }

@@ -42,9 +42,9 @@ public class StartMenu : MonoBehaviour
     {
         Debug.Log("here");
 
-        var pd = APIHelper.GetPlayers();
+        //var pd = APIHelper.GetPlayers();
 
-        Debug.Log(pd.data[0].IP);
+        //Debug.Log(pd.data[0].IP);
     }
 
 }

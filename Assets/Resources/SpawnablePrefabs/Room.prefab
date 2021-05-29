@@ -92,6 +92,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3037734818671139093}
     m_Modifications:
+    - target: {fileID: -4001095418599147801, guid: 82d18d3d8d1bc4c34bee31174eae2540,
+        type: 3}
+      propertyPath: m_AssetId
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1326091030356372669, guid: 82d18d3d8d1bc4c34bee31174eae2540,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -111,6 +116,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CanvasLobby
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540242236874428243, guid: 82d18d3d8d1bc4c34bee31174eae2540,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3799372269726912958, guid: 82d18d3d8d1bc4c34bee31174eae2540,
         type: 3}
@@ -256,6 +266,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5237652468069656817, guid: 82d18d3d8d1bc4c34bee31174eae2540,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 8685697808079901923, guid: 82d18d3d8d1bc4c34bee31174eae2540,
         type: 3}
