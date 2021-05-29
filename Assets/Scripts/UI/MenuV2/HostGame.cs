@@ -10,15 +10,4 @@ public class HostGame : MonoBehaviour
         Debug.Log(PlayerPrefs.GetString("PlayerName"));
         NetworkManager.singleton.StartHost();
     }
-
-/* TODO
-    public void Refresh()
-    {
-        Debug.Log("here");
-
-        var pd = APIHelper.GetPlayers();
-
-        Debug.Log(pd.data[0].IP);
-    }
-    */
 }

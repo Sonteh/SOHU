@@ -13,19 +13,41 @@ public class APIHelper
         return baseUrl;
     }
 
-    public static Players GetPlayers()
+    public static Servers GetServers()
     {
         Debug.Log(GetUrl() + "/getAll");
 
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetUrl() + "/getAll");
 
+        return parseResponse(request);
+
+    }
+
+    public static Servers GetSortedByArena(string dir)
+    {
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetUrl() + "/getAllSortedByArena/" + dir);
+
+        return parseResponse(request);
+
+    }
+
+    public static Servers GetSortedByPlayers(string dir)
+    {
+
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetUrl() + "/getAllSortedByPlayers/" + dir);
+
+        return parseResponse(request);
+
+    }
+
+    private static Servers parseResponse(HttpWebRequest request)
+    {
         HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
         StreamReader reader = new StreamReader(response.GetResponseStream());
 
         string json = reader.ReadToEnd();
 
-        return JsonUtility.FromJson<Players>(json);
-
+        return JsonUtility.FromJson<Servers>(json);
     }
 }

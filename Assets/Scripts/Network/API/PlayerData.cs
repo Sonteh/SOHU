@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 [System.Serializable]
-public class PlayerData
+public class ServerData
 {
     public int ID;
     public string IP;
@@ -10,7 +10,7 @@ public class PlayerData
 }
 
 [System.Serializable]
-public class Players
+public class Servers
 {
-    public List<PlayerData> data;
+    public List<ServerData> data;
 }
