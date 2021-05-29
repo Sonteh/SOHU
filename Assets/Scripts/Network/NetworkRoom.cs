@@ -11,11 +11,17 @@ public class NetworkRoom : NetworkBehaviour
     [SerializeField] private TMP_Text[] playerNameTexts = new TMP_Text[8];
     [SerializeField] private TMP_Text[] playerReadyTexts = new TMP_Text[8];
     [SerializeField] private Button startGameButton = null;
+    [SerializeField] private Button changeArenaButton = null;
+    [SerializeField] private TMP_InputField amountOfRoundsInput = null;
+    [SerializeField] private TMP_Text arenaTitle = null;
+    //[SerializeField] private TMP_InputField amountOfRoundsInput = null;
 
     [SyncVar(hook = nameof(HandleDisplayNameChanged))]
     public string DisplayName = "Loading...";
     [SyncVar(hook = nameof(HandleReadyStatusChanged))]
     public bool IsReady = false;
+    [SyncVar(hook = nameof(HandleArenaChanged))]
+    public string Arena = "Arena01";
 
     private bool isLeader;
     public bool IsLeader
@@ -24,6 +30,8 @@ public class NetworkRoom : NetworkBehaviour
         {
             isLeader = value;
             startGameButton.gameObject.SetActive(value);
+            changeArenaButton.interactable = value;
+            amountOfRoundsInput.interactable = value;
         }
     }
 
@@ -128,6 +136,12 @@ public class NetworkRoom : NetworkBehaviour
 
     }
 
+    [Command]
+    public void CmdChangeArena(string arena)
+    {
+        Arena = arena;
+    }
+
     public void LeaveLobby()
     {
         if (NetworkServer.active && NetworkClient.isConnected)
@@ -140,6 +154,26 @@ public class NetworkRoom : NetworkBehaviour
 
             SceneManager.LoadScene(0);
         }
+    }
+
+
+    public void HandleArenaChanged(string oldValue, string newValue)
+    {
+        for (int i = 0; i < Room.RoomPlayers.Count; i++)
+        {
+            string title = arenaTitle.text;
+
+            if (title == "Arena01")
+            {
+                arenaTitle.text = "Arena02";
+            }
+            else if(title == "Arena02")
+            {
+                arenaTitle.text = "Arena01";
+            }
+
+
+    }
     }
 
 }
