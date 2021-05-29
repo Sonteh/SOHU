@@ -10,9 +10,11 @@ public class NetworkPlayer : NetworkBehaviour
     [SyncVar]
     public int playerScore = 0;
 
-    [SerializeField] RoundSystem roundSystem;
-    [SerializeField] GameObject player;
-    [SerializeField] Health health;
+    [SerializeField] private RoundSystem roundSystem;
+    [SerializeField] private GameObject player;
+    [SerializeField] private Health health;
+    [SerializeField] private PlayerShop playerShop;
+    //[SerializeField] private GameObject playerShopObject;
     public bool isDead;
 
     private Network room;
@@ -52,9 +54,30 @@ public class NetworkPlayer : NetworkBehaviour
     [Server]
     public void IncrementPlayerScore()
     {
-    
         playerScore++;
         Debug.Log("Player " + displayName + " Score: " + playerScore);
+    }
+
+    [Server]
+    public void ShowPlayerShop()
+    {
+        if (!isLocalPlayer) {return;}
+        //playerShopObject.SetActive(true);
+        //if (!hasAuthority) {return;}
+        //Debug.Log("Hello from authority");
+        //CmdShowPlayerShop();
+    }
+
+    [Command]
+    private void CmdShowPlayerShop()
+    {
+        RpcShowPlayerShop();
+    }
+
+    [ClientRpc]
+    private void RpcShowPlayerShop()
+    {
+        playerShop.ShowPlayerShop();
     }
 
 /*

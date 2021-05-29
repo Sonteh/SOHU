@@ -354,6 +354,8 @@ MonoBehaviour:
   remainingPlayers: []
   networkPlayer: {fileID: 5815379166993546133, guid: d4b358e505a8e41a4a01acb404593f56,
     type: 3}
+  playerShop: {fileID: 7355343606859410631, guid: d4b358e505a8e41a4a01acb404593f56,
+    type: 3}
 --- !u!1 &3966190225369504215
 GameObject:
   m_ObjectHideFlags: 0

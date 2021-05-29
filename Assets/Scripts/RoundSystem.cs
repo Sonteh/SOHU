@@ -14,6 +14,8 @@ public class RoundSystem : NetworkBehaviour
     //public List<GameObject> remainingPlayers;
     public List<NetworkPlayer> remainingPlayers;
     [SerializeField] private NetworkPlayer networkPlayer;
+    //[SerializeField] private GameObject shopUI;
+    [SerializeField] private PlayerShop playerShop;
     private Network room;
     private Network Room
     {
@@ -153,7 +155,25 @@ public class RoundSystem : NetworkBehaviour
     private void HandleRoundEnd()
     {
         remainingPlayers[0].IncrementPlayerScore();
+        networkPlayer.ShowPlayerShop();
         Debug.Log("Player netId " + remainingPlayers[0].netId + " score: " + remainingPlayers[0].playerScore);
+        StartCoroutine(ShowShop());
+        //CmdStartCoroutine();
+        //Room.StartGame();
+    }
+
+    [Command]
+    private void CmdStartCoroutine()
+    {
+        StartCoroutine(ShowShop());
+    }
+    private IEnumerator ShowShop()
+    {
+        //shopUI.SetActive(true);
+        //playerShop.ShowPlayerShop();
+        //networkPlayer.ShowPlayerShop();
+        yield return new WaitForSecondsRealtime(5);
+        //shopUI.SetActive(false);
         Room.StartGame();
     }
 }

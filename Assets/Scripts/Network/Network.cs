@@ -20,8 +20,8 @@ public class Network : NetworkManager
     [SerializeField] private NetworkPlayer gamePlayerPrefab;
     [SerializeField] private GameObject playerSpawnSystem;
     [SerializeField] private GameObject roundSystem;
-    [SerializeField] private GameObject gameMenu;
-    private int playerPoints;
+    //[SerializeField] private GameObject gameMenu;
+    //private int playerPoints;
 
     // Network Events
     public static event Action ClientOnConnected;

@@ -30,14 +30,12 @@ public class PlayerStats : NetworkBehaviour
     {
         playerDisplayName = PlayerPrefs.GetString("PlayerName");
         UpdateStatistics();
-        //base.OnStartAuthority();
     }
 
     private void Update()
     {
         
         if (!hasAuthority) {return;}
-        
 
         if(Input.GetButton("Statistics"))
         {
