@@ -11,6 +11,8 @@ public class ServersList : MonoBehaviour
     [SerializeField] private GameObject serverListElement;
     [SerializeField] private Button sortPlayersButton;
     [SerializeField] private Button sortArenasButton;
+    [SerializeField] private TMP_InputField filterPlayersInput;
+    [SerializeField] private TMP_InputField filterArenasInput;
 
     private bool toggle;
     private string dir;
@@ -18,6 +20,8 @@ public class ServersList : MonoBehaviour
     public void Refresh()
     {
         cleanList();
+
+        resetArrows();
 
         var pd = APIHelper.GetServers();
 
@@ -49,7 +53,16 @@ public class ServersList : MonoBehaviour
 
     public void Filter()
     {
-        //Debug.Log(serverListContent.transform.GetChild(i).GetChild(0).GetComponent<TMP_Text>().text);
+        cleanList();
+
+        resetArrows();
+
+        string player = filterPlayersInput.text;
+        string arena = filterArenasInput.text;
+
+        var pd = APIHelper.Filter(player, arena);
+
+        unpackResponse(pd);
     }
 
     private void cleanList()
@@ -88,8 +101,12 @@ public class ServersList : MonoBehaviour
         }
     }
 
-    private void resetArrow()
+    private void resetArrows()
     {
-
+        toggle = false;
+        var text1 = sortPlayersButton.GetComponentInChildren<TMP_Text>();
+        var text2 = sortArenasButton.GetComponentInChildren<TMP_Text>();
+        text1.text = "↑";
+        text2.text = "↑";
     }
 }
