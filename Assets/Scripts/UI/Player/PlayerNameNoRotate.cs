@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HealthNoRotate : MonoBehaviour
+public class PlayerNameNoRotate : MonoBehaviour
 {
     private Quaternion rotation;
 

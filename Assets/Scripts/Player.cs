@@ -3,33 +3,44 @@ using UnityEngine;
 
 public class Player : NetworkBehaviour
 {
+    [SerializeField] private GameObject myMaterial;
     [SerializeField] NetworkPlayer networkPlayer;
-    /*
-    public override void OnStartLocalPlayer()
+    [SerializeField] TextMesh playerNameText;
+
+    [SyncVar(hook = nameof(OnNameChanged))]
+    public string playerName;
+    [SyncVar(hook = nameof(OnColorChanged))]
+    public Color playerColor = Color.white;
+    private Material playerMaterialClone;
+
+    private void OnNameChanged(string _Old, string _New) 
     {
-        Vector3 playerPosition = transform.position;
-        Camera.main.transform.localPosition = new Vector3(playerPosition.x - 10, Camera.main.transform.localPosition.y, playerPosition.z); //Wycentrowanie kamery na gracza
+        playerNameText.text = playerName;
     }
-    */
+
+    private void OnColorChanged(Color _Old, Color _New)
+    {
+        playerNameText.color = _New;
+        playerMaterialClone = myMaterial.GetComponent<Renderer>().material;
+        playerMaterialClone.color = _New;
+        myMaterial.GetComponent<Renderer>().material = playerMaterialClone;
+    }
 
     public override void OnStartAuthority()
     {
         Vector3 playerPosition = transform.position;
         Camera.main.transform.localPosition = new Vector3(playerPosition.x - 10, Camera.main.transform.localPosition.y, playerPosition.z); //Wycentrowanie kamery na gracza
 
-        base.OnStartAuthority();
+        string name = PlayerPrefs.GetString("PlayerName");
+        Color color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+ 
+        CmdSetPlayerInfo(name, color);
     }
 
-    //TODO: Try creating method to remove this player from the remainingPlayer list to fix the player score.
-    private void OnEnable() 
+    [Command]
+    private void CmdSetPlayerInfo(string _name, Color color)
     {
-        //transform.position = new Vector3(transform.position.x + 10, transform.position.y, transform.position.z + 10);
+        playerName = _name;
+        playerColor = color;
     }
-
-/*
-    private void OnDisable() 
-    {
-        networkPlayer.isDead = true;
-    }
-    */
 }
