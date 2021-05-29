@@ -3,33 +3,34 @@ using UnityEngine;
 
 public class Player : NetworkBehaviour
 {
+    [SerializeField] private GameObject myMaterial;
     [SerializeField] NetworkPlayer networkPlayer;
-    /*
-    public override void OnStartLocalPlayer()
+    [SyncVar(hook = nameof(OnColorChanged))]
+    public Color playerColor = Color.white;
+    private Material playerMaterialClone;
+
+    private void OnColorChanged(Color _Old, Color _New)
     {
-        Vector3 playerPosition = transform.position;
-        Camera.main.transform.localPosition = new Vector3(playerPosition.x - 10, Camera.main.transform.localPosition.y, playerPosition.z); //Wycentrowanie kamery na gracza
+        //playerMaterialClone = GetComponent<>s
+        playerMaterialClone = myMaterial.GetComponent<Renderer>().material;
+        playerMaterialClone.color = _New;
+        myMaterial.GetComponent<Renderer>().material = playerMaterialClone;
     }
-    */
 
     public override void OnStartAuthority()
     {
         Vector3 playerPosition = transform.position;
         Camera.main.transform.localPosition = new Vector3(playerPosition.x - 10, Camera.main.transform.localPosition.y, playerPosition.z); //Wycentrowanie kamery na gracza
 
-        base.OnStartAuthority();
+        //myMaterial.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+
+        Color color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+        CmdSetPlayerColor(color);
     }
 
-    //TODO: Try creating method to remove this player from the remainingPlayer list to fix the player score.
-    private void OnEnable() 
+    [Command]
+    public void CmdSetPlayerColor(Color color)
     {
-        //transform.position = new Vector3(transform.position.x + 10, transform.position.y, transform.position.z + 10);
+        playerColor = color;
     }
-
-/*
-    private void OnDisable() 
-    {
-        networkPlayer.isDead = true;
-    }
-    */
 }
