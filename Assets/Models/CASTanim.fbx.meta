@@ -1,14 +1,12 @@
 fileFormatVersion: 2
-guid: d403fef05241bb54e87bbcaa18ee1f4f
+guid: abe5e11c1aae7694197685e460b55dbb
 ModelImporter:
   serializedVersion: 19301
-  internalIDToNameTable: []
-  externalObjects:
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: No Name
-    second: {fileID: 2100000, guid: 87d372701ef5da84faf3ca4e8a5a3541, type: 2}
+      74: -2555770397749954354
+    second: metarig|Cast_player
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0

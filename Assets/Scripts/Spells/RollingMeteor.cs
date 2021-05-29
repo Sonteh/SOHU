@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class Fireball : NetworkBehaviour
+public class RollingMeteor : NetworkBehaviour
 {
-    [SerializeField] private GameObject fireballPrefab;
+    [SerializeField] private GameObject rollingMeteorPrefab;
     [SerializeField] private float speed = 7.0f;
-    [SerializeField] private float fireballCooldown = 0.5f;
+    [SerializeField] private float rollingMeteorCooldown = 0.5f;
     [SerializeField] private GameObject spawnLocation;
-    private float canUseFireball = -1.0f;
+    private float canUseRollingMeteor = -1.0f;
     
     private void Update() 
     {
-        //if (!isLocalPlayer) {return;}
         if (!hasAuthority) {return;}
 
-        if (Input.GetButtonDown("Fireball") && Time.time > canUseFireball)
+        if (Input.GetKeyDown("1") && Time.time > canUseRollingMeteor)
         {
-            canUseFireball = fireballCooldown + Time.time;
+            Debug.Log("sdasd");
+            canUseRollingMeteor = rollingMeteorCooldown + Time.time;
             Vector3 mouseDirection = GetPlayerMouseDirection();
-            CmdUseFireball(mouseDirection);
+            CmdUseRollingMeteor(mouseDirection);
         }
     }
 
@@ -59,15 +59,15 @@ public class Fireball : NetworkBehaviour
     }
 
     [Command]
-    private void CmdUseFireball(Vector3 mouseDirection)
+    private void CmdUseRollingMeteor(Vector3 mouseDirection)
     {
-        RpcUseFireball(mouseDirection);
+        RpcUseRollingMeteor(mouseDirection);
     }
 
     [ClientRpc]
-    private void RpcUseFireball(Vector3 mouseDirection)
+    private void RpcUseRollingMeteor(Vector3 mouseDirection)
     {
-        var fireball = (GameObject)Instantiate(fireballPrefab, spawnLocation.transform.position, Quaternion.identity);
-        fireball.GetComponent<Rigidbody>().velocity = mouseDirection * speed;
+        var rollingMeteor = (GameObject)Instantiate(rollingMeteorPrefab, spawnLocation.transform.position, Quaternion.identity);
+        rollingMeteor.GetComponent<Rigidbody>().velocity = mouseDirection * speed;
     }
 }
