@@ -88,7 +88,7 @@ MonoBehaviour:
   arenaTitle: {fileID: 8570693410475409763}
   DisplayName: Loading...
   IsReady: 0
-  Arena: Arena01
+  Arena: 0
 --- !u!1001 &145809684055364669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -184,8 +184,14 @@ PrefabInstance:
     - target: {fileID: 2540242236874428243, guid: 82d18d3d8d1bc4c34bee31174eae2540,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3795055817898855469, guid: 82d18d3d8d1bc4c34bee31174eae2540,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9bdc009587e254cfa865f8400bd568c3,
+        type: 3}
     - target: {fileID: 3799372269726912958, guid: 82d18d3d8d1bc4c34bee31174eae2540,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -344,7 +350,7 @@ PrefabInstance:
     - target: {fileID: 8659954275367004909, guid: 82d18d3d8d1bc4c34bee31174eae2540,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8659954275367004909, guid: 82d18d3d8d1bc4c34bee31174eae2540,
         type: 3}
@@ -369,7 +375,7 @@ PrefabInstance:
     - target: {fileID: 8659954275367004909, guid: 82d18d3d8d1bc4c34bee31174eae2540,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: 
+      value: Arena02
       objectReference: {fileID: 0}
     - target: {fileID: 8659954275367004909, guid: 82d18d3d8d1bc4c34bee31174eae2540,
         type: 3}

@@ -21,7 +21,7 @@ public class NetworkRoom : NetworkBehaviour
     [SyncVar(hook = nameof(HandleReadyStatusChanged))]
     public bool IsReady = false;
     [SyncVar(hook = nameof(HandleArenaChanged))]
-    public string Arena = "Arena01";
+    public bool Arena = true;
 
     private bool isLeader;
     public bool IsLeader
@@ -72,6 +72,7 @@ public class NetworkRoom : NetworkBehaviour
     // 
     public void HandleReadyStatusChanged(bool oldValue, bool newValue) => UpdateDisplay();
     public void HandleDisplayNameChanged(string oldValue, string newValue) => UpdateDisplay();
+    public void HandleArenaChanged(bool oldValue, bool newValue) => UpdateDisplay();
 
     private void UpdateDisplay()
     {
@@ -98,10 +99,15 @@ public class NetworkRoom : NetworkBehaviour
 
         for (int i = 0; i < Room.RoomPlayers.Count; i++)
         {
-            Debug.Log(DisplayName);
+            //Debug.Log(DisplayName);
+            Debug.Log(Arena);
+            arenaTitle.text = Room.RoomPlayers[i].Arena ? "Arena01" : "Arena02";
+            Debug.Log(arenaTitle.text);
             playerNameTexts[i].text = Room.RoomPlayers[i].DisplayName;
             playerNameTexts[i].color = Room.RoomPlayers[i].IsReady ?
-            playerNameTexts[i].color = Color.green:
+            //arenaTitle.text = "Arena01" :
+            //arenaTitle.text = "Arena02";
+            playerNameTexts[i].color = Color.green :
             playerNameTexts[i].color = Color.red;
         }
     }
@@ -137,9 +143,9 @@ public class NetworkRoom : NetworkBehaviour
     }
 
     [Command]
-    public void CmdChangeArena(string arena)
+    public void CmdChangeArena()
     {
-        Arena = arena;
+        Arena = !Arena;
     }
 
     public void LeaveLobby()
@@ -155,25 +161,4 @@ public class NetworkRoom : NetworkBehaviour
             SceneManager.LoadScene(0);
         }
     }
-
-
-    public void HandleArenaChanged(string oldValue, string newValue)
-    {
-        for (int i = 0; i < Room.RoomPlayers.Count; i++)
-        {
-            string title = arenaTitle.text;
-
-            if (title == "Arena01")
-            {
-                arenaTitle.text = "Arena02";
-            }
-            else if(title == "Arena02")
-            {
-                arenaTitle.text = "Arena01";
-            }
-
-
-    }
-    }
-
 }
