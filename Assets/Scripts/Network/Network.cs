@@ -153,7 +153,7 @@ public class Network : NetworkManager
         }
 
         //logic to implemenet map choosing
-        ServerChangeScene("Arena01");
+        ServerChangeScene("Arena02");
     }
 
     public override void ServerChangeScene(string newSceneName)
