@@ -100,9 +100,7 @@ public class NetworkRoom : NetworkBehaviour
         for (int i = 0; i < Room.RoomPlayers.Count; i++)
         {
             //Debug.Log(DisplayName);
-            Debug.Log(Arena);
             arenaTitle.text = Room.RoomPlayers[i].Arena ? "Arena01" : "Arena02";
-            Debug.Log(arenaTitle.text);
             playerNameTexts[i].text = Room.RoomPlayers[i].DisplayName;
             playerNameTexts[i].color = Room.RoomPlayers[i].IsReady ?
             //arenaTitle.text = "Arena01" :

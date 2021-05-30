@@ -10,17 +10,17 @@ public class PlayerShop : NetworkBehaviour
 
     private void Update() 
     {
-        if (!hasAuthority) {return;}
-
-        if (networkPlayer.IsShopTime)
+        if (!isLocalPlayer) {return;}
+        
+        Debug.Log("Test i chuj przed ifem razem z IsShopTime " + networkPlayer.IsShopTime);
+        if (networkPlayer.IsShopTime == true)
         {
-            //Debug.Log("Player shop from IF " + networkPlayer.IsShopTime);
-            //ShowPlayerShop();
+            Debug.Log("Test i chuj po razem z IsShopTime " + networkPlayer.IsShopTime);
             shopUI.SetActive(true);
         }
         else
         {
-          shopUI.SetActive(false);  
+            shopUI.SetActive(false);
         }
 
         if (Input.GetKey(KeyCode.P))
@@ -28,10 +28,7 @@ public class PlayerShop : NetworkBehaviour
             //shopUI.SetActive(true);
             ShowPlayerShop();
         }
-        else
-        {
-          //shopUI.SetActive(false);  
-        }
+
     }
 
     public void ShowPlayerShop()
@@ -40,4 +37,13 @@ public class PlayerShop : NetworkBehaviour
         
         shopUI.SetActive(true);
     }
+
+    // public void UpdateShop(bool IsShopTime)
+    // {
+    //     Debug.Log("Dajcie mi IsShopTime: " + IsShopTime);
+    //     if (IsShopTime == true) 
+    //     {
+    //         shopUI.SetActive(true);
+    //     } 
+    // }
 }

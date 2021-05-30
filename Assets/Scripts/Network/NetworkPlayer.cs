@@ -9,13 +9,13 @@ public class NetworkPlayer : NetworkBehaviour
     public string displayName = "Loading...";
     [SyncVar]
     public int playerScore = 0;
+    [SyncVar]
     public bool IsShopTime = false;
 
     [SerializeField] private RoundSystem roundSystem;
     [SerializeField] private GameObject player;
     [SerializeField] private Health health;
-    [SerializeField] private PlayerShop playerShop;
-    //[SerializeField] private GameObject playerShopObject;
+
     public bool isDead;
 
     private Network room;
@@ -57,29 +57,5 @@ public class NetworkPlayer : NetworkBehaviour
     {
         playerScore++;
         Debug.Log("Player " + displayName + " Score: " + playerScore);
-    }
-
-    //[Server]
-    public void ShowPlayerShop()
-    {
-        //if (!isLocalPlayer) {return;}
-        //playerShopObject.SetActive(true);
-        //if (!hasAuthority) {return;}
-        //Debug.Log("Hello from authority");
-        //CmdShowPlayerShop();
-        IsShopTime = !IsShopTime;
-        Debug.Log("Player shop from Netowrk Player " + IsShopTime);
-    }
-
-    [Command]
-    private void CmdShowPlayerShop()
-    {
-        RpcShowPlayerShop();
-    }
-
-    [ClientRpc]
-    private void RpcShowPlayerShop()
-    {
-        playerShop.ShowPlayerShop();
     }
 }

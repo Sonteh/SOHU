@@ -15,8 +15,11 @@ public class RoundSystem : NetworkBehaviour
     public List<NetworkPlayer> remainingPlayers;
     [SerializeField] private NetworkPlayer networkPlayer;
     //[SerializeField] private GameObject shopUI;
-    [SerializeField] private PlayerShop playerShop;
+    [SerializeField] public PlayerShop playerShop;
+    [SerializeField] private GameObject playerShopObject;
     [SerializeField] public int scoreToWin = 3;
+    //[SyncVar]
+    //public bool IsShopTime;
     private Network room;
     private Network Room
     {
@@ -61,22 +64,14 @@ public class RoundSystem : NetworkBehaviour
     private void CheckToStartRound(NetworkConnection conn)
     {
         if (Room.GamePlayers.Count(x => x.connectionToClient.isReady) != Room.GamePlayers.Count) {return;}
-
-        animator.enabled = true;
-         
-
-        remainingPlayers = Room.GamePlayers.ToList();
-        Debug.Log("Created Player List: " + String.Join(",", remainingPlayers));
-        //var myObject = GameObject.FindGameObjectsWithTag("Player");
-       // for (var i=0; i < myObject.Length; i++)
-        //{
-       //     this.remainingPlayers.Add(myObject[i]);
-       //     Debug.Log("Testowy for: " + remainingPlayers.Count());
-       // } 
-        foreach (var testPlayer in remainingPlayers)
+        foreach (var player in Room.GamePlayers)
         {
-           Debug.Log("Player " + testPlayer.netId + " score: " + testPlayer.playerScore);
+            player.IsShopTime = false;
         }
+        
+        animator.enabled = true;
+        //IsShopTime = false;
+        remainingPlayers = Room.GamePlayers.ToList();
 
         RpcStartCountdown();
     }
@@ -89,7 +84,6 @@ public class RoundSystem : NetworkBehaviour
     private void RpcStartCountdown()
     {
         animator.enabled = true;
-        //numberOfPlayersAlive = Room.numPlayers;
     }
 
     [ClientRpc]
@@ -103,7 +97,6 @@ public class RoundSystem : NetworkBehaviour
     [Server]
     public void OnDeath(NetworkConnection connectionToClient)
     {
-        
         foreach (var player in remainingPlayers)
         {
             if (player.connectionToClient == connectionToClient)
@@ -119,14 +112,17 @@ public class RoundSystem : NetworkBehaviour
 
             foreach (var player in Room.GamePlayers)
             {
-                Debug.Log("Shop shop for before change " + player.displayName + " - " + player.IsShopTime);
-                player.ShowPlayerShop();
-                Debug.Log("Shop shop for after change " + player.displayName + " - " + player.IsShopTime);
+                //Debug.Log("Shop shop for before change " + player.displayName + " - " + player.IsShopTime);
+                //player.ShowPlayerShop();
+                //RpcChangeBool();
+                player.IsShopTime = true;
+                //Debug.Log("Shop shop for after change " + player.displayName + " - " + player.IsShopTime);
                 if (player.playerScore == scoreToWin)
                 {
                     HandleGameEnd();
                 }
             }
+            //TestChangeBool();
             HandleRoundEnd();
         }
     }
@@ -149,14 +145,38 @@ public class RoundSystem : NetworkBehaviour
         //     player.ShowPlayerShop();
         //     Debug.Log("Shop shop for after " + player.displayName + " " + player.IsShopTime);
         // }
-        foreach (var player in Room.GamePlayers)
-        {
-            //Debug.Log("Shop shop for before " + player.displayName + " " + player.IsShopTime);
-            player.ShowPlayerShop();
-            //Debug.Log("Shop shop for after " + player.displayName + " " + player.IsShopTime);
-        }
-
+        // Debug.Log("IsShopTime from RoundSystem przed = " + IsShopTime);
+        //CmdChangeBool();
+        // Debug.Log("IsShopTime from RoundSystem po = " + IsShopTime);
+        //playerShop.UpdateShop(IsShopTime);
+        //TestChangeBool();
         StartCoroutine(ShowShop());
+    }
+
+    // [Command]
+    // public void CmdChangeBool()
+    // {
+    //     IsShopTime = !IsShopTime;
+    // }
+    // [Server]
+    // public void TestChangeBool()
+    // {
+    //     Debug.Log("Kurwo działaj");
+    //     Debug.Log("IsShopTime przed: " + IsShopTime);
+    //     IsShopTime = !IsShopTime;
+    //     Debug.Log("IsShopTime po: " + IsShopTime);
+    // }
+
+    // [Command]
+    // public void CmdChangeBool()
+    // {
+    //     IsShopTime = !IsShopTime;
+    // }
+
+    [ClientRpc]
+    public void RpcChangeBool()
+    {
+        networkPlayer.IsShopTime = !networkPlayer.IsShopTime;
     }
 
     [Command]
@@ -166,16 +186,8 @@ public class RoundSystem : NetworkBehaviour
     }
     private IEnumerator ShowShop()
     {
-        //shopUI.SetActive(true);
-        //playerShop.ShowPlayerShop();
-        //networkPlayer.ShowPlayerShop();
-
         yield return new WaitForSecondsRealtime(5);
-        //foreach (var player in Room.GamePlayers)
-        //{
-        //    player.ShowPlayerShop();
-        //}
-        //shopUI.SetActive(false);
+        
         Room.StartGame();
     }
 }

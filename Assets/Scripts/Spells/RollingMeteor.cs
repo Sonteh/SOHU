@@ -17,7 +17,6 @@ public class RollingMeteor : NetworkBehaviour
 
         if (Input.GetKeyDown("1") && Time.time > canUseRollingMeteor)
         {
-            Debug.Log("sdasd");
             canUseRollingMeteor = rollingMeteorCooldown + Time.time;
             Vector3 mouseDirection = GetPlayerMouseDirection();
             CmdUseRollingMeteor(mouseDirection);
