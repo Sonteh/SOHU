@@ -118,17 +118,14 @@ public class RoundSystem : NetworkBehaviour
         if (remainingPlayers.Count == 1)
         {
             remainingPlayers[0].IncrementPlayerScore();
-            Debug.Log("testowy score = " + remainingPlayers[0].playerScore);
-            Debug.Log("NetworkPlayer score = " + networkPlayer.playerScore);
 
             foreach (var player in Room.GamePlayers)
             {
-                if ((player.playerScore + 1) == scoreToWin)
+                if ((player.playerScore) == scoreToWin)
                 {
                     HandleGameEnd();
                 }
             }
-            
             HandleRoundEnd();
         }
     }
@@ -144,7 +141,6 @@ public class RoundSystem : NetworkBehaviour
     [Server]
     private void HandleRoundEnd()
     {
-        //remainingPlayers[0].IncrementPlayerScore();
         networkPlayer.ShowPlayerShop();
         Debug.Log("Player netId " + remainingPlayers[0].netId + " score: " + remainingPlayers[0].playerScore);
         StartCoroutine(ShowShop());
