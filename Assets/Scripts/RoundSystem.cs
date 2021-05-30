@@ -103,11 +103,8 @@ public class RoundSystem : NetworkBehaviour
     [Server]
     public void OnDeath(NetworkConnection connectionToClient)
     {
-        //remainingPlayers = Room.GamePlayers.ToList();
-        Debug.Log("Created Player List: " + String.Join(",", remainingPlayers));
-        numberOfPlayersAlive--;
+        //numberOfPlayersAlive--;
         //networkPlayer.PlayerDeath();
-        Debug.Log("Amount of players before OnDeath Remove: " + remainingPlayers.Count());
         
         foreach (var player in remainingPlayers)
         {
@@ -117,61 +114,40 @@ public class RoundSystem : NetworkBehaviour
                 break;
             }
         }
-            
-        Debug.Log("Amount of players after OnDeath Remove:" + remainingPlayers.Count());
-        foreach (var testPlayer in remainingPlayers)
-       {
-           Debug.Log("Player netId " + testPlayer.netId + " isDead " + testPlayer.isDead);
-       }
-
         //Debug.Log("OnDeath :" + numberOfPlayersAlive);
-        if (numberOfPlayersAlive == 1)
+        if (remainingPlayers.Count == 1)
         {
-            if (remainingPlayers[0].playerScore == scoreToWin)
-            {
-                HandleGameEnd();
-            }
+            remainingPlayers[0].IncrementPlayerScore();
+            Debug.Log("testowy score = " + remainingPlayers[0].playerScore);
+            Debug.Log("NetworkPlayer score = " + networkPlayer.playerScore);
 
+            foreach (var player in Room.GamePlayers)
+            {
+                if ((player.playerScore + 1) == scoreToWin)
+                {
+                    HandleGameEnd();
+                }
+            }
+            
             HandleRoundEnd();
         }
     }
-/*
-    [Server]
-    private void HandleDeath(object sender, DeathEventArgs e) 
-    {
-        Debug.Log("RemaingPlayers Count: " + remainingPlayers.Count);
-        if (remainingPlayers.Count == 1) {return;}
-
-        foreach (var player in remainingPlayers)
-        {
-            if(player == null || player.connectionToClient == e.connectionToClient)
-            {
-                remainingPlayers.Remove(player);
-                break;
-            }
-        }
-
-        if (remainingPlayers.Count != 1) {return;}
-
-        HandleRoundEnd();
-    }
-    */
 
     [Server]
     private void HandleGameEnd()
     {
         Debug.Log("Player " + remainingPlayers[0].displayName + " WON!");
+        Room.StopClient();
+        Room.StopServer();
     }
 
     [Server]
     private void HandleRoundEnd()
     {
-        remainingPlayers[0].IncrementPlayerScore();
+        //remainingPlayers[0].IncrementPlayerScore();
         networkPlayer.ShowPlayerShop();
         Debug.Log("Player netId " + remainingPlayers[0].netId + " score: " + remainingPlayers[0].playerScore);
         StartCoroutine(ShowShop());
-        //CmdStartCoroutine();
-        //Room.StartGame();
     }
 
     [Command]
