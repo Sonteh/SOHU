@@ -9,6 +9,7 @@ public class NetworkPlayer : NetworkBehaviour
     public string displayName = "Loading...";
     [SyncVar]
     public int playerScore = 0;
+    public bool IsShopTime = false;
 
     [SerializeField] private RoundSystem roundSystem;
     [SerializeField] private GameObject player;
@@ -58,14 +59,16 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log("Player " + displayName + " Score: " + playerScore);
     }
 
-    [Server]
+    //[Server]
     public void ShowPlayerShop()
     {
-        if (!isLocalPlayer) {return;}
+        //if (!isLocalPlayer) {return;}
         //playerShopObject.SetActive(true);
         //if (!hasAuthority) {return;}
         //Debug.Log("Hello from authority");
         //CmdShowPlayerShop();
+        IsShopTime = !IsShopTime;
+        Debug.Log("Player shop from Netowrk Player " + IsShopTime);
     }
 
     [Command]
@@ -79,17 +82,4 @@ public class NetworkPlayer : NetworkBehaviour
     {
         playerShop.ShowPlayerShop();
     }
-
-/*
-    [Server]
-    public void PlayerDeath(bool died)
-    {
-        //if(!isLocalPlayer) {return;}
-        
-        Debug.Log("Before PlayerDeath(): " + isDead);
-
-        isDead = died;
-        Debug.Log("After PlayerDeath(): " + isDead);
-    }
-    */
 }

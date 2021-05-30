@@ -66,12 +66,12 @@ MonoBehaviour:
   syncInterval: 0.1
   displayName: Loading...
   playerScore: 0
+  IsShopTime: 0
   roundSystem: {fileID: 217809834783040281, guid: 6e213916e803fec4988f4db7e70fbf2a,
     type: 3}
   player: {fileID: 2240174198917530758, guid: 860dd37201f402a48b80e92b92e5e4a5, type: 3}
   health: {fileID: 8071847983670555214, guid: 860dd37201f402a48b80e92b92e5e4a5, type: 3}
   playerShop: {fileID: 7355343606859410631}
-  playerShopObject: {fileID: 5442931488498243290}
   isDead: 0
 --- !u!114 &7355343606859410631
 MonoBehaviour:
@@ -88,6 +88,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   shopUI: {fileID: 5442931488498243290}
+  networkPlayer: {fileID: 5815379166993546133}
 --- !u!1001 &2438579329516312891
 PrefabInstance:
   m_ObjectHideFlags: 0

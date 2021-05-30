@@ -63,6 +63,7 @@ public class RoundSystem : NetworkBehaviour
         if (Room.GamePlayers.Count(x => x.connectionToClient.isReady) != Room.GamePlayers.Count) {return;}
 
         animator.enabled = true;
+         
 
         remainingPlayers = Room.GamePlayers.ToList();
         Debug.Log("Created Player List: " + String.Join(",", remainingPlayers));
@@ -88,7 +89,7 @@ public class RoundSystem : NetworkBehaviour
     private void RpcStartCountdown()
     {
         animator.enabled = true;
-        numberOfPlayersAlive = Room.numPlayers;
+        //numberOfPlayersAlive = Room.numPlayers;
     }
 
     [ClientRpc]
@@ -99,12 +100,9 @@ public class RoundSystem : NetworkBehaviour
     
     #endregion
 
-    //TODO: Skończyć poprawne uruchamianie rundy
     [Server]
     public void OnDeath(NetworkConnection connectionToClient)
     {
-        //numberOfPlayersAlive--;
-        //networkPlayer.PlayerDeath();
         
         foreach (var player in remainingPlayers)
         {
@@ -114,14 +112,17 @@ public class RoundSystem : NetworkBehaviour
                 break;
             }
         }
-        //Debug.Log("OnDeath :" + numberOfPlayersAlive);
+        
         if (remainingPlayers.Count == 1)
         {
             remainingPlayers[0].IncrementPlayerScore();
 
             foreach (var player in Room.GamePlayers)
             {
-                if ((player.playerScore) == scoreToWin)
+                Debug.Log("Shop shop for before change " + player.displayName + " - " + player.IsShopTime);
+                player.ShowPlayerShop();
+                Debug.Log("Shop shop for after change " + player.displayName + " - " + player.IsShopTime);
+                if (player.playerScore == scoreToWin)
                 {
                     HandleGameEnd();
                 }
@@ -141,8 +142,20 @@ public class RoundSystem : NetworkBehaviour
     [Server]
     private void HandleRoundEnd()
     {
-        networkPlayer.ShowPlayerShop();
-        Debug.Log("Player netId " + remainingPlayers[0].netId + " score: " + remainingPlayers[0].playerScore);
+        //networkPlayer.ShowPlayerShop();
+        // foreach (var player in Room.GamePlayers)
+        // {
+        //     Debug.Log("Shop shop for before " + player.displayName + " " + player.IsShopTime);
+        //     player.ShowPlayerShop();
+        //     Debug.Log("Shop shop for after " + player.displayName + " " + player.IsShopTime);
+        // }
+        foreach (var player in Room.GamePlayers)
+        {
+            //Debug.Log("Shop shop for before " + player.displayName + " " + player.IsShopTime);
+            player.ShowPlayerShop();
+            //Debug.Log("Shop shop for after " + player.displayName + " " + player.IsShopTime);
+        }
+
         StartCoroutine(ShowShop());
     }
 
@@ -156,7 +169,12 @@ public class RoundSystem : NetworkBehaviour
         //shopUI.SetActive(true);
         //playerShop.ShowPlayerShop();
         //networkPlayer.ShowPlayerShop();
+
         yield return new WaitForSecondsRealtime(5);
+        //foreach (var player in Room.GamePlayers)
+        //{
+        //    player.ShowPlayerShop();
+        //}
         //shopUI.SetActive(false);
         Room.StartGame();
     }
