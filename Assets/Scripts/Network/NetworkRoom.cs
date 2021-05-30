@@ -16,9 +16,6 @@ public class NetworkRoom : NetworkBehaviour
     [SerializeField] private TMP_Text arenaTitle = null;
     [SerializeField] private Image arena01Image = null;
     [SerializeField] private Image arena02Image = null;
-    //[SerializeField] private Image arenaImage = null;
-    //[SerializeField] private Image[] arenaImages = new Image[2];
-    //[SerializeField] private TMP_InputField amountOfRoundsInput = null;
 
     [SyncVar(hook = nameof(HandleDisplayNameChanged))]
     public string DisplayName = "Loading...";
@@ -26,8 +23,8 @@ public class NetworkRoom : NetworkBehaviour
     public bool IsReady = false;
     [SyncVar(hook = nameof(HandleArenaChanged))]
     public bool Arena = true;
-    //[SyncVar(hook = nameof(HandleArenaChanged))]
-    //public bool ArenaImage = true;
+    [SyncVar(hook = nameof(HandleRoundAmountChanged))]
+    public string RoundAmount = "1";
 
     private bool isLeader;
     public bool IsLeader
@@ -38,7 +35,6 @@ public class NetworkRoom : NetworkBehaviour
             startGameButton.gameObject.SetActive(value);
             changeArenaButton.interactable = value;
             amountOfRoundsInput.interactable = value;
-            //arena01Image.gameObject.SetActive(true);
         }
     }
 
@@ -80,6 +76,7 @@ public class NetworkRoom : NetworkBehaviour
     public void HandleReadyStatusChanged(bool oldValue, bool newValue) => UpdateDisplay();
     public void HandleDisplayNameChanged(string oldValue, string newValue) => UpdateDisplay();
     public void HandleArenaChanged(bool oldValue, bool newValue) => UpdateDisplay();
+    public void HandleRoundAmountChanged(string oldValue, string newValue) => UpdateDisplay();
 
     private void UpdateDisplay()
     {
@@ -106,28 +103,23 @@ public class NetworkRoom : NetworkBehaviour
 
         for (int i = 0; i < Room.RoomPlayers.Count; i++)
         {
-            arenaTitle.text = Room.RoomPlayers[0].Arena ? "Arena01" : "Arena02";
-            if (Room.RoomPlayers[0].Arena == true)
+            arenaTitle.text = Room.RoomPlayers[0].Arena ? "Arena02" : "Arena01";
+            if (Room.RoomPlayers[0].Arena == false)
             {
-                Debug.Log("INSIDE IF");
-                arena01Image.gameObject.SetActive(Room.RoomPlayers[0].Arena);
+                arena01Image.gameObject.SetActive(true);
+                arena02Image.gameObject.SetActive(false);
             }
             else
             {
-                Debug.Log("INSIDE ELSE");
-                arena02Image.gameObject.SetActive(Room.RoomPlayers[0].Arena);
+                arena01Image.gameObject.SetActive(false);
+                arena02Image.gameObject.SetActive(true);
             }
-          
-            //Debug.Log(arenaImages[0].sprite);
-            //Debug.Log(arenaImages[1].sprite);
-            //Room.RoomPlayers[0].Arena ? arenaImages[0].sprite : arenaImages[1].sprite;
-            //Debug.Log("after");
-            //Debug.Log(arenaImages[0].sprite);
-            //Debug.Log(arenaImages[1].sprite);
             playerNameTexts[i].text = Room.RoomPlayers[i].DisplayName;
             playerNameTexts[i].color = Room.RoomPlayers[i].IsReady ?
             playerNameTexts[i].color = Color.green :
             playerNameTexts[i].color = Color.red;
+
+
         }
     }
 
