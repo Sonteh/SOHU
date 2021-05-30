@@ -12,7 +12,8 @@ public class RoundSystem : NetworkBehaviour
     [SerializeField] private Animator animator;
     public List<NetworkPlayer> remainingPlayers;
     [SerializeField] private NetworkPlayer networkPlayer;
-    [SerializeField] public int scoreToWin = 3;
+    //[SerializeField] private NetworkRoom networkRoom;
+    [SerializeField] public int scoreToWin;
 
     private Network room;
     private Network Room
@@ -90,6 +91,10 @@ public class RoundSystem : NetworkBehaviour
     [Server]
     public void OnDeath(NetworkConnection connectionToClient)
     {
+
+        Debug.Log("ROUND AMOUNT");
+        Debug.Log(scoreToWin);
+
         foreach (var player in remainingPlayers)
         {
             if (player.connectionToClient == connectionToClient)

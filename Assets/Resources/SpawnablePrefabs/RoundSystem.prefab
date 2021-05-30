@@ -350,16 +350,12 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   animator: {fileID: 9013302242151298535}
-  numberOfPlayersAlive: 0
   remainingPlayers: []
   networkPlayer: {fileID: 5815379166993546133, guid: d4b358e505a8e41a4a01acb404593f56,
     type: 3}
-  playerShop: {fileID: 7355343606859410631, guid: d4b358e505a8e41a4a01acb404593f56,
-    type: 3}
-  playerShopObject: {fileID: 7644581934910423800, guid: d4b358e505a8e41a4a01acb404593f56,
+  networkRoom: {fileID: 2659728637667410020, guid: 80052c2e8b7bd422e85008c3c8d8e120,
     type: 3}
   scoreToWin: 3
-  IsShopTime: 0
 --- !u!1 &3966190225369504215
 GameObject:
   m_ObjectHideFlags: 0

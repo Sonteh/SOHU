@@ -7,6 +7,7 @@ using TMPro;
 public class NetworkRoom : NetworkBehaviour
 {
     [Header("UI")]
+    [SerializeField] private RoundSystem roundSystem;
     [SerializeField] private GameObject lobbyUI = null;
     [SerializeField] private TMP_Text[] playerNameTexts = new TMP_Text[8];
     [SerializeField] private Button startGameButton = null;
@@ -159,6 +160,8 @@ public class NetworkRoom : NetworkBehaviour
     public void CmdStartGame()
     {
         if (Room.RoomPlayers[0].connectionToClient != connectionToClient) { return; }
+
+        roundSystem.scoreToWin = int.Parse(amountOfRoundsDisplay.text);
 
         Room.StartGame();
 
