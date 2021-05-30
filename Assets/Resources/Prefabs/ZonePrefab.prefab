@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoneDamage: 1
+  zoneSpeed: 0
 --- !u!1001 &104140278951345900
 PrefabInstance:
   m_ObjectHideFlags: 0
