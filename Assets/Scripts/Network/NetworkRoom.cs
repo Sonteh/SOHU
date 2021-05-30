@@ -14,6 +14,10 @@ public class NetworkRoom : NetworkBehaviour
     [SerializeField] private Button changeArenaButton = null;
     [SerializeField] private TMP_InputField amountOfRoundsInput = null;
     [SerializeField] private TMP_Text arenaTitle = null;
+    [SerializeField] private Image arena01Image = null;
+    [SerializeField] private Image arena02Image = null;
+    //[SerializeField] private Image arenaImage = null;
+    //[SerializeField] private Image[] arenaImages = new Image[2];
     //[SerializeField] private TMP_InputField amountOfRoundsInput = null;
 
     [SyncVar(hook = nameof(HandleDisplayNameChanged))]
@@ -22,6 +26,8 @@ public class NetworkRoom : NetworkBehaviour
     public bool IsReady = false;
     [SyncVar(hook = nameof(HandleArenaChanged))]
     public bool Arena = true;
+    //[SyncVar(hook = nameof(HandleArenaChanged))]
+    //public bool ArenaImage = true;
 
     private bool isLeader;
     public bool IsLeader
@@ -32,6 +38,7 @@ public class NetworkRoom : NetworkBehaviour
             startGameButton.gameObject.SetActive(value);
             changeArenaButton.interactable = value;
             amountOfRoundsInput.interactable = value;
+            //arena01Image.gameObject.SetActive(true);
         }
     }
 
@@ -99,14 +106,26 @@ public class NetworkRoom : NetworkBehaviour
 
         for (int i = 0; i < Room.RoomPlayers.Count; i++)
         {
-            //Debug.Log(DisplayName);
-            Debug.Log(Arena);
             arenaTitle.text = Room.RoomPlayers[0].Arena ? "Arena01" : "Arena02";
-            Debug.Log(arenaTitle.text);
+            if (Room.RoomPlayers[0].Arena == true)
+            {
+                Debug.Log("INSIDE IF");
+                arena01Image.gameObject.SetActive(Room.RoomPlayers[0].Arena);
+            }
+            else
+            {
+                Debug.Log("INSIDE ELSE");
+                arena02Image.gameObject.SetActive(Room.RoomPlayers[0].Arena);
+            }
+          
+            //Debug.Log(arenaImages[0].sprite);
+            //Debug.Log(arenaImages[1].sprite);
+            //Room.RoomPlayers[0].Arena ? arenaImages[0].sprite : arenaImages[1].sprite;
+            //Debug.Log("after");
+            //Debug.Log(arenaImages[0].sprite);
+            //Debug.Log(arenaImages[1].sprite);
             playerNameTexts[i].text = Room.RoomPlayers[i].DisplayName;
             playerNameTexts[i].color = Room.RoomPlayers[i].IsReady ?
-            //arenaTitle.text = "Arena01" :
-            //arenaTitle.text = "Arena02";
             playerNameTexts[i].color = Color.green :
             playerNameTexts[i].color = Color.red;
         }

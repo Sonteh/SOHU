@@ -4042,7 +4042,7 @@ GameObject:
   - component: {fileID: 6104854912208104036}
   - component: {fileID: 4071097630647431568}
   m_Layer: 5
-  m_Name: ArenaThumbnail
+  m_Name: Arena01Thumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4444,7 +4444,7 @@ GameObject:
   - component: {fileID: 5141191813558000500}
   - component: {fileID: 3795055817898855469}
   m_Layer: 5
-  m_Name: ArenaThumbnail (1)
+  m_Name: Arena02Thumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4496,7 +4496,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 743e317c992574a709cb532a06c2c0e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9bdc009587e254cfa865f8400bd568c3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
