@@ -106,6 +106,7 @@ public class NetworkRoom : NetworkBehaviour
 
         for (int i = 0; i < Room.RoomPlayers.Count; i++)
         {
+<<<<<<< HEAD
             arenaTitle.text = Room.RoomPlayers[0].Arena ? "Arena01" : "Arena02";
             if (Room.RoomPlayers[0].Arena == true)
             {
@@ -124,6 +125,10 @@ public class NetworkRoom : NetworkBehaviour
             //Debug.Log("after");
             //Debug.Log(arenaImages[0].sprite);
             //Debug.Log(arenaImages[1].sprite);
+=======
+            //Debug.Log(DisplayName);
+            arenaTitle.text = Room.RoomPlayers[i].Arena ? "Arena01" : "Arena02";
+>>>>>>> 393546bca266d5368367332443054de62d2e2fe9
             playerNameTexts[i].text = Room.RoomPlayers[i].DisplayName;
             playerNameTexts[i].color = Room.RoomPlayers[i].IsReady ?
             playerNameTexts[i].color = Color.green :
