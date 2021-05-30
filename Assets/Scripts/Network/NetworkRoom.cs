@@ -9,13 +9,15 @@ public class NetworkRoom : NetworkBehaviour
     [Header("UI")]
     [SerializeField] private GameObject lobbyUI = null;
     [SerializeField] private TMP_Text[] playerNameTexts = new TMP_Text[8];
-    [SerializeField] private TMP_Text[] playerReadyTexts = new TMP_Text[8];
     [SerializeField] private Button startGameButton = null;
     [SerializeField] private Button changeArenaButton = null;
-    [SerializeField] private TMP_InputField amountOfRoundsInput = null;
+    [SerializeField] private Button changeAmountButtonUp = null;
+    [SerializeField] private Button changeAmountButtonDown = null;
+    [SerializeField] private TMP_Text amountOfRoundsDisplay = null;
     [SerializeField] private TMP_Text arenaTitle = null;
     [SerializeField] private Image arena01Image = null;
     [SerializeField] private Image arena02Image = null;
+    [SerializeField] private Image confirmButton = null;
 
     [SyncVar(hook = nameof(HandleDisplayNameChanged))]
     public string DisplayName = "Loading...";
@@ -24,7 +26,7 @@ public class NetworkRoom : NetworkBehaviour
     [SyncVar(hook = nameof(HandleArenaChanged))]
     public bool Arena = true;
     [SyncVar(hook = nameof(HandleRoundAmountChanged))]
-    public string RoundAmount = "1";
+    public int RoundAmount = 1;
 
     private bool isLeader;
     public bool IsLeader
@@ -33,8 +35,10 @@ public class NetworkRoom : NetworkBehaviour
         {
             isLeader = value;
             startGameButton.gameObject.SetActive(value);
-            changeArenaButton.interactable = value;
-            amountOfRoundsInput.interactable = value;
+            confirmButton.gameObject.SetActive(value);
+            changeAmountButtonUp.gameObject.SetActive(value);
+            changeAmountButtonDown.gameObject.SetActive(value);
+            changeArenaButton.gameObject.SetActive(value);
         }
     }
 
@@ -72,11 +76,10 @@ public class NetworkRoom : NetworkBehaviour
         UpdateDisplay();
     }
 
-    // 
     public void HandleReadyStatusChanged(bool oldValue, bool newValue) => UpdateDisplay();
     public void HandleDisplayNameChanged(string oldValue, string newValue) => UpdateDisplay();
     public void HandleArenaChanged(bool oldValue, bool newValue) => UpdateDisplay();
-    public void HandleRoundAmountChanged(string oldValue, string newValue) => UpdateDisplay();
+    public void HandleRoundAmountChanged(int oldValue, int newValue) => UpdateDisplay();
 
     private void UpdateDisplay()
     {
@@ -114,12 +117,20 @@ public class NetworkRoom : NetworkBehaviour
                 arena01Image.gameObject.SetActive(false);
                 arena02Image.gameObject.SetActive(true);
             }
+
+            if (Room.RoomPlayers[0].RoundAmount <= 0)
+            {
+                amountOfRoundsDisplay.text = "1";
+            }
+            else
+            {
+                amountOfRoundsDisplay.text = Room.RoomPlayers[0].RoundAmount.ToString();
+            }
+
             playerNameTexts[i].text = Room.RoomPlayers[i].DisplayName;
             playerNameTexts[i].color = Room.RoomPlayers[i].IsReady ?
             playerNameTexts[i].color = Color.green :
             playerNameTexts[i].color = Color.red;
-
-
         }
     }
 
@@ -157,6 +168,18 @@ public class NetworkRoom : NetworkBehaviour
     public void CmdChangeArena()
     {
         Arena = !Arena;
+    }
+
+    [Command]
+    public void CmdChangeAmountUp()
+    {
+        RoundAmount++;
+    }
+
+    [Command]
+    public void CmdChangeAmountDown()
+    {
+        RoundAmount--;
     }
 
     public void LeaveLobby()
