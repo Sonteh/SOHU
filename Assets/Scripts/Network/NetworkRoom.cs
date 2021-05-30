@@ -15,7 +15,7 @@ public class NetworkRoom : NetworkBehaviour
     [SerializeField] private Button changeAmountButtonUp = null;
     [SerializeField] private Button changeAmountButtonDown = null;
     [SerializeField] private TMP_Text amountOfRoundsDisplay = null;
-    [SerializeField] private TMP_Text arenaTitle = null;
+    [SerializeField] public TMP_Text arenaTitle = null;
     [SerializeField] private Image arena01Image = null;
     [SerializeField] private Image arena02Image = null;
     [SerializeField] private Image confirmButton = null;
@@ -108,6 +108,9 @@ public class NetworkRoom : NetworkBehaviour
         for (int i = 0; i < Room.RoomPlayers.Count; i++)
         {
             arenaTitle.text = Room.RoomPlayers[0].Arena ? "Arena02" : "Arena01";
+            Debug.Log("ARENA TITLE");
+            Debug.Log(arenaTitle.text);
+
             if (Room.RoomPlayers[0].Arena == false)
             {
                 arena01Image.gameObject.SetActive(true);
@@ -162,6 +165,7 @@ public class NetworkRoom : NetworkBehaviour
         if (Room.RoomPlayers[0].connectionToClient != connectionToClient) { return; }
 
         roundSystem.scoreToWin = int.Parse(amountOfRoundsDisplay.text);
+        room.arenaName = arenaTitle.text;
 
         Room.StartGame();
 

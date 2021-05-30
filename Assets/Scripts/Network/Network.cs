@@ -22,6 +22,7 @@ public class Network : NetworkManager
     [SerializeField] private GameObject roundSystem;
     //[SerializeField] private GameObject gameMenu;
     //private int playerPoints;
+    public string arenaName;
 
     // Network Events
     public static event Action ClientOnConnected;
@@ -153,7 +154,7 @@ public class Network : NetworkManager
         }
 
         //logic to implemenet map choosing
-        ServerChangeScene("Arena02");
+        ServerChangeScene(arenaName);
     }
 
     public override void ServerChangeScene(string newSceneName)
