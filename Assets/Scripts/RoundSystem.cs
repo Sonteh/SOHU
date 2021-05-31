@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using System.Linq;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class RoundSystem : NetworkBehaviour
 {
     [SerializeField] private Animator animator;
-    public List<NetworkPlayer> remainingPlayers;
     [SerializeField] private NetworkPlayer networkPlayer;
-    //[SerializeField] private NetworkRoom networkRoom;
     [SerializeField] public int scoreToWin;
+    public List<NetworkPlayer> remainingPlayers;
 
     private Network room;
     private Network Room
@@ -29,8 +25,6 @@ public class RoundSystem : NetworkBehaviour
     {
         animator.enabled = false;
     }
-
-    #region Server
 
     public override void OnStartServer()
     {
@@ -70,31 +64,9 @@ public class RoundSystem : NetworkBehaviour
         RpcStartCountdown();
     }
 
-    #endregion
-
-    #region Client
-
-    [ClientRpc]
-    private void RpcStartCountdown()
-    {
-        animator.enabled = true;
-    }
-
-    [ClientRpc]
-    private void RpcStartRound()
-    {
-        Debug.Log("Start");
-    }
-    
-    #endregion
-
     [Server]
     public void OnDeath(NetworkConnection connectionToClient)
     {
-
-        Debug.Log("ROUND AMOUNT");
-        Debug.Log(scoreToWin);
-
         foreach (var player in remainingPlayers)
         {
             if (player.connectionToClient == connectionToClient)
@@ -140,6 +112,18 @@ public class RoundSystem : NetworkBehaviour
     private void CmdStartCoroutine()
     {
         StartCoroutine(ShowShop());
+    }
+
+    [ClientRpc]
+    private void RpcStartCountdown()
+    {
+        animator.enabled = true;
+    }
+
+    [ClientRpc]
+    private void RpcStartRound()
+    {
+        Debug.Log("Start");
     }
 
     private IEnumerator ShowShop()

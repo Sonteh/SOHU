@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Mirror;
-using System;
 
 public class Health : NetworkBehaviour 
 {
@@ -12,19 +11,11 @@ public class Health : NetworkBehaviour
     public delegate void HealthUpdateDelegate(float currentHealth, float maxHealth);
     public event HealthUpdateDelegate EventHealthUpdate;
     GameObject roundSystem;
-
-    //[SyncVar] public int numPlayers;
-    //[SyncVar(hook = nameof(HandlePlayerNumberChanged))]
-    //public int numPlayers;
-
-    //public void HandlePlayerNumberChanged(int oldValue, int newValue) => UpdatePlayers();
     
     private void Start()
     {
         roundSystem = GameObject.Find("RoundSystem(Clone)");
     }
-    
-    #region Server
     
     [Server]
     private void SetHealth(float value)
@@ -47,10 +38,6 @@ public class Health : NetworkBehaviour
         }
     }
 
-    #endregion
-
-    #region Client
-
     [ClientCallback]
     private void Update()
     {
@@ -60,7 +47,6 @@ public class Health : NetworkBehaviour
     [ClientRpc]
     private void RpcOnDeath()
     {
-        //networkPlayer.PlayerDeath(true);
         gameObject.SetActive(false);
     }
     
@@ -83,6 +69,4 @@ public class Health : NetworkBehaviour
             CmdDealDamage(damage);
         }
     }
-
-    #endregion
 }
