@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PlayerStats : NetworkBehaviour
 {
     [SerializeField] private GameObject statsUI;
-    [SerializeField] private NetworkPlayer networkPlayer;
+    //[SerializeField] private NetworkPlayer networkPlayer;
     [SerializeField] private TMP_Text[] playerName = new TMP_Text[2];
     [SerializeField] private TMP_Text[] playerScore = new TMP_Text[2]; 
 
@@ -39,6 +39,7 @@ public class PlayerStats : NetworkBehaviour
 
         if(Input.GetButton("Statistics"))
         {
+            UpdateStatistics();
             statsUI.SetActive(true);
         }
         else
@@ -52,24 +53,9 @@ public class PlayerStats : NetworkBehaviour
 
     private void UpdateStatistics()
     {
-        /*
-        if(!hasAuthority)
-        {
-            foreach (var player in Room.GamePlayers)
-            {
-                if (player.hasAuthority)
-                {
-                    UpdateStatistics();
-                    break;
-                }
-            }
-            return;
-        }*/
-
         for (int i = 0; i < Room.GamePlayers.Count; i++)
         {
             playerName[i].text = Room.GamePlayers[i].displayName;
-            //playerScore[i].text = Room.GamePlayers[i].playerScore.ToString();
             playerScore[i].SetText(Room.GamePlayers[i].playerScore.ToString());
         }
     }
