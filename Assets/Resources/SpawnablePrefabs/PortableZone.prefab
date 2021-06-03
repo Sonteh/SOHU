@@ -4769,6 +4769,7 @@ GameObject:
   - component: {fileID: 2620474415804582308}
   - component: {fileID: 9132340151680192072}
   - component: {fileID: 1919479224320526600}
+  - component: {fileID: 9012533875775348140}
   m_Layer: 0
   m_Name: PortableZone
   m_TagString: Zone
@@ -4817,7 +4818,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2606073185403660748, guid: 131ca57b3e7596042a2a4f4782481ad4, type: 3}
+  - {fileID: -464606446463761505, guid: 773b8d9f218dbe341824b9d57b32ca6e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4896,3 +4897,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellDamage: 0
   spellOutOfRange: 5
+--- !u!114 &9012533875775348140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8335946808304490518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
