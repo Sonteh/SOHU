@@ -6,7 +6,6 @@ using Mirror;
 public class TacticalRecall : NetworkBehaviour
 {
     [SerializeField] private GameObject tacticalRecallPrefab;
-    [SerializeField] private float speed = 10.0f;
     [SerializeField] private float tacticalRecallCooldown = 2.0f;
     private float canUseTacticalRecall = -1.0f;
 
@@ -14,7 +13,7 @@ public class TacticalRecall : NetworkBehaviour
     {
         if (!hasAuthority) {return;}
         
-        if (Input.GetKeyDown("r") && Time.time > canUseTacticalRecall)
+        if (Input.GetButtonDown("TacticalRecall") && Time.time > canUseTacticalRecall)
         {
             canUseTacticalRecall =  tacticalRecallCooldown + Time.time;
             CmdUseTacticalRecall();

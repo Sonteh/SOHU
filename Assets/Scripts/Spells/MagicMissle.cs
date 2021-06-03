@@ -13,10 +13,10 @@ public class MagicMissle : NetworkBehaviour
     {
         if (!hasAuthority) {return;}
         
-        if (Input.GetButtonDown("MagicMissle"))
+        if (Input.GetButtonDown("MagicMissle") && Time.time > canUseMagicMissle)
         {
-            Vector3 mousePosition = GetPlayerMouseDirection();
             canUseMagicMissle =  magicMissleCooldown + Time.time;
+            Vector3 mousePosition = GetPlayerMouseDirection();
             CmdUseMagicMissle(mousePosition);
         }
     }

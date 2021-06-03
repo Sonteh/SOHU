@@ -6,7 +6,6 @@ using Mirror;
 public class PortableZone : NetworkBehaviour
 {
     [SerializeField] private GameObject portableZonePrefab;
-    [SerializeField] private float speed = 10.0f;
     [SerializeField] private float portableZoneCooldown = 2.0f;
     private float canUsePortableZone = -1.0f;
 
@@ -16,7 +15,7 @@ public class PortableZone : NetworkBehaviour
     {
         if (!hasAuthority) {return;}
         
-        if (Input.GetKeyDown("2") && Time.time > canUsePortableZone)
+        if (Input.GetButtonDown("PortableZone") && Time.time > canUsePortableZone)
         {
             canUsePortableZone =  portableZoneCooldown + Time.time;
             Vector3 mousePosition = GetPlayerMousePosition();

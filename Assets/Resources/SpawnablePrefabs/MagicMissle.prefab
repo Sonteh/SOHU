@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1730027845655340627}
   - component: {fileID: 3525543021583722807}
   - component: {fileID: 8866364112749065891}
-  - component: {fileID: -1983151140596463125}
   - component: {fileID: -5099324298563554708}
   - component: {fileID: -5806140375059233789}
   - component: {fileID: -2836033025840331747}
@@ -98,24 +97,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-1983151140596463125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370511022442885530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8ab0f96458a01a468b7ad67935993d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  magicMisslePrefab: {fileID: 0}
-  speed: 10
-  outOfRange: 60
-  magicMissleCooldown: 2
 --- !u!54 &-5099324298563554708
 Rigidbody:
   m_ObjectHideFlags: 0

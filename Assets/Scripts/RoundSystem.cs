@@ -108,12 +108,6 @@ public class RoundSystem : NetworkBehaviour
         StartCoroutine(ShowShop());
     }
 
-    // [Command]
-    // private void CmdStartCoroutine()
-    // {
-    //     StartCoroutine(ShowShop());
-    // }
-
     [ClientRpc]
     private void RpcStartCountdown()
     {
