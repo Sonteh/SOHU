@@ -4,16 +4,18 @@ using UnityEngine;
 public class Player : NetworkBehaviour
 {
     [SerializeField] private GameObject myMaterial;
-    [SerializeField] NetworkPlayer networkPlayer;
-    [SerializeField] TextMesh playerNameText;
+    [SerializeField] private NetworkPlayer networkPlayer;
+    [SerializeField] private TextMesh playerNameText;
 
     [SyncVar(hook = nameof(OnNameChanged))]
     public string playerName;
     [SyncVar(hook = nameof(OnColorChanged))]
     public Color playerColor = Color.white;
     private Material playerMaterialClone;
-    //public bool testowyBool = false;
+    public bool IsMagicMissleBought = false;
     public bool IsMeteorBought = false;
+    public bool IsPortableZoneBought = false;
+    public bool IsRecallBought = false;
 
     private void OnNameChanged(string _Old, string _New) 
     {
@@ -50,9 +52,24 @@ public class Player : NetworkBehaviour
     {
         if (!hasAuthority) {return;}
 
+        if (IsMagicMissleBought)
+        {
+            GetComponent<MagicMissle>().enabled = true;
+        }
+
         if (IsMeteorBought)
         {
             GetComponent<RollingMeteor>().enabled = true;
+        }
+
+        if (IsPortableZoneBought)
+        {
+            GetComponent<PortableZone>().enabled = true;
+        }
+
+        if (IsRecallBought)
+        {
+            GetComponent<TacticalRecall>().enabled = true;
         }
     }
 }

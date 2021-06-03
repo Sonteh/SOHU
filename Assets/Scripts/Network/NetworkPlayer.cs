@@ -57,22 +57,58 @@ public class NetworkPlayer : NetworkBehaviour
     private void PreparePlayerSpells()
     {
         playerScript.IsMeteorBought = false;
+        playerScript.IsMagicMissleBought = false;
+        playerScript.IsPortableZoneBought = false;
+        playerScript.IsRecallBought = false;
     }
 
     [Server]
     public void PlayerBoughtSpell(string spellBought)
     {
+        if (spellBought == "MagicMissleBuyButton")
+        {
+            TargetMagicMissleBought();
+        }
+
         if (spellBought == "MeteorBuyButton")
         {
-            TargetTest();
+            TargetMeteorBought();
+        }
+
+        if (spellBought == "PortableZoneBuyButton")
+        {
+            TargetPortableZoneBought();
+        }
+
+        if (spellBought == "RecallBuyButton")
+        {
+            TargetRecallBought();
         }
     }
 
     //If the first parameter of your TargetRpc method is a NetworkConnection then that's the connection that will receive the message regardless of context.
     //If the first parameter is any other type, then the owner client of the object with the script containing your TargetRpc will receive the message.
     [TargetRpc]
-    public void TargetTest()
+    public void TargetMagicMissleBought()
+    {
+        playerScript.IsMagicMissleBought = true;
+    }
+
+    [TargetRpc]
+    public void TargetMeteorBought()
     {
         playerScript.IsMeteorBought = true;
+    }
+
+    [TargetRpc]
+    public void TargetPortableZoneBought()
+    {
+        playerScript.IsPortableZoneBought = true;
+    }
+
+    [TargetRpc]
+    public void TargetRecallBought()
+    {
+        playerScript.IsRecallBought = true;
     }
 }
