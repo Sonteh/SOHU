@@ -10,22 +10,22 @@ public class CameraController : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        if (Input.GetKey("w"))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             pos.x += panSpeed * Time.deltaTime;
         }
 
-        if (Input.GetKey("s"))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             pos.x -= panSpeed * Time.deltaTime;
         }
 
-        if (Input.GetKey("a"))
+        if (Input.GetKey((KeyCode.LeftArrow)))
         {
             pos.z += panSpeed * Time.deltaTime;
         }
 
-        if (Input.GetKey("d"))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             pos.z -= panSpeed * Time.deltaTime;
         }
