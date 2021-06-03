@@ -4,13 +4,13 @@ using Mirror;
 public class MagicMissle : NetworkBehaviour
 {
     [SerializeField] private GameObject magicMisslePrefab;
+    [SerializeField] private GameObject spawnLocation;
     [SerializeField] private float speed = 10.0f;
     [SerializeField] private float magicMissleCooldown = 2.0f;
     private float canUseMagicMissle = -1.0f;
 
     void Update()
     {
-        //if (!isLocalPlayer) {return;}
         if (!hasAuthority) {return;}
         
         if (Input.GetButtonDown("MagicMissle"))
@@ -58,8 +58,7 @@ public class MagicMissle : NetworkBehaviour
     [ClientRpc]
     private void RpcUseMagicMissle(Vector3 mousePosition)
     {
-        var magicMissle = (GameObject)Instantiate(magicMisslePrefab, transform.position + Vector3.forward, Quaternion.identity);
-        magicMissle.GetComponent<Rigidbody>().velocity = mousePosition * 7.0f;
-        //magicMissle.transform.position = Vector3.MoveTowards(magicMissle.transform.position, mousePosition, 7.0f * Time.deltaTime);
+        var magicMissle = (GameObject)Instantiate(magicMisslePrefab, spawnLocation.transform.position, Quaternion.identity);
+        magicMissle.GetComponent<Rigidbody>().velocity = mousePosition * speed;
     }
 }

@@ -1,19 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Mirror;
 
 public class Fireball : NetworkBehaviour
 {
     [SerializeField] private GameObject fireballPrefab;
+    [SerializeField] private GameObject spawnLocation;
     [SerializeField] private float speed = 7.0f;
     [SerializeField] private float fireballCooldown = 0.5f;
-    [SerializeField] private GameObject spawnLocation;
     private float canUseFireball = -1.0f;
     
     private void Update() 
     {
-        //if (!isLocalPlayer) {return;}
         if (!hasAuthority) {return;}
 
         if (Input.GetButtonDown("Fireball") && Time.time > canUseFireball)

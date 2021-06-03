@@ -6,7 +6,7 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private RoundSystem roundSystem;
     [SerializeField] private GameObject player;
     [SerializeField] private Player playerScript;
-    [SerializeField] private Health health;
+ 
     [SyncVar]
     public string displayName = "Loading...";
     [SyncVar]
@@ -40,12 +40,9 @@ public class NetworkPlayer : NetworkBehaviour
     public override void OnStartAuthority()
     {
         SetDisplayName(PlayerPrefs.GetString("PlayerName"));
-        playerScript.IsMeteorBought = false;
-        //PreparePlayerSpells();
-        //playerScript.testowyBool = false;
+        PreparePlayerSpells();
     }
 
-    [Server]
     public void SetDisplayName(string displayName)
     {
         this.displayName = displayName;
@@ -57,8 +54,7 @@ public class NetworkPlayer : NetworkBehaviour
         playerScore++;
     }
 
-    [Server]
-    public void PreparePlayerSpells()
+    private void PreparePlayerSpells()
     {
         playerScript.IsMeteorBought = false;
     }
@@ -70,8 +66,6 @@ public class NetworkPlayer : NetworkBehaviour
         {
             TargetTest();
         }
-        // Debug.Log(spellBought);
-        // TargetTest();  
     }
 
     //If the first parameter of your TargetRpc method is a NetworkConnection then that's the connection that will receive the message regardless of context.

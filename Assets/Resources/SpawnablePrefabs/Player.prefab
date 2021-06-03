@@ -437,6 +437,7 @@ MonoBehaviour:
   playerNameText: {fileID: 6791899738333737499}
   playerName: 
   playerColor: {r: 1, g: 1, b: 1, a: 1}
+  IsMeteorBought: 1
 --- !u!114 &8071847983670555214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,9 +502,9 @@ MonoBehaviour:
   syncInterval: 0.1
   fireballPrefab: {fileID: 6187910128149532311, guid: 9ccfa4ec2ee7b354abd4aa2067f371fa,
     type: 3}
+  spawnLocation: {fileID: 3784797328459715476}
   speed: 7
   fireballCooldown: 0.5
-  spawnLocation: {fileID: 3784797328459715476}
 --- !u!114 &-5924406194954916334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,7 +512,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2240174198917530758}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8ab0f96458a01a468b7ad67935993d0, type: 3}
   m_Name: 
@@ -520,6 +521,7 @@ MonoBehaviour:
   syncInterval: 0.1
   magicMisslePrefab: {fileID: 370511022442885530, guid: 0b3f3e09ee1183c438ce407ef8e4e25f,
     type: 3}
+  spawnLocation: {fileID: 3784797328459715476}
   speed: 10
   magicMissleCooldown: 2
 --- !u!114 &3812387528697924627
@@ -529,7 +531,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2240174198917530758}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 708941a06a6d66b4aaee13f278de5533, type: 3}
   m_Name: 
@@ -566,7 +568,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2240174198917530758}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8287f521f76df444a83e264ce73461fc, type: 3}
   m_Name: 
