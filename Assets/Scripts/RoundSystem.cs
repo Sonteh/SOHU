@@ -108,11 +108,11 @@ public class RoundSystem : NetworkBehaviour
         StartCoroutine(ShowShop());
     }
 
-    [Command]
-    private void CmdStartCoroutine()
-    {
-        StartCoroutine(ShowShop());
-    }
+    // [Command]
+    // private void CmdStartCoroutine()
+    // {
+    //     StartCoroutine(ShowShop());
+    // }
 
     [ClientRpc]
     private void RpcStartCountdown()
@@ -128,7 +128,7 @@ public class RoundSystem : NetworkBehaviour
 
     private IEnumerator ShowShop()
     {
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(8);
         
         Room.StartGame();
     }

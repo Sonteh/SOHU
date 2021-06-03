@@ -108,8 +108,6 @@ public class NetworkRoom : NetworkBehaviour
         for (int i = 0; i < Room.RoomPlayers.Count; i++)
         {
             arenaTitle.text = Room.RoomPlayers[0].Arena ? "Arena02" : "Arena01";
-            Debug.Log("ARENA TITLE");
-            Debug.Log(arenaTitle.text);
 
             if (Room.RoomPlayers[0].Arena == false)
             {
@@ -124,6 +122,7 @@ public class NetworkRoom : NetworkBehaviour
 
             if (Room.RoomPlayers[0].RoundAmount <= 0)
             {
+                Room.RoomPlayers[0].RoundAmount = 1;
                 amountOfRoundsDisplay.text = "1";
             }
             else

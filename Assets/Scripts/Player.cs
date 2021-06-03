@@ -12,6 +12,7 @@ public class Player : NetworkBehaviour
     [SyncVar(hook = nameof(OnColorChanged))]
     public Color playerColor = Color.white;
     private Material playerMaterialClone;
+    public bool testowyBool = false;
 
     private void OnNameChanged(string _Old, string _New) 
     {
@@ -35,6 +36,16 @@ public class Player : NetworkBehaviour
         Color color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
  
         CmdSetPlayerInfo(name, color);
+
+        //Debug.Log("Before IsSpellBough? : " + networkPlayer.IsSpellBought);
+        //Debug.Log("Test testowegoBoola: " + testowyBool);
+
+        // if (testowyBool)
+        // {
+        //     Debug.Log("After IsSpellBough? : " + networkPlayer.IsSpellBought);
+        //     Debug.Log("Test testowegoBoola: " + testowyBool);
+        //     GetComponent<RollingMeteor>().enabled = true;
+        // }
     }
 
     [Command]
@@ -42,5 +53,30 @@ public class Player : NetworkBehaviour
     {
         playerName = _name;
         playerColor = color;
+    }
+
+    private void Start() 
+    {
+        if (!hasAuthority) {return;}
+
+        //Debug.Log("Testowanie z Playera: " + networkPlayer.IsSpellBought);
+        Debug.Log("Testowanie z Playera: " + testowyBool);
+        if (testowyBool)
+        {
+            //Debug.Log("After IsSpellBough? : " + networkPlayer.IsSpellBought);
+            //Debug.Log("Test testowegoBoola: " + testowyBool);
+            GetComponent<RollingMeteor>().enabled = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (!hasAuthority) {return;}
+        //Debug.Log("Test testowegoBoola: " + testowyBool);
+
+        if (networkPlayer.IsSpellBought)
+        {
+            Debug.Log("Test");
+        }
     }
 }

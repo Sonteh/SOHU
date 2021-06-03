@@ -12,7 +12,7 @@ public class PlayerShop : NetworkBehaviour
     {
         if (!isLocalPlayer) {return;}
         
-        if (networkPlayer.IsShopTime == true)
+        if (networkPlayer.IsShopTime)
         {
             shopUI.SetActive(true);
         }
@@ -31,5 +31,11 @@ public class PlayerShop : NetworkBehaviour
     public void ShowPlayerShop()
     {    
         shopUI.SetActive(true);
+    }
+
+    [Command]
+    public void CmdBuySpell()
+    {
+        networkPlayer.PlayerBoughtSpell();
     }
 }
