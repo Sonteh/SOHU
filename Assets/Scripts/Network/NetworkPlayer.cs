@@ -13,8 +13,6 @@ public class NetworkPlayer : NetworkBehaviour
     public int playerScore = 0;
     [SyncVar]
     public bool IsShopTime = false;
-    public bool IsSpellBought = false;
-    //public RollingMeteor rollingMeteor;
 
     private Network room;
     private Network Room
@@ -23,24 +21,6 @@ public class NetworkPlayer : NetworkBehaviour
         {
             if (room != null) { return room; }
             return room = NetworkManager.singleton as Network;
-        }
-    }
-    private void Start()
-    {
-        if (!isLocalPlayer) {return;}
-
-        //rollingMeteor = player.GetComponent<RollingMeteor>();
-    }
-
-    private void Update() 
-    {
-        if (!isLocalPlayer) {return;}
-
-        Debug.Log("Update w NetworkPlayer : " + IsSpellBought);
-        
-        if (IsSpellBought)
-        {
-           // rollingMeteor.enabled = true;
         }
     }
 
@@ -60,7 +40,9 @@ public class NetworkPlayer : NetworkBehaviour
     public override void OnStartAuthority()
     {
         SetDisplayName(PlayerPrefs.GetString("PlayerName"));
-        playerScript.testowyBool = false;
+        playerScript.IsMeteorBought = false;
+        //PreparePlayerSpells();
+        //playerScript.testowyBool = false;
     }
 
     [Server]
@@ -76,18 +58,20 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [Server]
-    public void PlayerBoughtSpell()
+    public void PreparePlayerSpells()
     {
+        playerScript.IsMeteorBought = false;
+    }
 
-        Debug.Log("IsSpellBought from Network Player before: " + IsSpellBought);
-        IsSpellBought = true;
-        Debug.Log("IsSpellBought from Network Player after: " + IsSpellBought);
-        //playerScript.testowyBool = true;
-        // Debug.Log("testoswyBool from Network Player before: " + playerScript.testowyBool);
-        // playerScript.testowyBool = true;
-        // Debug.Log("testoswyBool from Network Player after: " + playerScript.testowyBool);
-        //CmdUpdateBool();
-        TargetTest();
+    [Server]
+    public void PlayerBoughtSpell(string spellBought)
+    {
+        if (spellBought == "MeteorBuyButton")
+        {
+            TargetTest();
+        }
+        // Debug.Log(spellBought);
+        // TargetTest();  
     }
 
     //If the first parameter of your TargetRpc method is a NetworkConnection then that's the connection that will receive the message regardless of context.
@@ -95,12 +79,6 @@ public class NetworkPlayer : NetworkBehaviour
     [TargetRpc]
     public void TargetTest()
     {
-        playerScript.testowyBool = true;
+        playerScript.IsMeteorBought = true;
     }
-
-    // [Command]
-    // private void CmdUpdateBool()
-    // {
-    //     playerScript.testowyBool = true;
-    // }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using UnityEngine.EventSystems;
 
 public class PlayerShop : NetworkBehaviour
 {
@@ -14,7 +15,7 @@ public class PlayerShop : NetworkBehaviour
         
         if (networkPlayer.IsShopTime)
         {
-            shopUI.SetActive(true);
+            ShowPlayerShop();
         }
         else
         {
@@ -33,9 +34,18 @@ public class PlayerShop : NetworkBehaviour
         shopUI.SetActive(true);
     }
 
-    [Command]
-    public void CmdBuySpell()
+    public void SpellBuyButtonName()
     {
-        networkPlayer.PlayerBoughtSpell();
+        string nameOfBoughtSpell = EventSystem.current.currentSelectedGameObject.name;
+        CmdBuySpell(nameOfBoughtSpell);
+    }
+
+    [Command]
+    private void CmdBuySpell(string nameOfBoughtSpell)
+    {
+        //string spellBought = EventSystem.current.currentSelectedGameObject.name;
+        //Debug.Log("Nazwa przycisku: " + spellBought);
+        // networkPlayer.PlayerBoughtSpell(spellBought);
+        networkPlayer.PlayerBoughtSpell(nameOfBoughtSpell);
     }
 }
