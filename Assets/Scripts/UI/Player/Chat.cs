@@ -1,13 +1,18 @@
 ﻿using Mirror;
 using System;
-using TMPro;
+//using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Chat : NetworkBehaviour
 {
+    // [SerializeField] private GameObject chatUI = null;
+    // [SerializeField] privTMP_Text chatText = null;
+    // [SerializeField] private TMP_InputField inputField = null;
+
     [SerializeField] private GameObject chatUI = null;
-    [SerializeField] private TMP_Text chatText = null;
-    [SerializeField] private TMP_InputField inputField = null;
+    [SerializeField] private Text chatText = null;
+    [SerializeField] private InputField inputField = null;
 
     private static event Action<string> OnMessage;
 
@@ -28,8 +33,8 @@ public class Chat : NetworkBehaviour
 
     private void HandleNewMessage(string message)
     {
-        //chatText.text += message;
-        chatText.SetText(message);
+        chatText.text += message;
+        //chatText.SetText(message);
         Debug.Log("ADDING TO CHAT " + message);
     }
 
