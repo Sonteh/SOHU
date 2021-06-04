@@ -8,22 +8,17 @@ public class Chat : NetworkBehaviour
     [SerializeField] private Text chatText = null;
     [SerializeField] private InputField inputField = null;
     [SerializeField] private GameObject canvas = null;
-    public static bool isChatActive = true;
+    public static bool isChatActive = false;
 
-    //TESTING
-    //public float liveTime = 0.0f;
-    //TESTING
+    [SerializeField] private GameObject scrollView = null;
+    [SerializeField] private GameObject inputFieldObject = null;
+    public float liveTime = 0.0f;
 
     private static event Action<string> OnMessage;
 
     public override void OnStartAuthority()
     {
         canvas.SetActive(true);
-
-        //TESTING
-        //liveTime = Time.time;
-        //TESTING
-
         OnMessage += HandleNewMessage;
     }
 
@@ -33,23 +28,26 @@ public class Chat : NetworkBehaviour
 
         if(Input.GetKeyDown(KeyCode.Return))
         {
-            canvas.SetActive(true);
+            scrollView.SetActive(true);
+            inputFieldObject.SetActive(true);
+            inputField.ActivateInputField();
             isChatActive = true;
         }
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            canvas.SetActive(false);
+            scrollView.SetActive(false);
+            inputFieldObject.SetActive(false);
             isChatActive = false;
         }
-        Debug.Log(isChatActive);
+        if (isChatActive == true)
+        {
+            liveTime = Time.time + 1.0f;
+        }
 
-        //TESTING
-        // if (Time.time - liveTime > 5.0f)
-        // {
-        //     canvas.SetActive(false);
-        // }
-        // Debug.Log("LIVE TIME"+liveTime);
-        //TESTING
+        if (Time.time - liveTime > 0.0f)
+        {
+            scrollView.SetActive(false);
+        }
     }
 
     [ClientCallback]
@@ -62,11 +60,10 @@ public class Chat : NetworkBehaviour
 
     private void HandleNewMessage(string message)
     {
-        //TESTING
-        // liveTime = Time.time + 5.0f; 
-        // canvas.SetActive(true);
-        //TESTING
         chatText.text += message;
+
+        scrollView.SetActive(true);
+        liveTime = Time.time + 5.0f; 
     }
 
     [Client]
@@ -76,7 +73,6 @@ public class Chat : NetworkBehaviour
         if (string.IsNullOrWhiteSpace(inputField.text)) { return; }
         CmdSendMessage(inputField.text);
         inputField.text = string.Empty;
-        
     }
 
     [Command]
