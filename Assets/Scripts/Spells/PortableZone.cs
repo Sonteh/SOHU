@@ -16,7 +16,7 @@ public class PortableZone : NetworkBehaviour
     {
         if (!hasAuthority) {return;}
         
-        if (Input.GetKeyDown("2") && Time.time > canUsePortableZone)
+        if (Input.GetKeyDown("2") && Time.time > canUsePortableZone && Chat.isChatActive == false)
         {
             canUsePortableZone =  portableZoneCooldown + Time.time;
             Vector3 mousePosition = GetPlayerMousePosition();

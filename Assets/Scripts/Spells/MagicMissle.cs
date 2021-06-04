@@ -13,7 +13,7 @@ public class MagicMissle : NetworkBehaviour
         //if (!isLocalPlayer) {return;}
         if (!hasAuthority) {return;}
         
-        if (Input.GetButtonDown("MagicMissle"))
+        if (Input.GetButtonDown("MagicMissle") && Chat.isChatActive == false)
         {
             Vector3 mousePosition = GetPlayerMouseDirection();
             canUseMagicMissle =  magicMissleCooldown + Time.time;

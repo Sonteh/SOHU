@@ -8,12 +8,21 @@ public class Chat : NetworkBehaviour
     [SerializeField] private Text chatText = null;
     [SerializeField] private InputField inputField = null;
     [SerializeField] private GameObject canvas = null;
+    public static bool isChatActive = true;
+
+    //TESTING
+    //public float liveTime = 0.0f;
+    //TESTING
 
     private static event Action<string> OnMessage;
 
     public override void OnStartAuthority()
     {
         canvas.SetActive(true);
+
+        //TESTING
+        //liveTime = Time.time;
+        //TESTING
 
         OnMessage += HandleNewMessage;
     }
@@ -25,11 +34,22 @@ public class Chat : NetworkBehaviour
         if(Input.GetKeyDown(KeyCode.Return))
         {
             canvas.SetActive(true);
+            isChatActive = true;
         }
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             canvas.SetActive(false);
+            isChatActive = false;
         }
+        Debug.Log(isChatActive);
+
+        //TESTING
+        // if (Time.time - liveTime > 5.0f)
+        // {
+        //     canvas.SetActive(false);
+        // }
+        // Debug.Log("LIVE TIME"+liveTime);
+        //TESTING
     }
 
     [ClientCallback]
@@ -42,6 +62,10 @@ public class Chat : NetworkBehaviour
 
     private void HandleNewMessage(string message)
     {
+        //TESTING
+        // liveTime = Time.time + 5.0f; 
+        // canvas.SetActive(true);
+        //TESTING
         chatText.text += message;
     }
 
@@ -52,6 +76,7 @@ public class Chat : NetworkBehaviour
         if (string.IsNullOrWhiteSpace(inputField.text)) { return; }
         CmdSendMessage(inputField.text);
         inputField.text = string.Empty;
+        
     }
 
     [Command]

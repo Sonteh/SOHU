@@ -14,7 +14,7 @@ public class TacticalRecall : NetworkBehaviour
     {
         if (!hasAuthority) {return;}
         
-        if (Input.GetKeyDown("r") && Time.time > canUseTacticalRecall)
+        if (Input.GetKeyDown("r") && Time.time > canUseTacticalRecall && Chat.isChatActive == false)
         {
             canUseTacticalRecall =  tacticalRecallCooldown + Time.time;
             CmdUseTacticalRecall();

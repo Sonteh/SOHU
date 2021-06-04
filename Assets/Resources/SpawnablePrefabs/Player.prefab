@@ -729,6 +729,7 @@ MonoBehaviour:
   chatText: {fileID: 5817793406183085450}
   inputField: {fileID: 6564830612165814132}
   canvas: {fileID: 2930557289944677495}
+  liveTime: 0
 --- !u!1 &2255712706267758122
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,8 +991,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.098000005, y: 0.085}
   m_AnchorMax: {x: 1, y: 0.19754842}
-  m_AnchoredPosition: {x: 0.0004272461, y: 1.3739014}
-  m_SizeDelta: {x: -0.5661316, y: -2.7874587}
+  m_AnchoredPosition: {x: 0.0004272461, y: 1.3736583}
+  m_SizeDelta: {x: -0.5661316, y: -10.487995}
   m_Pivot: {x: 1, y: 0.1}
 --- !u!222 &4386524536623181087
 CanvasRenderer:
@@ -1231,7 +1232,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -23.566437, y: 0}
+  m_SizeDelta: {x: -20.453583, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7743254881667884510
 CanvasRenderer:
@@ -1603,7 +1604,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3078957818483615477}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.9962547
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1715,7 +1716,7 @@ RectTransform:
   m_Father: {fileID: 7416246727523595629}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.0037453175}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}

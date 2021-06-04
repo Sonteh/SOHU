@@ -15,7 +15,7 @@ public class RollingMeteor : NetworkBehaviour
     {
         if (!hasAuthority) {return;}
 
-        if (Input.GetKeyDown("1") && Time.time > canUseRollingMeteor)
+        if (Input.GetKeyDown("1") && Time.time > canUseRollingMeteor && Chat.isChatActive == false)
         {
             canUseRollingMeteor = rollingMeteorCooldown + Time.time;
             Vector3 mouseDirection = GetPlayerMouseDirection();

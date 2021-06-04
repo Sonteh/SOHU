@@ -10,13 +10,13 @@ public class Fireball : NetworkBehaviour
     [SerializeField] private float fireballCooldown = 0.5f;
     [SerializeField] private GameObject spawnLocation;
     private float canUseFireball = -1.0f;
-    
+
     private void Update() 
     {
         //if (!isLocalPlayer) {return;}
         if (!hasAuthority) {return;}
 
-        if (Input.GetButtonDown("Fireball") && Time.time > canUseFireball)
+        if (Input.GetButtonDown("Fireball") && Time.time > canUseFireball && Chat.isChatActive == false)
         {
             canUseFireball = fireballCooldown + Time.time;
             Vector3 mouseDirection = GetPlayerMouseDirection();
