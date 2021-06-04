@@ -437,7 +437,10 @@ MonoBehaviour:
   playerNameText: {fileID: 6791899738333737499}
   playerName: 
   playerColor: {r: 1, g: 1, b: 1, a: 1}
-  IsMeteorBought: 1
+  IsMagicMissleBought: 0
+  IsMeteorBought: 0
+  IsPortableZoneBought: 0
+  IsRecallBought: 0
 --- !u!114 &8071847983670555214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,8 +506,10 @@ MonoBehaviour:
   fireballPrefab: {fileID: 6187910128149532311, guid: 9ccfa4ec2ee7b354abd4aa2067f371fa,
     type: 3}
   spawnLocation: {fileID: 3784797328459715476}
+  playerUI: {fileID: 7759362165135734161, guid: d4b358e505a8e41a4a01acb404593f56,
+    type: 3}
   speed: 7
-  fireballCooldown: 0.5
+  fireballCooldown: 2
 --- !u!114 &-5924406194954916334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,7 +545,6 @@ MonoBehaviour:
   syncInterval: 0.1
   tacticalRecallPrefab: {fileID: 4088538914222714413, guid: 3f6e93ad88a77334a8ae7e49bb41b8d9,
     type: 3}
-  speed: 10
   tacticalRecallCooldown: 2
 --- !u!114 &1329919760385669758
 MonoBehaviour:
@@ -577,7 +581,6 @@ MonoBehaviour:
   syncInterval: 0.1
   portableZonePrefab: {fileID: 8335946808304490518, guid: 4fa78c5ca29b4f34bae71a892349290d,
     type: 3}
-  speed: 10
   portableZoneCooldown: 2
 --- !u!1 &2665291622024475613
 GameObject:

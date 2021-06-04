@@ -5,21 +5,57 @@ public class Fireball : NetworkBehaviour
 {
     [SerializeField] private GameObject fireballPrefab;
     [SerializeField] private GameObject spawnLocation;
+    [SerializeField] private PlayerUI playerUI;
     [SerializeField] private float speed = 7.0f;
-    [SerializeField] private float fireballCooldown = 0.5f;
+    [SerializeField] private float fireballCooldown = 2.0f;
     private float canUseFireball = -1.0f;
+    //public float testowyFireball = 0f;
+
+    private void Start()
+    {
+        //playerUI.fireballCooldown = 0f;
+        //Debug.Log("Fireball cooldown from Fireball: " + playerUI.fireballCooldown);
+        //playerUI.fireballImage.fillAmount = 1.0f;
+        //playerUI.fireballImage.fillAmount = 1.0f;
+        // Debug.Log("testowy fill: " + playerUI.fireballImage.fillAmount);
+    }
     
     private void Update() 
     {
         if (!hasAuthority) {return;}
-
+        //playerUI.coolingDown = false;
+        //playerUI.fireballImage.fillAmount = 0f;
+        //Debug.Log(playerUI.fireballImage.fillAmount);
         if (Input.GetButtonDown("Fireball") && Time.time > canUseFireball)
         {
             canUseFireball = fireballCooldown + Time.time;
+            
+            //playerUI.fireballImage.fillAmount = 0f;
+            //TargetFillAmount();
+            //TargetTestowyCooldown(canUseFireball);
             Vector3 mouseDirection = GetPlayerMouseDirection();
             CmdUseFireball(mouseDirection);
         }
     }
+
+    // [TargetRpc]
+    // private void TargetTestowyCooldown(float fireballCooldown)
+    // {
+    //     //playerUI
+    //    // playerUI.UpdateFireball(fireballCooldown);
+    //     playerUI.coolingDown = true;
+    //     Debug.Log("Cooling down = " + playerUI.coolingDown);
+    //     Debug.Log("Fireball cooldown from Fireball: " + Time.time + " ------------ " + fireballCooldown);
+    // }
+
+    // [TargetRpc]
+    // private void TargetFillAmount()
+    // {
+    //     //playerUI.fireballImage.fillAmount = 0f;
+    //     playerUI.UpdateFireball(0f);
+        
+    //     //Debug.Log("fill = " + playerUI.fireballImage.fillAmount);
+    // }
 
     private void OnTriggerEnter(Collider collider) 
     {

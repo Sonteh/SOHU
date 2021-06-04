@@ -43,9 +43,6 @@ public class PlayerShop : NetworkBehaviour
     [Command]
     private void CmdBuySpell(string nameOfBoughtSpell)
     {
-        //string spellBought = EventSystem.current.currentSelectedGameObject.name;
-        //Debug.Log("Nazwa przycisku: " + spellBought);
-        // networkPlayer.PlayerBoughtSpell(spellBought);
         networkPlayer.PlayerBoughtSpell(nameOfBoughtSpell);
     }
 }
