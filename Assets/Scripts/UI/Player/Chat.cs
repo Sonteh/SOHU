@@ -11,7 +11,6 @@ public class Chat : NetworkBehaviour
 
     private static event Action<string> OnMessage;
 
-    // Called when the a client is connected to the server
     public override void OnStartAuthority()
     {
         canvas.SetActive(true);
@@ -19,7 +18,20 @@ public class Chat : NetworkBehaviour
         OnMessage += HandleNewMessage;
     }
 
-    // Called when a client has exited the server
+    private void Update()
+    {
+        if (!hasAuthority) {return;}
+
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            canvas.SetActive(true);
+        }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            canvas.SetActive(false);
+        }
+    }
+
     [ClientCallback]
     private void OnDestroy()
     {
@@ -28,13 +40,11 @@ public class Chat : NetworkBehaviour
         OnMessage -= HandleNewMessage;
     }
 
-    // When a new message is added, update the Scroll View's Text to include the new message
     private void HandleNewMessage(string message)
     {
         chatText.text += message;
     }
 
-    // When a client hits the enter button, send the message in the InputField
     [Client]
     public void Send()
     {
