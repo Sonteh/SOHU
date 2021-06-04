@@ -129,11 +129,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  health: {fileID: 8071847983670555214, guid: 860dd37201f402a48b80e92b92e5e4a5, type: 3}
+  healthBarImage: {fileID: 2229935869757938436}
   fireball: {fileID: -6743519811537838179, guid: 860dd37201f402a48b80e92b92e5e4a5,
     type: 3}
   fireballImage: {fileID: 8366110487120982939}
-  fireballCooldown: 0
-  coolingDown: 0
 --- !u!1001 &1860070544377053696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -564,6 +564,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3563951505476879744}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2229935869757938436 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3424954364374670980, guid: 0a204abd1c364ed4ebca60670a6b4284,
+    type: 3}
+  m_PrefabInstance: {fileID: 3563951505476879744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8366110487120982939 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5003453192817554971, guid: 0a204abd1c364ed4ebca60670a6b4284,

@@ -6,8 +6,10 @@ public class Health : NetworkBehaviour
     [Header("Settings")]
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] NetworkPlayer networkPlayer;
+    [SerializeField] PlayerUI playerUI;
     private float damage;
-    [SyncVar] private float currentHealth;
+    [SyncVar]
+    private float currentHealth;
     public delegate void HealthUpdateDelegate(float currentHealth, float maxHealth);
     public event HealthUpdateDelegate EventHealthUpdate;
     GameObject roundSystem;
@@ -30,6 +32,7 @@ public class Health : NetworkBehaviour
     private void CmdDealDamage(float value)
     {
         SetHealth(Mathf.Max(currentHealth - value, 0));
+        //playerUI.PlayerHealthBar(currentHealth);
 
         if (currentHealth == 0f)
         {
