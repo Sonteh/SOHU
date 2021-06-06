@@ -460,6 +460,7 @@ MonoBehaviour:
     type: 3}
   playerUI: {fileID: 7759362165135734161, guid: d4b358e505a8e41a4a01acb404593f56,
     type: 3}
+  currentHealth: 0
 --- !u!114 &1399352681072322890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,6 +477,8 @@ MonoBehaviour:
   syncInterval: 0.1
   health: {fileID: 8071847983670555214}
   healthBarImage: {fileID: 5186801889693042723}
+  playerUI: {fileID: 7759362165135734161, guid: d4b358e505a8e41a4a01acb404593f56,
+    type: 3}
 --- !u!114 &5894045264240942174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,7 +513,7 @@ MonoBehaviour:
   spawnLocation: {fileID: 3784797328459715476}
   playerUI: {fileID: 7759362165135734161, guid: d4b358e505a8e41a4a01acb404593f56,
     type: 3}
-  speed: 7
+  speed: 13
   fireballCooldown: 2
 --- !u!114 &-5924406194954916334
 MonoBehaviour:

@@ -1,11 +1,13 @@
 ﻿using Mirror;
 using UnityEngine;
+using System;
 
 public class NetworkPlayer : NetworkBehaviour
 {
     [SerializeField] private RoundSystem roundSystem;
     [SerializeField] private GameObject player;
     [SerializeField] private Player playerScript;
+    [SerializeField] private GameObject playerUIObject;
  
     [SyncVar]
     public string displayName = "Loading...";
@@ -41,6 +43,8 @@ public class NetworkPlayer : NetworkBehaviour
     {
         SetDisplayName(PlayerPrefs.GetString("PlayerName"));
         PreparePlayerSpells();
+        NetworkServer.Spawn(playerUIObject, connectionToClient);
+        playerUIObject.SetActive(true);
     }
 
     public void SetDisplayName(string displayName)

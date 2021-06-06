@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
 using Mirror;
+using System;
 
 public class Health : NetworkBehaviour 
 {
     [Header("Settings")]
-    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] public float maxHealth = 100f;
     [SerializeField] NetworkPlayer networkPlayer;
     [SerializeField] PlayerUI playerUI;
     private float damage;
-    [SyncVar]
-    private float currentHealth;
+    GameObject roundSystem;
+    [SyncVar] 
+    public float currentHealth;
     public delegate void HealthUpdateDelegate(float currentHealth, float maxHealth);
     public event HealthUpdateDelegate EventHealthUpdate;
-    GameObject roundSystem;
     
     private void Start()
     {
@@ -23,16 +24,22 @@ public class Health : NetworkBehaviour
     private void SetHealth(float value)
     {
         currentHealth = value;
+        //playerUI.SetPlayerHealth(currentHealth, maxHealth);
+        //playerUI.SetPlayerHealth(currentHealth);
         EventHealthUpdate?.Invoke(currentHealth, maxHealth);
     }
 
-    public override void OnStartServer() => SetHealth(maxHealth);
+    public override void OnStartServer()
+    {
+        SetHealth(maxHealth);
+    }
 
     [Command]
     private void CmdDealDamage(float value)
     {
         SetHealth(Mathf.Max(currentHealth - value, 0));
-        //playerUI.PlayerHealthBar(currentHealth);
+        //TargetSendHealth(Mathf.Max(currentHealth - value, 0));
+        playerUI.UpdateHealth(connectionToClient, Mathf.Max(currentHealth - value, 0));
 
         if (currentHealth == 0f)
         {
@@ -41,15 +48,11 @@ public class Health : NetworkBehaviour
         }
     }
 
-    [ClientCallback]
-    private void Update()
-    {
-        if(!hasAuthority) {return;}
-    }
-
     [ClientRpc]
     private void RpcOnDeath()
     {
+        //Transform playerModel = gameObject.transform.Find("Player_animated");
+        //playerModel.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
     

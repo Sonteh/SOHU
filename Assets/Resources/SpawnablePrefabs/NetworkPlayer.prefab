@@ -73,6 +73,7 @@ MonoBehaviour:
   player: {fileID: 2240174198917530758, guid: 860dd37201f402a48b80e92b92e5e4a5, type: 3}
   playerScript: {fileID: -7441520618668634939, guid: 860dd37201f402a48b80e92b92e5e4a5,
     type: 3}
+  playerUIObject: {fileID: 3722017212160414243}
   displayName: Loading...
   playerScore: 0
   IsShopTime: 0
@@ -496,6 +497,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerUI
       objectReference: {fileID: 0}
+    - target: {fileID: 203490936785541027, guid: 0a204abd1c364ed4ebca60670a6b4284,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3997381522070188123, guid: 0a204abd1c364ed4ebca60670a6b4284,
         type: 3}
       propertyPath: m_RootOrder
@@ -558,6 +564,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a204abd1c364ed4ebca60670a6b4284, type: 3}
+--- !u!1 &3722017212160414243 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 203490936785541027, guid: 0a204abd1c364ed4ebca60670a6b4284,
+    type: 3}
+  m_PrefabInstance: {fileID: 3563951505476879744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &435791787167004123 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3997381522070188123, guid: 0a204abd1c364ed4ebca60670a6b4284,

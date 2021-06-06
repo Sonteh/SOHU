@@ -10,12 +10,12 @@ public class HealthDisplay : NetworkBehaviour
 
     private void OnEnable() 
     {
-        health.EventHealthUpdate += HandleHealthChanged;                
+        health.EventHealthUpdate += HandleHealthChanged;             
     }
 
     private void OnDisable() 
     {
-        health.EventHealthUpdate += HandleHealthChanged;
+        health.EventHealthUpdate -= HandleHealthChanged;
     }
 
     [ClientRpc]
