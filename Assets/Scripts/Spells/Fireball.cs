@@ -13,8 +13,8 @@ public class Fireball : NetworkBehaviour
     private void Update() 
     {
         if (!hasAuthority) {return;}
- 
-        if (Input.GetButtonDown("Fireball") && Time.time > canUseFireball)
+
+        if (Input.GetButtonDown("Fireball") && Time.time > canUseFireball && Chat.isChatActive == false)
         {
             canUseFireball = fireballCooldown + Time.time;
             Vector3 mouseDirection = GetPlayerMouseDirection();

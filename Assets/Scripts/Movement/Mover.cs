@@ -42,7 +42,7 @@ public class Mover : NetworkBehaviour
             animator.SetFloat("movement", 0);
         }
 
-        if (Input.GetButton("Fireball"))
+        if (Input.GetButton("Fireball") && Chat.isChatActive == false)
         {
             animator.SetTrigger("useSpell");
         }
