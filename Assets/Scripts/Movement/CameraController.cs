@@ -10,22 +10,22 @@ public class CameraController : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBorderThickness)
         {
             pos.x += panSpeed * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow) || Input.mousePosition.y <= panBorderThickness)
         {
             pos.x -= panSpeed * Time.deltaTime;
         }
 
-        if (Input.GetKey((KeyCode.LeftArrow)))
+        if (Input.GetKey((KeyCode.LeftArrow)) || Input.mousePosition.x <= panBorderThickness)
         {
             pos.z += panSpeed * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x >= Screen.width - panBorderThickness)
         {
             pos.z -= panSpeed * Time.deltaTime;
         }

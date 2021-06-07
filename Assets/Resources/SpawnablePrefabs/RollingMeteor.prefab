@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4918219046846586337}
   - component: {fileID: 3571717834662298191}
   - component: {fileID: -7168549341550892679}
+  - component: {fileID: -8247352358189099631}
   - component: {fileID: 4698443195122197742}
   m_Layer: 0
   m_Name: RollingMeteor
@@ -128,6 +129,38 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-8247352358189099631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6292829246202993604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6e8001e79980341af98dc404133ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  _useLocalSpace: 1
+  _intervalType: 0
+  _synchronizeInterval: 0.1
+  _reliable: 1
+  _resendUnreliable: 0
+  _smoothingLoop: 1
+  _interpolationFallbehind: 0.06
+  _extrapolationSpan: 0
+  _teleportThreshold: 0
+  _clientAuthoritative: 1
+  _synchronizeToOwner: 1
+  _compressSmall: 1
+  _synchronizePosition: 0
+  _snapPosition: 0
+  _synchronizeRotation: 0
+  _snapRotation: 0
+  _synchronizeScale: 0
+  _snapScale: 0
 --- !u!114 &4698443195122197742
 MonoBehaviour:
   m_ObjectHideFlags: 0

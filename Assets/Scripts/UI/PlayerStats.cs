@@ -9,8 +9,8 @@ public class PlayerStats : NetworkBehaviour
 {
     [SerializeField] private GameObject statsUI;
     //[SerializeField] private NetworkPlayer networkPlayer;
-    [SerializeField] private TMP_Text[] playerName = new TMP_Text[2];
-    [SerializeField] private TMP_Text[] playerScore = new TMP_Text[2]; 
+    [SerializeField] private TMP_Text[] playerName = new TMP_Text[8];
+    [SerializeField] private TMP_Text[] playerScore = new TMP_Text[8]; 
 
     [SyncVar(hook = nameof(HandlePlayerNickChanged))]
     public string playerDisplayName = "Player";

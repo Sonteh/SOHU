@@ -4768,9 +4768,9 @@ GameObject:
   - component: {fileID: 7425627789859190611}
   - component: {fileID: 2620474415804582308}
   - component: {fileID: -8086308129540841164}
+  - component: {fileID: -5779379993052905448}
   - component: {fileID: 9132340151680192072}
   - component: {fileID: 1919479224320526600}
-  - component: {fileID: 9012533875775348140}
   m_Layer: 0
   m_Name: PortableZone
   m_TagString: Zone
@@ -4848,10 +4848,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8335946808304490518}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &2620474415804582308
@@ -4886,6 +4886,38 @@ MonoBehaviour:
   serverOnly: 0
   m_AssetId: 
   hasSpawned: 0
+--- !u!114 &-5779379993052905448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8335946808304490518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6e8001e79980341af98dc404133ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  _useLocalSpace: 1
+  _intervalType: 0
+  _synchronizeInterval: 0.1
+  _reliable: 1
+  _resendUnreliable: 0
+  _smoothingLoop: 1
+  _interpolationFallbehind: 0.06
+  _extrapolationSpan: 0
+  _teleportThreshold: 0
+  _clientAuthoritative: 1
+  _synchronizeToOwner: 1
+  _compressSmall: 1
+  _synchronizePosition: 0
+  _snapPosition: 0
+  _synchronizeRotation: 0
+  _snapRotation: 0
+  _synchronizeScale: 0
+  _snapScale: 0
 --- !u!114 &9132340151680192072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4914,19 +4946,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellDamage: 0
   spellOutOfRange: 5
---- !u!114 &9012533875775348140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8335946808304490518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  serverOnly: 0
-  m_AssetId: 
-  hasSpawned: 0

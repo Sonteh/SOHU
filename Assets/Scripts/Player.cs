@@ -33,7 +33,7 @@ public class Player : NetworkBehaviour
     public override void OnStartAuthority()
     {
         Vector3 playerPosition = transform.position;
-        Camera.main.transform.localPosition = new Vector3(playerPosition.x - 10, Camera.main.transform.localPosition.y, playerPosition.z); //Wycentrowanie kamery na gracza
+        Camera.main.transform.localPosition = new Vector3(playerPosition.x - 15, Camera.main.transform.localPosition.y, playerPosition.z); //Wycentrowanie kamery na gracza
 
         string name = PlayerPrefs.GetString("PlayerName");
         Color color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
@@ -70,6 +70,17 @@ public class Player : NetworkBehaviour
         if (IsRecallBought)
         {
             GetComponent<TacticalRecall>().enabled = true;
+        }
+    }
+
+    private void Update() {
+        
+        if (!hasAuthority) {return;}
+
+        if (Input.GetButtonDown("CenterCamera"))
+        {
+            Vector3 playerPosition = transform.position;
+            Camera.main.transform.localPosition = new Vector3(playerPosition.x - 15, Camera.main.transform.localPosition.y, playerPosition.z); //Wycentrowanie kamery na gracza
         }
     }
 }
