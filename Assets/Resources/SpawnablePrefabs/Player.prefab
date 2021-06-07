@@ -714,6 +714,7 @@ MonoBehaviour:
   canvas: {fileID: 2930557289944677495}
   scrollView: {fileID: 1540989161987655157}
   inputFieldObject: {fileID: 2255712706267758122}
+  player: {fileID: -7441520618668634939}
   liveTime: 0
 --- !u!1 &2255712706267758122
 GameObject:

@@ -12,7 +12,9 @@ public class Chat : NetworkBehaviour
 
     [SerializeField] private GameObject scrollView = null;
     [SerializeField] private GameObject inputFieldObject = null;
+    [SerializeField] private Player player;
     public float liveTime = 0.0f;
+    private string playerName;
 
     private static event Action<string> OnMessage;
 
@@ -20,6 +22,7 @@ public class Chat : NetworkBehaviour
     {
         canvas.SetActive(true);
         OnMessage += HandleNewMessage;
+        //playerName = PlayerPrefs.GetString("PlayerName");
     }
 
     private void Update()
@@ -79,7 +82,8 @@ public class Chat : NetworkBehaviour
     private void CmdSendMessage(string message)
     {
         // Validate message
-        RpcHandleMessage($"[{PlayerPrefs.GetString("PlayerName")}]: {message}");
+        //RpcHandleMessage($"[{PlayerPrefs.GetString("PlayerName")}]: {message}");
+        RpcHandleMessage($"[{player.playerName}]: {message}");
     }
 
     [ClientRpc]
