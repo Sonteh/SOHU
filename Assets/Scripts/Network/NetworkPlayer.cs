@@ -68,6 +68,12 @@ public class NetworkPlayer : NetworkBehaviour
         playerGold += goldAmount;
     }
 
+    [Server]
+    private void TakePlayerGold(int goldAmount)
+    {
+        playerGold -= goldAmount;
+    }
+
     private void PreparePlayerSpells()
     {
         playerScript.IsMeteorBought = false;
@@ -81,21 +87,25 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (spellBought == "MagicMissleBuyButton")
         {
+            TakePlayerGold(50);
             TargetMagicMissleBought();
         }
 
         if (spellBought == "MeteorBuyButton")
         {
+            TakePlayerGold(100);
             TargetMeteorBought();
         }
 
         if (spellBought == "PortableZoneBuyButton")
         {
+            TakePlayerGold(100);
             TargetPortableZoneBought();
         }
 
         if (spellBought == "RecallBuyButton")
         {
+            TakePlayerGold(50);
             TargetRecallBought();
         }
     }
