@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Mirror;
 using TMPro;
-using UnityEngine.UI;
 
 public class PlayerStats : NetworkBehaviour
 {
     [SerializeField] private GameObject statsUI;
-    //[SerializeField] private NetworkPlayer networkPlayer;
     [SerializeField] private TMP_Text[] playerName = new TMP_Text[8];
     [SerializeField] private TMP_Text[] playerScore = new TMP_Text[8]; 
     [SerializeField] private TMP_Text[] playerGold = new TMP_Text[8];
@@ -37,7 +33,6 @@ public class PlayerStats : NetworkBehaviour
 
     private void Update()
     {
-        
         if (!hasAuthority) {return;}
 
         if(Input.GetButton("Statistics"))

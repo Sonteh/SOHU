@@ -2,16 +2,20 @@
 using UnityEngine.UI;
 using Mirror;
 using System;
+using TMPro;
 
 public class PlayerUI : NetworkBehaviour
 {
     [SerializeField] private NetworkPlayer networkPlayer;
+    [SerializeField] private TMP_Text playerGold;
     [SerializeField] private Health health;
     [SerializeField] public Image healthBarImage;
     [SerializeField] private Fireball fireball;
     [SerializeField] private Image fireballImage;
     private float fireballCooldown = 1.0f;
     private bool coolingDown = false;
+    [SyncVar(hook = nameof(HandlePlayerGoldChanged))]
+    public int playerGoldAmount = 0;
 
     private Network room;
     private Network Room
@@ -23,9 +27,31 @@ public class PlayerUI : NetworkBehaviour
         }
     }
 
+    public void HandlePlayerGoldChanged(int oldPlayerGold, int newPlayerGold) => UpdatePlayerInfo();
+
+    private void UpdatePlayerInfo()
+    {
+        foreach (var player in Room.GamePlayers)
+        {
+            if (player.isLocalPlayer)
+            {
+                 
+                Debug.Log("PLAYER GOLD: " + player.playerGold);
+                playerGold.SetText(player.playerGold.ToString());
+            }
+        }
+    }
+
     private void Update()
     {
-        if (!isLocalPlayer) {return;}
+        if (!hasAuthority) {return;}
+
+
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            UpdatePlayerInfo();
+        }
 
         if ((Input.GetButtonDown("Fireball")) && fireballImage.fillAmount == 1.0f )
         {

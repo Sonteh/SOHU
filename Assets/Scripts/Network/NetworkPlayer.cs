@@ -45,6 +45,7 @@ public class NetworkPlayer : NetworkBehaviour
     public override void OnStartAuthority()
     {
         SetDisplayName(PlayerPrefs.GetString("PlayerName"));
+        //playerUI.playerGoldAmount = 0;
         PreparePlayerSpells();
 
         //NetworkServer.Spawn(playerUIObject, connectionToClient);
@@ -66,12 +67,14 @@ public class NetworkPlayer : NetworkBehaviour
     public void GivePlayerGold(int goldAmount)
     {
         playerGold += goldAmount;
+        playerUI.playerGoldAmount = playerGold;
     }
 
     [Server]
     private void TakePlayerGold(int goldAmount)
     {
         playerGold -= goldAmount;
+        playerUI.playerGoldAmount = playerGold;
     }
 
     private void PreparePlayerSpells()

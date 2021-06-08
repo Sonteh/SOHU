@@ -74,7 +74,7 @@ MonoBehaviour:
   playerScript: {fileID: -7441520618668634939, guid: 860dd37201f402a48b80e92b92e5e4a5,
     type: 3}
   playerUIObject: {fileID: 3722017212160414243}
-  playerUI: {fileID: 0}
+  playerUI: {fileID: 7759362165135734161}
   displayName: Loading...
   playerScore: 0
   IsShopTime: 0
@@ -155,11 +155,13 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   networkPlayer: {fileID: 5815379166993546133}
+  playerGold: {fileID: 8911885553011598067}
   health: {fileID: 8071847983670555214, guid: 860dd37201f402a48b80e92b92e5e4a5, type: 3}
   healthBarImage: {fileID: 2229935869757938436}
   fireball: {fileID: -6743519811537838179, guid: 860dd37201f402a48b80e92b92e5e4a5,
     type: 3}
   fireballImage: {fileID: 8366110487120982939}
+  playerGoldAmount: 0
 --- !u!1001 &1860070544377053696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -825,6 +827,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3563951505476879744}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &435791787167004123 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3997381522070188123, guid: 0a204abd1c364ed4ebca60670a6b4284,
+    type: 3}
+  m_PrefabInstance: {fileID: 3563951505476879744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2229935869757938436 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3424954364374670980, guid: 0a204abd1c364ed4ebca60670a6b4284,
@@ -849,9 +857,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &435791787167004123 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3997381522070188123, guid: 0a204abd1c364ed4ebca60670a6b4284,
+--- !u!114 &8911885553011598067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5393293321719916403, guid: 0a204abd1c364ed4ebca60670a6b4284,
     type: 3}
   m_PrefabInstance: {fileID: 3563951505476879744}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

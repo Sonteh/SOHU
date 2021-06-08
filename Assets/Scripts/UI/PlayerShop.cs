@@ -21,12 +21,6 @@ public class PlayerShop : NetworkBehaviour
         {
             shopUI.SetActive(false);
         }
-
-        if (Input.GetKey(KeyCode.P))
-        {
-            ShowPlayerShop();
-        }
-
     }
 
     public void ShowPlayerShop()
@@ -37,7 +31,7 @@ public class PlayerShop : NetworkBehaviour
     public void SpellBuyButtonName()
     {
         string nameOfBoughtSpell = EventSystem.current.currentSelectedGameObject.name;
-        
+
         if(nameOfBoughtSpell == "MagicMissleBuyButton" && networkPlayer.playerGold >= 50)
         {
             CmdBuySpell(nameOfBoughtSpell);
@@ -57,7 +51,6 @@ public class PlayerShop : NetworkBehaviour
         {
             CmdBuySpell(nameOfBoughtSpell);
         }
-        //CmdBuySpell(nameOfBoughtSpell);
     }
 
     [Command]
