@@ -24,8 +24,6 @@ public class Health : NetworkBehaviour
     private void SetHealth(float value)
     {
         currentHealth = value;
-        //playerUI.SetPlayerHealth(currentHealth, maxHealth);
-        //playerUI.SetPlayerHealth(currentHealth);
         EventHealthUpdate?.Invoke(currentHealth, maxHealth);
     }
 
@@ -38,8 +36,6 @@ public class Health : NetworkBehaviour
     private void CmdDealDamage(float value)
     {
         SetHealth(Mathf.Max(currentHealth - value, 0));
-        //TargetSendHealth(Mathf.Max(currentHealth - value, 0));
-        playerUI.UpdateHealth(connectionToClient, Mathf.Max(currentHealth - value, 0));
 
         if (currentHealth == 0f)
         {
@@ -51,8 +47,6 @@ public class Health : NetworkBehaviour
     [ClientRpc]
     private void RpcOnDeath()
     {
-        //Transform playerModel = gameObject.transform.Find("Player_animated");
-        //playerModel.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
     

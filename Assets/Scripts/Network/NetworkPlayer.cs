@@ -8,6 +8,7 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Player playerScript;
     [SerializeField] private GameObject playerUIObject;
+    [SerializeField] private PlayerUI playerUI;
  
     [SyncVar]
     public string displayName = "Loading...";
@@ -15,6 +16,8 @@ public class NetworkPlayer : NetworkBehaviour
     public int playerScore = 0;
     [SyncVar]
     public bool IsShopTime = false;
+    [SyncVar]
+    public int playerGold = 0;
 
     private Network room;
     private Network Room
@@ -43,7 +46,8 @@ public class NetworkPlayer : NetworkBehaviour
     {
         SetDisplayName(PlayerPrefs.GetString("PlayerName"));
         PreparePlayerSpells();
-        NetworkServer.Spawn(playerUIObject, connectionToClient);
+
+        //NetworkServer.Spawn(playerUIObject, connectionToClient);
         playerUIObject.SetActive(true);
     }
 
@@ -56,6 +60,12 @@ public class NetworkPlayer : NetworkBehaviour
     public void IncrementPlayerScore()
     {
         playerScore++;
+    }
+
+    [Server]
+    public void GivePlayerGold(int goldAmount)
+    {
+        playerGold += goldAmount;
     }
 
     private void PreparePlayerSpells()

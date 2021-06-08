@@ -616,6 +616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  player: {fileID: 2240174198917530758}
   fireballPrefab: {fileID: 6187910128149532311, guid: 9ccfa4ec2ee7b354abd4aa2067f371fa,
     type: 3}
   spawnLocation: {fileID: 3784797328459715476}
@@ -637,6 +638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  player: {fileID: 2240174198917530758}
   magicMisslePrefab: {fileID: 370511022442885530, guid: 0b3f3e09ee1183c438ce407ef8e4e25f,
     type: 3}
   spawnLocation: {fileID: 3784797328459715476}

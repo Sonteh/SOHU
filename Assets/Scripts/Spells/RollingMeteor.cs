@@ -40,12 +40,6 @@ public class RollingMeteor : NetworkBehaviour
 
         return mousePosition;
     }
-    
-    [Command]
-    void Destroy()
-    {
-            Destroy(gameObject);
-    }
 
     private Vector3 GetPlayerMouseDirection()
     {   

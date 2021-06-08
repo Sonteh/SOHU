@@ -71,6 +71,8 @@ public class RoundSystem : NetworkBehaviour
         {
             if (player.connectionToClient == connectionToClient)
             {
+                player.GivePlayerGold(50);
+                Debug.Log("PLAYER GOLD: " + player.playerGold);
                 remainingPlayers.Remove(player);
                 break;
             }
@@ -78,6 +80,8 @@ public class RoundSystem : NetworkBehaviour
         
         if (remainingPlayers.Count == 1)
         {
+            remainingPlayers[0].GivePlayerGold(100);
+            Debug.Log("PLAYER WINNER GOLD: " + remainingPlayers[0].playerGold);
             remainingPlayers[0].IncrementPlayerScore();
 
             foreach (var player in Room.GamePlayers)

@@ -3,6 +3,7 @@ using Mirror;
 
 public class Fireball : NetworkBehaviour
 {
+    [SerializeField] private GameObject player;
     [SerializeField] private GameObject fireballPrefab;
     [SerializeField] private GameObject spawnLocation;
     [SerializeField] private PlayerUI playerUI;
@@ -18,6 +19,10 @@ public class Fireball : NetworkBehaviour
         {
             canUseFireball = fireballCooldown + Time.time;
             Vector3 mouseDirection = GetPlayerMouseDirection();
+            Vector3 pointToLookAt = GetPointToLookAt();
+        
+            player.transform.LookAt(pointToLookAt);
+
             CmdUseFireball(mouseDirection);
         }
     }
@@ -30,6 +35,15 @@ public class Fireball : NetworkBehaviour
         }
     }
 
+    private Vector3 GetPointToLookAt()
+    {
+        Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        Physics.Raycast(cameraRay, out hit);
+
+        return new Vector3(hit.point.x, hit.point.y, hit.point.z);
+    }
+
     private Vector3 GetPlayerMousePosition()
     {
         RaycastHit hit;
@@ -38,12 +52,6 @@ public class Fireball : NetworkBehaviour
         Vector3 mousePosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
 
         return mousePosition;
-    }
-    
-    [Command]
-    void Destroy()
-    {
-            Destroy(gameObject);
     }
 
     private Vector3 GetPlayerMouseDirection()

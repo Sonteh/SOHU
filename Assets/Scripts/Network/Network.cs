@@ -165,10 +165,9 @@ public class Network : NetworkManager
             {
                 var conn = RoomPlayers[i].connectionToClient;
                 var gameplayerInstance = Instantiate(gamePlayerPrefab);
+                
                 gameplayerInstance.SetDisplayName(RoomPlayers[i].DisplayName);
-
                 NetworkServer.Destroy(conn.identity.gameObject);
-
                 NetworkServer.ReplacePlayerForConnection(conn, gameplayerInstance.gameObject);
             }
             

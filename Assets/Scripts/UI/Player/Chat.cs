@@ -22,7 +22,6 @@ public class Chat : NetworkBehaviour
     {
         canvas.SetActive(true);
         OnMessage += HandleNewMessage;
-        //playerName = PlayerPrefs.GetString("PlayerName");
     }
 
     private void Update()

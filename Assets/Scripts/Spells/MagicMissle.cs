@@ -3,6 +3,7 @@ using Mirror;
 
 public class MagicMissle : NetworkBehaviour
 {
+    [SerializeField] private GameObject player;
     [SerializeField] private GameObject magicMisslePrefab;
     [SerializeField] private GameObject spawnLocation;
     [SerializeField] private float speed = 10.0f;
@@ -17,6 +18,9 @@ public class MagicMissle : NetworkBehaviour
         {
             canUseMagicMissle =  magicMissleCooldown + Time.time;
             Vector3 mousePosition = GetPlayerMouseDirection();
+            Vector3 pointToLookAt = GetPointToLookAt();
+        
+            player.transform.LookAt(pointToLookAt);
             CmdUseMagicMissle(mousePosition);
         }
     }
@@ -27,6 +31,15 @@ public class MagicMissle : NetworkBehaviour
         {
             Destroy(collider.gameObject);
         }
+    }
+
+    private Vector3 GetPointToLookAt()
+    {
+        Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        Physics.Raycast(cameraRay, out hit);
+
+        return new Vector3(hit.point.x, hit.point.y, hit.point.z);
     }
 
     private Vector3 GetPlayerMousePosition()

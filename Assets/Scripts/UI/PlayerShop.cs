@@ -37,7 +37,27 @@ public class PlayerShop : NetworkBehaviour
     public void SpellBuyButtonName()
     {
         string nameOfBoughtSpell = EventSystem.current.currentSelectedGameObject.name;
-        CmdBuySpell(nameOfBoughtSpell);
+        
+        if(nameOfBoughtSpell == "MagicMissleBuyButton" && networkPlayer.playerGold >= 50)
+        {
+            CmdBuySpell(nameOfBoughtSpell);
+        }
+
+        if(nameOfBoughtSpell == "MeteorBuyButton" && networkPlayer.playerGold >= 100)
+        {
+            CmdBuySpell(nameOfBoughtSpell);
+        }
+
+        if(nameOfBoughtSpell == "PortableZoneBuyButton" && networkPlayer.playerGold >= 100)
+        {
+            CmdBuySpell(nameOfBoughtSpell);
+        }
+
+        if(nameOfBoughtSpell == "RecallBuyButton" && networkPlayer.playerGold >= 50)
+        {
+            CmdBuySpell(nameOfBoughtSpell);
+        }
+        //CmdBuySpell(nameOfBoughtSpell);
     }
 
     [Command]
