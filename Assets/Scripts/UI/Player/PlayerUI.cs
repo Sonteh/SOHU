@@ -35,8 +35,7 @@ public class PlayerUI : NetworkBehaviour
         {
             if (player.isLocalPlayer)
             {
-                 
-                Debug.Log("PLAYER GOLD: " + player.playerGold);
+                //Debug.Log("PLAYER GOLD: " + player.playerGold);
                 playerGold.SetText(player.playerGold.ToString());
             }
         }
@@ -45,8 +44,6 @@ public class PlayerUI : NetworkBehaviour
     private void Update()
     {
         if (!hasAuthority) {return;}
-
-
 
         if (Input.GetKeyDown(KeyCode.P))
         {
