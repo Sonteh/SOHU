@@ -31,7 +31,6 @@ public class NetworkPlayer : NetworkBehaviour
 
     public override void OnStartClient()
     {
-        Debug.Log("Game Player Add from OnStartClient");
         DontDestroyOnLoad(gameObject);
 
         Room.GamePlayers.Add(this);

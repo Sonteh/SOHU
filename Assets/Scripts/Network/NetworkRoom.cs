@@ -55,7 +55,7 @@ public class NetworkRoom : NetworkBehaviour
 
     public override void OnStartAuthority()
     {
-        Debug.Log(PlayerPrefs.GetString("PlayerName"));
+        //Debug.Log(PlayerPrefs.GetString("PlayerName"));
         //CmdSetDisplayName(PlayerName.displayName);
         CmdSetDisplayName(PlayerPrefs.GetString("PlayerName"));
 

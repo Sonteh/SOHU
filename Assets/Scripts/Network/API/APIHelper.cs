@@ -71,10 +71,10 @@ public class APIHelper
     {
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetUrl() + "/add");
 
-        Debug.Log("Inside");
-        Debug.Log(ip);
-        Debug.Log(host);
-        Debug.Log(map);
+        //Debug.Log("Inside");
+        //Debug.Log(ip);
+        //Debug.Log(host);
+        //Debug.Log(map);
 
         var postData = "IP=" + Uri.EscapeDataString(ip);
         postData += "&PlayerName=" + Uri.EscapeDataString(host);
@@ -108,9 +108,9 @@ public class APIHelper
     private static void GetIP()
     {
         string localComputerName = Dns.GetHostName();
-        Debug.Log(localComputerName);
+        //Debug.Log(localComputerName);
         IPAddress[] localIPs = Dns.GetHostAddresses("");
-        Debug.Log(localIPs[0]);
-        Debug.Log(localIPs[1]);
+       // Debug.Log(localIPs[0]);
+        //Debug.Log(localIPs[1]);
     }
 }
