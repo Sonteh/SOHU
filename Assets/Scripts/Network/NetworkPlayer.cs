@@ -48,7 +48,7 @@ public class NetworkPlayer : NetworkBehaviour
         PreparePlayerSpells();
 
         //NetworkServer.Spawn(playerUIObject, connectionToClient);
-        playerUIObject.SetActive(true);
+        //playerUIObject.SetActive(true);
     }
 
     public void SetDisplayName(string displayName)

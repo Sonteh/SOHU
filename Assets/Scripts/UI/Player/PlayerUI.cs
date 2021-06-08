@@ -7,6 +7,7 @@ using TMPro;
 public class PlayerUI : NetworkBehaviour
 {
     [SerializeField] private NetworkPlayer networkPlayer;
+    [SerializeField] private GameObject playerUI;
     [SerializeField] private TMP_Text playerGold;
     [SerializeField] private Health health;
     [SerializeField] public Image healthBarImage;
@@ -29,6 +30,11 @@ public class PlayerUI : NetworkBehaviour
 
     public void HandlePlayerGoldChanged(int oldPlayerGold, int newPlayerGold) => UpdatePlayerInfo();
 
+    public override void OnStartAuthority()
+    {
+        playerUI.SetActive(true);
+    }
+
     private void UpdatePlayerInfo()
     {
         foreach (var player in Room.GamePlayers)
@@ -43,7 +49,7 @@ public class PlayerUI : NetworkBehaviour
 
     private void Update()
     {
-        if (!hasAuthority) {return;}
+        if (!isLocalPlayer) {return;}
 
         if (Input.GetKeyDown(KeyCode.P))
         {

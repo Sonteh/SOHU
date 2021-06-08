@@ -353,6 +353,7 @@ GameObject:
   - component: {fileID: 5010205180361888974}
   - component: {fileID: 1978745086738250515}
   - component: {fileID: 6336972399014060102}
+  - component: {fileID: 2202363799538135985}
   m_Layer: 5
   m_Name: RecallPanel
   m_TagString: Untagged
@@ -418,6 +419,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2202363799538135985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174609550341121492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &285951392268885468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,6 +1487,7 @@ GameObject:
   - component: {fileID: 4082514644208023081}
   - component: {fileID: 6213742783528477668}
   - component: {fileID: 3532959756777052185}
+  - component: {fileID: 8679045264085327809}
   m_Layer: 5
   m_Name: MeteorPanel
   m_TagString: Untagged
@@ -1539,6 +1554,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8679045264085327809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415400845222076391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &4523291848594668681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1905,6 +1933,7 @@ GameObject:
   - component: {fileID: 810520325757436805}
   - component: {fileID: 8426430919805136905}
   - component: {fileID: 3768681178907323191}
+  - component: {fileID: 8814432195869775626}
   m_Layer: 5
   m_Name: MagicMisslePanel
   m_TagString: Untagged
@@ -1971,6 +2000,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8814432195869775626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5567483057135534480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &5629642154162321090
 GameObject:
   m_ObjectHideFlags: 0
@@ -2862,6 +2904,7 @@ GameObject:
   - component: {fileID: 3269417687910528270}
   - component: {fileID: 5906815054645645425}
   - component: {fileID: 5327110116122758939}
+  - component: {fileID: 5800497188046728152}
   m_Layer: 5
   m_Name: PortableZonePanel
   m_TagString: Untagged
@@ -2928,6 +2971,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5800497188046728152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120252802672644576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &8474060274674135123
 GameObject:
   m_ObjectHideFlags: 0
