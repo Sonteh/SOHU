@@ -8,6 +8,7 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Player playerScript;
     [SerializeField] private GameObject playerUIObject;
+    public UIScript uiScript;
     //[SerializeField] private PlayerUI playerUI;
     [SyncVar]
     public string displayName = "Loading...";
@@ -15,6 +16,7 @@ public class NetworkPlayer : NetworkBehaviour
     public int playerScore = 0;
     [SyncVar]
     public bool IsShopTime = false;
+    //[SyncVar(hook = nameof(HandleGoldChanged))]
     [SyncVar]
     public int playerGold = 0;
 
@@ -25,6 +27,28 @@ public class NetworkPlayer : NetworkBehaviour
         {
             if (room != null) { return room; }
             return room = NetworkManager.singleton as Network;
+        }
+    }
+
+    private void Start() 
+    {
+        uiScript = GameObject.FindObjectOfType<UIScript>();
+        Debug.Log("TEST: " + uiScript);
+        Debug.Log("TEST2: " + playerScript);
+    }
+
+    private void Update() 
+    {
+        if (!isLocalPlayer) { return; }
+
+        if (uiScript == null)
+        {
+            uiScript = GameObject.FindObjectOfType<UIScript>();
+        }
+        
+        if (uiScript != null)
+        {
+            uiScript.playerGold.SetText(playerGold.ToString());
         }
     }
 
@@ -76,6 +100,11 @@ public class NetworkPlayer : NetworkBehaviour
         //uiScript.UpdatePlayerInfo(playerGold);
         //playerUI.playerGoldAmount = playerGold;
     }
+
+    // private void HandleGoldChanged(int _old, int _new)
+    // {
+    //     uiScript.playerGold.SetText(playerGold.ToString());
+    // }
 
     private void PreparePlayerSpells()
     {

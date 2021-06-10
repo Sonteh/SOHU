@@ -10,7 +10,10 @@ public class UIScript : NetworkBehaviour
     public Health health;
     public Image imageHealthBar;
     public float playerHealth;
+    [SerializeField] public TMP_Text playerGold;
+    //public int playerGoldAmount;
     [SerializeField] public Player player;
+    [SerializeField] public NetworkPlayer networkPlayer;
 
     #region Spells Reference
 
@@ -55,6 +58,7 @@ public class UIScript : NetworkBehaviour
     {
         gameObject.SetActive(true);
 
+        networkPlayer.uiScript = this;
     }
 
     private void Update() 
