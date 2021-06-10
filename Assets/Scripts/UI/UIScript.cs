@@ -8,18 +8,33 @@ public class UIScript : NetworkBehaviour
 {
     public Health health;
     public Image imageHealthBar;
-
-    //[SyncVar(hook = nameof(OnPlayerHealthChanged))]
     public float playerHealth;
 
-    private void OnPlayerHealthChanged(float _old, float _new)
-    {
-        Debug.Log("PLAYER HEALTH: " + playerHealth);
-        imageHealthBar.fillAmount = playerHealth / 100;
-    }
+    public Fireball fireball;
+    public Image fireballImage;
+    public float fireballCooldownTime;
+    public bool fireballCooldown;
 
     public void PlayerHealth(float _value)
     {
          imageHealthBar.fillAmount = _value / 100;
+    }
+
+    private void Update() 
+    {
+        if (fireballCooldown && fireballImage.fillAmount == 1.0f )
+        {
+            fireballImage.fillAmount = 0f;
+        }
+        
+        if (fireballCooldown)
+        {
+            fireballImage.fillAmount += 1.0f / fireballCooldownTime * Time.deltaTime;
+
+            if (fireballImage.fillAmount >= 1.0f)
+            {
+                fireballCooldown = false;
+            }
+        }
     }
 }

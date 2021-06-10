@@ -7,9 +7,21 @@ public class Fireball : NetworkBehaviour
     [SerializeField] private GameObject fireballPrefab;
     [SerializeField] private GameObject spawnLocation;
     [SerializeField] private PlayerUI playerUI;
-    [SerializeField] private float speed = 7.0f;
-    [SerializeField] private float fireballCooldown = 2.0f;
+    [SerializeField] private float speed;
+    [SerializeField] private float fireballCooldown;
     private float canUseFireball = -1.0f;
+    private UIScript uiScript;
+
+    private void Awake() 
+    {
+        uiScript = GameObject.FindObjectOfType<UIScript>();
+    }
+
+    public override void OnStartAuthority()
+    {
+        uiScript.fireball = this;
+        uiScript.fireballCooldownTime = fireballCooldown;
+    }
 
     private void Update() 
     {
@@ -17,6 +29,7 @@ public class Fireball : NetworkBehaviour
 
         if (Input.GetButtonDown("Fireball") && Time.time > canUseFireball && Chat.isChatActive == false)
         {
+            uiScript.fireballCooldown = true;
             canUseFireball = fireballCooldown + Time.time;
             Vector3 mouseDirection = GetPlayerMouseDirection();
             Vector3 pointToLookAt = GetPointToLookAt();
