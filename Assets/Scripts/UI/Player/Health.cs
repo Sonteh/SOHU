@@ -32,11 +32,6 @@ public class Health : NetworkBehaviour
         EventHealthUpdate?.Invoke(currentHealth, maxHealth);
     }
 
-    // public override void OnStartAuthority()
-    // {
-    //     uiScript.health = this;
-    // }
-
     public override void OnStartServer()
     {
         SetHealth(maxHealth);

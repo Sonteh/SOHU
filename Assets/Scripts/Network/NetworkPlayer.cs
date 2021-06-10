@@ -7,16 +7,13 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private RoundSystem roundSystem;
     [SerializeField] private GameObject player;
     [SerializeField] private Player playerScript;
-    [SerializeField] private GameObject playerUIObject;
     public UIScript uiScript;
-    //[SerializeField] private PlayerUI playerUI;
     [SyncVar]
     public string displayName = "Loading...";
     [SyncVar]
     public int playerScore = 0;
     [SyncVar]
     public bool IsShopTime = false;
-    //[SyncVar(hook = nameof(HandleGoldChanged))]
     [SyncVar]
     public int playerGold = 0;
 

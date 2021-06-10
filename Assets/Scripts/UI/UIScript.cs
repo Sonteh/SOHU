@@ -11,7 +11,6 @@ public class UIScript : NetworkBehaviour
     public Image imageHealthBar;
     public float playerHealth;
     [SerializeField] public TMP_Text playerGold;
-    //public int playerGoldAmount;
     [SerializeField] public Player player;
     [SerializeField] public NetworkPlayer networkPlayer;
 
