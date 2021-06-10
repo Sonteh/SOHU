@@ -9,7 +9,6 @@ public class ItemButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("TESTO Z BUTTONA YO");
         tooltipPopup.DisplayInfo(item);
     }
 

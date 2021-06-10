@@ -330,8 +330,8 @@ GameObject:
   - component: {fileID: -4859582603653345864}
   - component: {fileID: 1689929433860541794}
   - component: {fileID: 8696478665569224243}
-  - component: {fileID: 7323893258503626348}
   - component: {fileID: 4243847485925181419}
+  - component: {fileID: 7323893258503626348}
   - component: {fileID: 8933714208194632223}
   - component: {fileID: 8665116707970383434}
   - component: {fileID: -7441520618668634939}
@@ -456,6 +456,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &4243847485925181419
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2240174198917530758}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!195 &7323893258503626348
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -478,22 +494,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!54 &4243847485925181419
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2240174198917530758}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &8933714208194632223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,10 +546,10 @@ MonoBehaviour:
   playerNameText: {fileID: 6791899738333737499}
   playerName: 
   playerColor: {r: 1, g: 1, b: 1, a: 1}
-  IsMagicMissleBought: 1
-  IsMeteorBought: 1
-  IsPortableZoneBought: 1
-  IsRecallBought: 1
+  IsMagicMissleBought: 0
+  IsMeteorBought: 0
+  IsPortableZoneBought: 0
+  IsRecallBought: 0
 --- !u!114 &8071847983670555214
 MonoBehaviour:
   m_ObjectHideFlags: 0

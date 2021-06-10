@@ -8,7 +8,7 @@ public class RoundSystem : NetworkBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private NetworkPlayer networkPlayer;
-    [SerializeField] public int scoreToWin;
+    public int scoreToWin;
     public List<NetworkPlayer> remainingPlayers;
 
     private Network room;
@@ -110,12 +110,6 @@ public class RoundSystem : NetworkBehaviour
         Room.StopServer();
     }
 
-    [Server]
-    private void HandleRoundEnd()
-    {
-        StartCoroutine(ShowShop());
-    }
-
     [ClientRpc]
     private void RpcStartCountdown()
     {
@@ -126,6 +120,12 @@ public class RoundSystem : NetworkBehaviour
     private void RpcStartRound()
     {
         Debug.Log("Start");
+    }
+
+    [Server]
+    private void HandleRoundEnd()
+    {
+        StartCoroutine(ShowShop());
     }
 
     private IEnumerator ShowShop()
