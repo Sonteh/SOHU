@@ -30,7 +30,6 @@ public class JoinToLobby : MonoBehaviour
 
         NetworkManager.singleton.networkAddress = ipAddress;
         NetworkManager.singleton.StartClient();
-
         //joinButton.interactable = false;
 
     }

@@ -22,6 +22,12 @@ public class PlayerSpawnSystem : NetworkBehaviour
 
     public override void OnStartServer() => Network.OnServerReadied += SpawnPlayer;
 
+    public override void OnStopServer()
+    {
+        spawnPoints.Clear();
+        nextIndex = 0;
+    }
+
     [ServerCallback]
     private void OnDestroy() => Network.OnServerReadied -= SpawnPlayer;
 

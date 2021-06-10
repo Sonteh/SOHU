@@ -105,9 +105,13 @@ public class RoundSystem : NetworkBehaviour
     {
         //TODO: Display player nickname and scoreboard.
         Debug.Log("Player " + remainingPlayers[0].displayName + " WON!");
-        Room.StopHost();
-        Room.StopClient();
-        Room.StopServer();
+        Room.RoomPlayers.Clear();
+        Room.GamePlayers.Clear();
+        NetworkManager.singleton.StopClient();
+        NetworkManager.singleton.StopHost();
+        // Room.StopHost();
+        // Room.StopClient();
+        // Room.StopServer();
     }
 
     [ClientRpc]

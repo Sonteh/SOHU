@@ -30,8 +30,6 @@ public class NetworkPlayer : NetworkBehaviour
     private void Start() 
     {
         uiScript = GameObject.FindObjectOfType<UIScript>();
-        Debug.Log("TEST: " + uiScript);
-        Debug.Log("TEST2: " + playerScript);
     }
 
     private void Update() 
