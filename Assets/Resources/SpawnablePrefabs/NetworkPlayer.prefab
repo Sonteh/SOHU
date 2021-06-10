@@ -176,6 +176,31 @@ PrefabInstance:
       propertyPath: m_AssetId
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1434833655535435376, guid: aac0a27f4839c404ab5ea58e098c17f4,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434833655535435376, guid: aac0a27f4839c404ab5ea58e098c17f4,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434833655535435376, guid: aac0a27f4839c404ab5ea58e098c17f4,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 132.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434833655535435376, guid: aac0a27f4839c404ab5ea58e098c17f4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 220
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434833655535435376, guid: aac0a27f4839c404ab5ea58e098c17f4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -86.125
+      objectReference: {fileID: 0}
     - target: {fileID: 1434833655656766160, guid: aac0a27f4839c404ab5ea58e098c17f4,
         type: 3}
       propertyPath: m_RootOrder
@@ -235,6 +260,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TooltipPopup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434833655829365618, guid: aac0a27f4839c404ab5ea58e098c17f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434833657072373849, guid: aac0a27f4839c404ab5ea58e098c17f4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 440
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434833657072373849, guid: aac0a27f4839c404ab5ea58e098c17f4,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 172.25
       objectReference: {fileID: 0}
     - target: {fileID: 5145709154166917082, guid: aac0a27f4839c404ab5ea58e098c17f4,
         type: 3}
