@@ -32,7 +32,7 @@ public class PlayerUI : NetworkBehaviour
 
     public override void OnStartAuthority()
     {
-        playerUI.SetActive(true);
+        //playerUI.SetActive(true);
     }
 
     private void UpdatePlayerInfo()

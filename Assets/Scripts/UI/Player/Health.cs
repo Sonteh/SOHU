@@ -7,13 +7,21 @@ public class Health : NetworkBehaviour
     [Header("Settings")]
     [SerializeField] public float maxHealth = 100f;
     [SerializeField] NetworkPlayer networkPlayer;
-    [SerializeField] PlayerUI playerUI;
+    //[SerializeField] PlayerUI playerUI;
     private float damage;
     GameObject roundSystem;
-    [SyncVar] 
+    //[SyncVar(hook = nameof(OnCurrentHealthChanged))] 
+    [SyncVar]
     public float currentHealth;
     public delegate void HealthUpdateDelegate(float currentHealth, float maxHealth);
     public event HealthUpdateDelegate EventHealthUpdate;
+    
+    private UIScript uiScript; 
+
+    private void Awake()
+    {
+        uiScript = GameObject.FindObjectOfType<UIScript>();
+    }
     
     private void Start()
     {
@@ -24,8 +32,25 @@ public class Health : NetworkBehaviour
     private void SetHealth(float value)
     {
         currentHealth = value;
+        //CmdSendPlayerHealth(currentHealth);
         EventHealthUpdate?.Invoke(currentHealth, maxHealth);
     }
+
+    public override void OnStartAuthority()
+    {
+        uiScript.health = this;
+    }
+
+    // private void OnCurrentHealthChanged(float _old, float _new)
+    // {
+    //     uiScript.playerHealth = currentHealth;
+    // }
+
+    // [Command]
+    // public void CmdSendPlayerHealth(float _health)
+    // {   
+    //     uiScript.playerHealth = _health;
+    // }
 
     public override void OnStartServer()
     {
@@ -68,5 +93,12 @@ public class Health : NetworkBehaviour
             damage = collider.gameObject.GetComponent<ZoneData>().zoneDamage;
             CmdDealDamage(damage);
         }
+    }
+
+    private void Update() 
+    {
+        if (!hasAuthority) {return;}
+
+        uiScript.PlayerHealth(currentHealth);
     }
 }

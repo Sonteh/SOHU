@@ -66,12 +66,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<size=35><color=#AD0101>Magic Missle</color></size>
+  m_text: '<size=35><color=#AD0101>Fireball</color></size>
 
     Offensive
 
     <color=green>Use:
-    Deals damage</color>
+    Deals TONS OF DAMAGE</color>
 
     Buy Price: 50 Gold'
   m_isRightToLeft: 0
@@ -354,7 +354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1434833655829365617
 RectTransform:
   m_ObjectHideFlags: 0
