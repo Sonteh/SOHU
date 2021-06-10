@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class RoundSystem : NetworkBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private NetworkPlayer networkPlayer;
+    [SerializeField] private PlayerSpawnSystem playerSpawnSystem;
     public int scoreToWin;
     public List<NetworkPlayer> remainingPlayers;
 
@@ -105,12 +107,14 @@ public class RoundSystem : NetworkBehaviour
     {
         //TODO: Display player nickname and scoreboard.
         Debug.Log("Player " + remainingPlayers[0].displayName + " WON!");
-        Room.RoomPlayers.Clear();
-        Room.GamePlayers.Clear();
-        ///NetworkServer.Shutdown();
+        // Room.RoomPlayers.Clear();
+        // Room.GamePlayers.Clear();
+       
+        //Room.RestartServer();
+        NetworkManager.singleton.ServerChangeScene("Menus");
         
-        NetworkManager.singleton.StopClient();
-        NetworkManager.singleton.StopHost();
+        // NetworkManager.singleton.StopClient();
+        // NetworkManager.singleton.StopHost();
         
         // Room.StopHost();
         // Room.StopClient();

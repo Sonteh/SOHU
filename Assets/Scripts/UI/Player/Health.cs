@@ -57,7 +57,7 @@ public class Health : NetworkBehaviour
     
     private void OnTriggerEnter(Collider collider)
     {
-        if(!hasAuthority) {return;}
+        if (!hasAuthority) { return; }
 
         if (collider.tag == "Spell")
         {   
@@ -68,6 +68,8 @@ public class Health : NetworkBehaviour
 
     private void OnTriggerStay(Collider collider) 
     {
+        if (!hasAuthority) { return; }
+        
         if (collider.tag == "Zone")
         {   
             damage = collider.gameObject.GetComponent<ZoneData>().zoneDamage;

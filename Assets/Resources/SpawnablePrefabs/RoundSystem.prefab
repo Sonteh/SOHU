@@ -350,12 +350,12 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   animator: {fileID: 9013302242151298535}
-  remainingPlayers: []
   networkPlayer: {fileID: 5815379166993546133, guid: d4b358e505a8e41a4a01acb404593f56,
     type: 3}
-  networkRoom: {fileID: 2659728637667410020, guid: 80052c2e8b7bd422e85008c3c8d8e120,
+  playerSpawnSystem: {fileID: 7475008349824566544, guid: 24b4a188ff8b5459b82fd8b90f78479b,
     type: 3}
   scoreToWin: 3
+  remainingPlayers: []
 --- !u!1 &3966190225369504215
 GameObject:
   m_ObjectHideFlags: 0

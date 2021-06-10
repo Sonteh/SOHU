@@ -20,8 +20,6 @@ public class Network : NetworkManager
     [SerializeField] private NetworkPlayer gamePlayerPrefab;
     [SerializeField] private GameObject playerSpawnSystem;
     [SerializeField] private GameObject roundSystem;
-    //[SerializeField] private GameObject gameMenu;
-    //private int playerPoints;
     public string arenaName;
 
     // Network Events
@@ -121,7 +119,6 @@ public class Network : NetworkManager
 
         RoomPlayers.Clear();
         GamePlayers.Clear();
-
         Destroy(this.gameObject);
     }
 
@@ -187,6 +184,17 @@ public class Network : NetworkManager
 
             GameObject roundSystemInstance = Instantiate(roundSystem);
             NetworkServer.Spawn(roundSystemInstance);
+        }
+
+        if (sceneName.StartsWith("Menus"))
+        {
+            NetworkServer.SetAllClientsNotReady();
+            StopClient();
+            StopHost();
+            NetworkServer.Shutdown();
+            
+            RoomPlayers.Clear();
+            GamePlayers.Clear();
         }
     }
 
