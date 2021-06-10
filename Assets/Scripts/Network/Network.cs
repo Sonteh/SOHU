@@ -121,6 +121,8 @@ public class Network : NetworkManager
 
         RoomPlayers.Clear();
         GamePlayers.Clear();
+
+        Destroy(this.gameObject);
     }
 
     public void NotifyPlayersOfReadyState()
@@ -168,7 +170,7 @@ public class Network : NetworkManager
                 
                 gameplayerInstance.SetDisplayName(RoomPlayers[i].DisplayName);
                 NetworkServer.Destroy(conn.identity.gameObject);
-                NetworkServer.ReplacePlayerForConnection(conn, gameplayerInstance.gameObject);
+                NetworkServer.ReplacePlayerForConnection(conn, gameplayerInstance.gameObject, true);
             }
             
         }

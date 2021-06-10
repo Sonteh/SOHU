@@ -481,6 +481,16 @@ PrefabInstance:
       propertyPath: minPlayers
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1425867272826150974, guid: 5a67b79ee78404e768c02ce73393fb3b,
+        type: 3}
+      propertyPath: autoCreatePlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1425867272826150974, guid: 5a67b79ee78404e768c02ce73393fb3b,
+        type: 3}
+      propertyPath: playerSpawnMethod
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a67b79ee78404e768c02ce73393fb3b, type: 3}
 --- !u!1001 &7664774324197598235

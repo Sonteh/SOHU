@@ -107,8 +107,11 @@ public class RoundSystem : NetworkBehaviour
         Debug.Log("Player " + remainingPlayers[0].displayName + " WON!");
         Room.RoomPlayers.Clear();
         Room.GamePlayers.Clear();
+        ///NetworkServer.Shutdown();
+        
         NetworkManager.singleton.StopClient();
         NetworkManager.singleton.StopHost();
+        
         // Room.StopHost();
         // Room.StopClient();
         // Room.StopServer();
