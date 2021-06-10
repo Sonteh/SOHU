@@ -4,14 +4,13 @@ using Mirror;
 
 public class Mover : NetworkBehaviour
 {
-
     private Animator animator;
-
     public Rigidbody rb;
     CharacterController controller;
     NavMeshAgent player;
 
-    private void Awake() {
+    private void Awake() 
+    {
         animator = GetComponentInChildren<Animator> ();
     }
 
@@ -22,10 +21,8 @@ public class Mover : NetworkBehaviour
         player = GetComponent<NavMeshAgent>();
     }
 
-    [ClientCallback]
     private void Update()
     {
-        //if (!isLocalPlayer) {return;}
         if (!hasAuthority) {return;}
 
         if (Input.GetButton("Fire2"))

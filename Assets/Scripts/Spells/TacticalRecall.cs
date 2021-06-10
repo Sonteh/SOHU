@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Mirror;
 
 public class TacticalRecall : NetworkBehaviour
@@ -28,6 +29,7 @@ public class TacticalRecall : NetworkBehaviour
         {
             uiScript.IsTacticalRecallUsed = true;
             canUseTacticalRecall =  tacticalRecallCooldown + Time.time;
+            GetComponent<NavMeshAgent>().destination = new Vector3(0,0,0);
             
             CmdUseTacticalRecall();
         }
@@ -44,6 +46,7 @@ public class TacticalRecall : NetworkBehaviour
     {
         var tacticalRecall = (GameObject)Instantiate(tacticalRecallPrefab, transform.position, Quaternion.identity);
         transform.position = new Vector3(0,0,0);
+        
         tacticalRecall = (GameObject)Instantiate(tacticalRecallPrefab, transform.position, Quaternion.identity);
     }
 }
