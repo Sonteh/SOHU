@@ -8,8 +8,18 @@ public class PortableZone : NetworkBehaviour
     [SerializeField] private GameObject portableZonePrefab;
     [SerializeField] private float portableZoneCooldown = 2.0f;
     private float canUsePortableZone = -1.0f;
-
     private Vector3 _mouse;
+    private UIScript uiScript;
+
+    private void Awake() 
+    {
+        uiScript = GameObject.FindObjectOfType<UIScript>();
+    }
+
+    public override void OnStartAuthority()
+    {
+        uiScript.portableZoneCooldownTime = portableZoneCooldown;
+    }
 
     void Update()
     {
@@ -17,8 +27,10 @@ public class PortableZone : NetworkBehaviour
         
         if (Input.GetButtonDown("PortableZone") && Time.time > canUsePortableZone && Chat.isChatActive == false)
         {
+            uiScript.IsPortableZoneUsed = true;
             canUsePortableZone =  portableZoneCooldown + Time.time;
             Vector3 mousePosition = GetPlayerMousePosition();
+            
             CmdUsePortableZone(mousePosition);
         }
     }

@@ -16,6 +16,12 @@ public class Player : NetworkBehaviour
     public bool IsMeteorBought = false;
     public bool IsPortableZoneBought = false;
     public bool IsRecallBought = false;
+    private UIScript uiScript;
+
+    private void Awake() 
+    {
+        uiScript = GameObject.FindObjectOfType<UIScript>();
+    }
 
     private void OnNameChanged(string _Old, string _New) 
     {
@@ -55,21 +61,25 @@ public class Player : NetworkBehaviour
         if (IsMagicMissleBought)
         {
             GetComponent<MagicMissle>().enabled = true;
+            uiScript.magicMissleImage.gameObject.SetActive(true);
         }
 
         if (IsMeteorBought)
         {
             GetComponent<RollingMeteor>().enabled = true;
+            uiScript.rollingMeteorImage.gameObject.SetActive(true);
         }
 
         if (IsPortableZoneBought)
         {
             GetComponent<PortableZone>().enabled = true;
+            uiScript.portableZoneImage.gameObject.SetActive(true);
         }
 
         if (IsRecallBought)
         {
             GetComponent<TacticalRecall>().enabled = true;
+            uiScript.tacticalRecallImage.gameObject.SetActive(true);
         }
     }
 

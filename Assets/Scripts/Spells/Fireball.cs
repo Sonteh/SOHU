@@ -19,7 +19,6 @@ public class Fireball : NetworkBehaviour
 
     public override void OnStartAuthority()
     {
-        uiScript.fireball = this;
         uiScript.fireballCooldownTime = fireballCooldown;
     }
 
@@ -29,7 +28,7 @@ public class Fireball : NetworkBehaviour
 
         if (Input.GetButtonDown("Fireball") && Time.time > canUseFireball && Chat.isChatActive == false)
         {
-            uiScript.fireballCooldown = true;
+            uiScript.IsFireballUsed = true;
             canUseFireball = fireballCooldown + Time.time;
             Vector3 mouseDirection = GetPlayerMouseDirection();
             Vector3 pointToLookAt = GetPointToLookAt();

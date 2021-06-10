@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5179242441700991370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5179242441700991383}
+  - component: {fileID: 5179242441700991368}
+  - component: {fileID: 5179242441700991369}
+  m_Layer: 0
+  m_Name: UIScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5179242441700991383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5179242441700991370}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5179242441700991368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5179242441700991370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
+--- !u!114 &5179242441700991369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5179242441700991370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18539c22275a0345b0c28f7000155a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  health: {fileID: 0}
+  imageHealthBar: {fileID: 0}
+  playerHealth: 0
+  player: {fileID: -7441520618668634939, guid: 860dd37201f402a48b80e92b92e5e4a5, type: 3}
+  networkPlayer: {fileID: 5815379166993546133, guid: d4b358e505a8e41a4a01acb404593f56,
+    type: 3}
+  playerGold: {fileID: 0}
+  playerGoldAmount: 0
+  fireball: {fileID: -6743519811537838179, guid: 860dd37201f402a48b80e92b92e5e4a5,
+    type: 3}
+  fireballImage: {fileID: 0}
+  fireballCooldownTime: 0
+  IsFireballUsed: 0
+  magicMissle: {fileID: -5924406194954916334, guid: 860dd37201f402a48b80e92b92e5e4a5,
+    type: 3}
+  magicMissleImage: {fileID: 0}
+  magicMissleCooldownTime: 0
+  IsMagicMissleUsed: 0
+  rollingMeteor: {fileID: 1329919760385669758, guid: 860dd37201f402a48b80e92b92e5e4a5,
+    type: 3}
+  rollingMeteorImage: {fileID: 0}
+  rollingMeteorCooldownTime: 0
+  IsRollingMeteorUsed: 0
+  portableZone: {fileID: 637620085326477380, guid: 860dd37201f402a48b80e92b92e5e4a5,
+    type: 3}
+  portableZoneImage: {fileID: 0}
+  portableZoneCooldownTime: 0
+  IsPortableZoneUsed: 0
+  tacticalRecall: {fileID: 3812387528697924627, guid: 860dd37201f402a48b80e92b92e5e4a5,
+    type: 3}
+  tacticalRecallImage: {fileID: 0}
+  tacticalRecallCooldownTime: 0
+  IsTacticalRecallUsed: 0

@@ -9,6 +9,17 @@ public class MagicMissle : NetworkBehaviour
     [SerializeField] private float speed = 10.0f;
     [SerializeField] private float magicMissleCooldown = 2.0f;
     private float canUseMagicMissle = -1.0f;
+    private UIScript uiScript;
+
+    private void Awake() 
+    {
+        uiScript = GameObject.FindObjectOfType<UIScript>();
+    }
+
+    public override void OnStartAuthority()
+    {
+        uiScript.magicMissleCooldownTime = magicMissleCooldown;
+    }
 
     void Update()
     {
@@ -16,6 +27,7 @@ public class MagicMissle : NetworkBehaviour
         
         if (Input.GetButtonDown("MagicMissle") && Time.time > canUseMagicMissle && Chat.isChatActive == false)
         {
+            uiScript.IsMagicMissleUsed = true;
             canUseMagicMissle =  magicMissleCooldown + Time.time;
             Vector3 mousePosition = GetPlayerMouseDirection();
             Vector3 pointToLookAt = GetPointToLookAt();

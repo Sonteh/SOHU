@@ -8,8 +8,7 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Player playerScript;
     [SerializeField] private GameObject playerUIObject;
-    [SerializeField] private PlayerUI playerUI;
- 
+    //[SerializeField] private PlayerUI playerUI;
     [SyncVar]
     public string displayName = "Loading...";
     [SyncVar]
@@ -66,14 +65,16 @@ public class NetworkPlayer : NetworkBehaviour
     public void GivePlayerGold(int goldAmount)
     {
         playerGold += goldAmount;
-        playerUI.playerGoldAmount = playerGold;
+        //uiScript.UpdatePlayerInfo(playerGold);
+        //playerUI.playerGoldAmount = playerGold;
     }
 
     [Server]
     private void TakePlayerGold(int goldAmount)
     {
         playerGold -= goldAmount;
-        playerUI.playerGoldAmount = playerGold;
+        //uiScript.UpdatePlayerInfo(playerGold);
+        //playerUI.playerGoldAmount = playerGold;
     }
 
     private void PreparePlayerSpells()

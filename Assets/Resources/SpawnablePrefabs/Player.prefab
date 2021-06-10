@@ -567,8 +567,6 @@ MonoBehaviour:
   maxHealth: 100
   networkPlayer: {fileID: 5815379166993546133, guid: d4b358e505a8e41a4a01acb404593f56,
     type: 3}
-  playerUI: {fileID: 7759362165135734161, guid: d4b358e505a8e41a4a01acb404593f56,
-    type: 3}
   currentHealth: 0
 --- !u!114 &1399352681072322890
 MonoBehaviour:

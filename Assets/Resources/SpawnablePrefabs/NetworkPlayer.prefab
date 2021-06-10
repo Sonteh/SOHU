@@ -75,7 +75,8 @@ MonoBehaviour:
   playerScript: {fileID: -7441520618668634939, guid: 860dd37201f402a48b80e92b92e5e4a5,
     type: 3}
   playerUIObject: {fileID: 3722017212160414243}
-  playerUI: {fileID: 7759362165135734161}
+  uiScript: {fileID: 5179242441700991369, guid: fd38151ddd968f2469e0d5b207b23051,
+    type: 3}
   displayName: Loading...
   playerScore: 0
   IsShopTime: 0
@@ -148,7 +149,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7644581934910423800}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b4b91b5cf871444e8582618363bdb1d, type: 3}
   m_Name: 

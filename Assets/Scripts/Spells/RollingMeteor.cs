@@ -10,6 +10,17 @@ public class RollingMeteor : NetworkBehaviour
     [SerializeField] private float rollingMeteorCooldown = 0.5f;
     [SerializeField] private GameObject spawnLocation;
     private float canUseRollingMeteor = -1.0f;
+    private UIScript uiScript;
+
+    private void Awake() 
+    {
+        uiScript = GameObject.FindObjectOfType<UIScript>();
+    }
+
+    public override void OnStartAuthority()
+    {
+        uiScript.rollingMeteorCooldownTime = rollingMeteorCooldown;
+    }
     
     private void Update() 
     {
@@ -17,8 +28,10 @@ public class RollingMeteor : NetworkBehaviour
         
         if (Input.GetButtonDown("RollingMeteor") && Time.time > canUseRollingMeteor && Chat.isChatActive == false)
         {
+            uiScript.IsRollingMeteorUsed = true;
             canUseRollingMeteor = rollingMeteorCooldown + Time.time;
             Vector3 mouseDirection = GetPlayerMouseDirection();
+            
             CmdUseRollingMeteor(mouseDirection);
         }
     }
