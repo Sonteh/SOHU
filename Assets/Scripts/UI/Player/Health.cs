@@ -8,6 +8,7 @@ public class Health : NetworkBehaviour
     [SerializeField] public float maxHealth = 100f;
     [SerializeField] NetworkPlayer networkPlayer;
     private float damage;
+    private float heal;
     GameObject roundSystem; 
     [SyncVar]
     public float currentHealth;
@@ -49,6 +50,19 @@ public class Health : NetworkBehaviour
         }
     }
 
+    [Command]
+    public void CmdHealDamage(float value)
+    {
+        //SetHealth(Mathf.Max(currentHealth + value, 0));
+
+        if (currentHealth <= 100f)
+        {
+            SetHealth(Mathf.Max(currentHealth + value, 0));
+            // RpcOnDeath();
+            // roundSystem.GetComponent<RoundSystem>().OnDeath(connectionToClient);
+        }
+    }
+
     [ClientRpc]
     private void RpcOnDeath()
     {
@@ -64,6 +78,12 @@ public class Health : NetworkBehaviour
             damage = collider.gameObject.GetComponent<SpellData>().spellDamage;
             CmdDealDamage(damage);
         }
+        //dsdsdsdsdsdsd
+        if (collider.tag == "Heal")
+        {   
+            heal = collider.gameObject.GetComponent<SpellData>().healAmount;
+            CmdHealDamage(heal);
+        }
     }
 
     private void OnTriggerStay(Collider collider) 
@@ -74,6 +94,11 @@ public class Health : NetworkBehaviour
         {   
             damage = collider.gameObject.GetComponent<ZoneData>().zoneDamage;
             CmdDealDamage(damage);
+        }
+        if (collider.tag == "HealOverTime")
+        {   
+            heal = collider.gameObject.GetComponent<SpellData>().healAmount;
+            CmdHealDamage(heal);
         }
     }
 
