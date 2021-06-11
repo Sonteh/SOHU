@@ -1,14 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Mirror;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerShop : NetworkBehaviour
 {
     [SerializeField] private GameObject shopUI;
     [SerializeField] private NetworkPlayer networkPlayer;
+    [SerializeField] private TMP_Text playerGold;
 
     #region Button References
     
@@ -17,18 +17,24 @@ public class PlayerShop : NetworkBehaviour
     [SerializeField] private Button buyRollingMeteorButton;
     [SerializeField] private Button buyPortableZoneButton;
     [SerializeField] private Button buyTacticalRecallButton;
+    [SerializeField] private Button buyHealButton;
+    [SerializeField] private Button buyHealZoneButton;
 
     [Header("Sell Buttons")]
     [SerializeField] private Button sellMagicMissleButton;
     [SerializeField] private Button sellRollingMeteorButton;
     [SerializeField] private Button sellPortableZoneButton;
     [SerializeField] private Button sellTacticalRecallButton;
+    [SerializeField] private Button sellHealButton;
+    [SerializeField] private Button sellHealZoneButton;
 
     [Header("Upgrade Buttons")]
     [SerializeField] private Button upgradeMagicMissleButton;
     [SerializeField] private Button upgradeRollingMeteorButton;
     [SerializeField] private Button upgradePortableZoneButton;
     [SerializeField] private Button upgradeTacticalRecallButton;
+    [SerializeField] private Button upgradeHealButton;
+    [SerializeField] private Button upgradeHealZoneButton;
 
     #endregion
 
@@ -47,7 +53,8 @@ public class PlayerShop : NetworkBehaviour
     }
 
     public void ShowPlayerShop()
-    {    
+    { 
+        playerGold.SetText(networkPlayer.playerGold.ToString());
         shopUI.SetActive(true);
     }
 
@@ -79,7 +86,21 @@ public class PlayerShop : NetworkBehaviour
         if(nameOfBoughtSpell == "RecallBuyButton" && networkPlayer.playerGold >= 50)
         {
             buyTacticalRecallButton.interactable = false;
-            //sellMagicMissleButton.interactable = true;
+            sellTacticalRecallButton.interactable = true;
+            CmdBuySpell(nameOfBoughtSpell);
+        }
+
+        if(nameOfBoughtSpell == "HealBuyButton" && networkPlayer.playerGold >= 100)
+        {
+            buyHealButton.interactable = false;
+            sellHealButton.interactable = true;
+            CmdBuySpell(nameOfBoughtSpell);
+        }
+
+        if(nameOfBoughtSpell == "HealZoneBuyButton" && networkPlayer.playerGold >= 50)
+        {
+            buyHealZoneButton.interactable = false;
+            sellHealZoneButton.interactable = true;
             CmdBuySpell(nameOfBoughtSpell);
         }
     }
@@ -115,12 +136,26 @@ public class PlayerShop : NetworkBehaviour
             CmdSellSpell(nameOfSoldSpell);
         }
 
-        // if (nameOfSoldSpell == "MagicMissleSellButton" && networkPlayer.playerScript.IsMagicMissleBought)
-        // {
-        //     sellMagicMissleButton.interactable = false;
-        //     buyMagicMissleButton.interactable = true;
-        //     CmdSellSpell(nameOfSoldSpell);
-        // }
+        if (nameOfSoldSpell == "RecallSellButton" && networkPlayer.playerScript.IsRecallBought)
+        {
+            sellTacticalRecallButton.interactable = false;
+            buyTacticalRecallButton.interactable = true;
+            CmdSellSpell(nameOfSoldSpell);
+        }
+
+        if(nameOfSoldSpell == "HealSellButton" && networkPlayer.playerScript.IsHealBought)
+        {
+            sellHealButton.interactable = false;
+            buyHealButton.interactable = true;
+            CmdSellSpell(nameOfSoldSpell);
+        }
+
+        if(nameOfSoldSpell == "HealZoneSellButton" && networkPlayer.playerScript.IsHealZoneBought)
+        {
+            sellHealZoneButton.interactable = false;
+            buyHealZoneButton.interactable = true;
+            CmdSellSpell(nameOfSoldSpell);
+        }
     }
 
     [Command]

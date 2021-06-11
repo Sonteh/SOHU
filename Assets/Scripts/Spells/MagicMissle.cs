@@ -31,8 +31,8 @@ public class MagicMissle : NetworkBehaviour
             canUseMagicMissle =  magicMissleCooldown + Time.time;
             Vector3 mousePosition = GetPlayerMouseDirection();
             Vector3 pointToLookAt = GetPointToLookAt();
-        
             player.transform.LookAt(pointToLookAt);
+            
             CmdUseMagicMissle(mousePosition);
         }
     }

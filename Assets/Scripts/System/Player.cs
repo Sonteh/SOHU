@@ -16,6 +16,8 @@ public class Player : NetworkBehaviour
     public bool IsMeteorBought = false;
     public bool IsPortableZoneBought = false;
     public bool IsRecallBought = false;
+    public bool IsHealBought = false;
+    public bool IsHealZoneBought = false;
     private UIScript uiScript;
 
     private void Awake() 
@@ -95,6 +97,33 @@ public class Player : NetworkBehaviour
         {
             GetComponent<TacticalRecall>().enabled = true;
             uiScript.tacticalRecallImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            GetComponent<TacticalRecall>().enabled = false;
+            uiScript.tacticalRecallImage.gameObject.SetActive(false);
+        }
+
+        if (IsHealBought)
+        {
+            GetComponent<QuickHeal>().enabled = true;
+            //uiScript.tacticalRecallImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            GetComponent<QuickHeal>().enabled = false;
+            //uiScript.tacticalRecallImage.gameObject.SetActive(false);
+        }
+
+        if (IsHealZoneBought)
+        {
+            GetComponent<HealingZone>().enabled = true;
+            //uiScript.tacticalRecallImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            GetComponent<HealingZone>().enabled = false;
+            //uiScript.tacticalRecallImage.gameObject.SetActive(false);
         }
     }
 

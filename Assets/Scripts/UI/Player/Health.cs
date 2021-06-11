@@ -55,7 +55,7 @@ public class Health : NetworkBehaviour
     {
         if (currentHealth <= 100f)
         {
-            SetHealth(Mathf.Max(currentHealth + value, 0));
+            SetHealth(Mathf.Min(currentHealth + value, 100f));
         }
     }
 

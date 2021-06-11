@@ -62,11 +62,7 @@ public class NetworkPlayer : NetworkBehaviour
     public override void OnStartAuthority()
     {
         SetDisplayName(PlayerPrefs.GetString("PlayerName"));
-        //playerUI.playerGoldAmount = 0;
         PreparePlayerSpells();
-
-        //NetworkServer.Spawn(playerUIObject, connectionToClient);
-        //playerUIObject.SetActive(true);
     }
 
     public void SetDisplayName(string displayName)
@@ -84,22 +80,13 @@ public class NetworkPlayer : NetworkBehaviour
     public void GivePlayerGold(int goldAmount)
     {
         playerGold += goldAmount;
-        //uiScript.UpdatePlayerInfo(playerGold);
-        //playerUI.playerGoldAmount = playerGold;
     }
 
     [Server]
     private void TakePlayerGold(int goldAmount)
     {
         playerGold -= goldAmount;
-        //uiScript.UpdatePlayerInfo(playerGold);
-        //playerUI.playerGoldAmount = playerGold;
     }
-
-    // private void HandleGoldChanged(int _old, int _new)
-    // {
-    //     uiScript.playerGold.SetText(playerGold.ToString());
-    // }
 
     private void PreparePlayerSpells()
     {
@@ -107,6 +94,8 @@ public class NetworkPlayer : NetworkBehaviour
         playerScript.IsMagicMissleBought = false;
         playerScript.IsPortableZoneBought = false;
         playerScript.IsRecallBought = false;
+        playerScript.IsHealBought = false;
+        playerScript.IsHealZoneBought = false;
     }
 
     [Server]
@@ -134,6 +123,18 @@ public class NetworkPlayer : NetworkBehaviour
         {
             TakePlayerGold(50);
             TargetRecallBought();
+        }
+
+        if (spellBought == "HealBuyButton")
+        {
+            TakePlayerGold(100);
+            TargetHealBought();
+        }
+
+        if (spellBought == "HealZoneBuyButton")
+        {
+            TakePlayerGold(50);
+            TargetHealZoneBought();
         }
     }
 
@@ -163,6 +164,18 @@ public class NetworkPlayer : NetworkBehaviour
         playerScript.IsRecallBought = true;
     }
 
+    [TargetRpc]
+    public void TargetHealBought()
+    {
+        playerScript.IsHealBought = true;
+    }
+
+    [TargetRpc]
+    public void TargetHealZoneBought()
+    {
+        playerScript.IsHealZoneBought = true;
+    }
+
     [Server]
     public void PlayerSoldSpell(string spellSold)
     {
@@ -184,11 +197,23 @@ public class NetworkPlayer : NetworkBehaviour
             TargetPortableZoneSold();
         }
 
-        // if (spellSold == "RecallSellButton")
-        // {
-        //     GivePlayerGold(50);
-        //     TargetRecallSold();
-        // }
+        if (spellSold == "RecallSellButton")
+        {
+            GivePlayerGold(50);
+            TargetRecallSold();
+        }
+
+        if (spellSold == "HealSellButton")
+        {
+            GivePlayerGold(100);
+            TargetHealSold();
+        }
+
+        if (spellSold == "HealZoneSellButton")
+        {
+            GivePlayerGold(50);
+            TargetHealZoneSold();
+        }
     }
 
     [TargetRpc]
@@ -207,5 +232,23 @@ public class NetworkPlayer : NetworkBehaviour
     public void TargetPortableZoneSold()
     {
         playerScript.IsPortableZoneBought = false;
+    }
+
+    [TargetRpc]
+    public void TargetRecallSold()
+    {
+        playerScript.IsRecallBought = false;
+    }
+
+    [TargetRpc]
+    public void TargetHealSold()
+    {
+        playerScript.IsHealBought = false;
+    }
+
+    [TargetRpc]
+    public void TargetHealZoneSold()
+    {
+        playerScript.IsHealZoneBought = false;
     }
 }

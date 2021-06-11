@@ -590,5 +590,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuV2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6018047860465563793, guid: 8614d815481f5034a8a36a47d4980709, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8614d815481f5034a8a36a47d4980709, type: 3}

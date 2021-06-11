@@ -32,7 +32,6 @@ public class Fireball : NetworkBehaviour
             canUseFireball = fireballCooldown + Time.time;
             Vector3 mouseDirection = GetPlayerMouseDirection();
             Vector3 pointToLookAt = GetPointToLookAt();
-        
             player.transform.LookAt(pointToLookAt);
 
             CmdUseFireball(mouseDirection);

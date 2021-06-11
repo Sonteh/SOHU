@@ -4767,6 +4767,7 @@ GameObject:
   - component: {fileID: -7768829991249203859}
   - component: {fileID: 7810212286202767348}
   - component: {fileID: 7820749439865224541}
+  - component: {fileID: -4938968917692025750}
   m_Layer: 0
   m_Name: QuickHeal
   m_TagString: Heal
@@ -4864,3 +4865,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.7022667
   m_Center: {x: 0, y: 0.009292603, z: -0.0142707825}
+--- !u!114 &-4938968917692025750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4337615126733713239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
