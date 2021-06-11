@@ -74,11 +74,21 @@ public class Player : NetworkBehaviour
             GetComponent<RollingMeteor>().enabled = true;
             uiScript.rollingMeteorImage.gameObject.SetActive(true);
         }
+        else
+        {
+            GetComponent<RollingMeteor>().enabled = false;
+            uiScript.rollingMeteorImage.gameObject.SetActive(false);
+        }
 
         if (IsPortableZoneBought)
         {
             GetComponent<PortableZone>().enabled = true;
             uiScript.portableZoneImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            GetComponent<PortableZone>().enabled = false;
+            uiScript.portableZoneImage.gameObject.SetActive(false);
         }
 
         if (IsRecallBought)

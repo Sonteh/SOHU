@@ -171,11 +171,41 @@ public class NetworkPlayer : NetworkBehaviour
             GivePlayerGold(50);
             TargetMagicMissleSold();
         }
+
+        if (spellSold == "MeteorSellButton")
+        {
+            GivePlayerGold(100);
+            TargetMeteorSold();
+        }
+
+        if (spellSold == "PortableZoneSellButton")
+        {
+            GivePlayerGold(100);
+            TargetPortableZoneSold();
+        }
+
+        // if (spellSold == "RecallSellButton")
+        // {
+        //     GivePlayerGold(50);
+        //     TargetRecallSold();
+        // }
     }
 
     [TargetRpc]
     public void TargetMagicMissleSold()
     {
         playerScript.IsMagicMissleBought = false;
+    }
+
+    [TargetRpc]
+    public void TargetMeteorSold()
+    {
+        playerScript.IsMeteorBought = false;
+    }
+
+    [TargetRpc]
+    public void TargetPortableZoneSold()
+    {
+        playerScript.IsPortableZoneBought = false;
     }
 }

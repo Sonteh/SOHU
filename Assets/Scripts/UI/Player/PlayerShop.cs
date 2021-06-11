@@ -10,6 +10,8 @@ public class PlayerShop : NetworkBehaviour
     [SerializeField] private GameObject shopUI;
     [SerializeField] private NetworkPlayer networkPlayer;
 
+    #region Button References
+    
     [Header("Buy Buttons")]
     [SerializeField] private Button buyMagicMissleButton;
     [SerializeField] private Button buyRollingMeteorButton;
@@ -27,6 +29,8 @@ public class PlayerShop : NetworkBehaviour
     [SerializeField] private Button upgradeRollingMeteorButton;
     [SerializeField] private Button upgradePortableZoneButton;
     [SerializeField] private Button upgradeTacticalRecallButton;
+
+    #endregion
 
     private void Update() 
     {
@@ -61,18 +65,21 @@ public class PlayerShop : NetworkBehaviour
         if(nameOfBoughtSpell == "MeteorBuyButton" && networkPlayer.playerGold >= 100)
         {
             buyRollingMeteorButton.interactable = false;
+            sellRollingMeteorButton.interactable = true;
             CmdBuySpell(nameOfBoughtSpell);
         }
 
         if(nameOfBoughtSpell == "PortableZoneBuyButton" && networkPlayer.playerGold >= 100)
         {
             buyPortableZoneButton.interactable = false;
+            sellPortableZoneButton.interactable = true;
             CmdBuySpell(nameOfBoughtSpell);
         }
 
         if(nameOfBoughtSpell == "RecallBuyButton" && networkPlayer.playerGold >= 50)
         {
             buyTacticalRecallButton.interactable = false;
+            //sellMagicMissleButton.interactable = true;
             CmdBuySpell(nameOfBoughtSpell);
         }
     }
@@ -93,6 +100,27 @@ public class PlayerShop : NetworkBehaviour
             buyMagicMissleButton.interactable = true;
             CmdSellSpell(nameOfSoldSpell);
         }
+
+        if (nameOfSoldSpell == "MeteorSellButton" && networkPlayer.playerScript.IsMeteorBought)
+        {
+            sellRollingMeteorButton.interactable = false;
+            buyRollingMeteorButton.interactable = true;
+            CmdSellSpell(nameOfSoldSpell);
+        }
+
+        if (nameOfSoldSpell == "PortableZoneSellButton" && networkPlayer.playerScript.IsPortableZoneBought)
+        {
+            sellPortableZoneButton.interactable = false;
+            buyPortableZoneButton.interactable = true;
+            CmdSellSpell(nameOfSoldSpell);
+        }
+
+        // if (nameOfSoldSpell == "MagicMissleSellButton" && networkPlayer.playerScript.IsMagicMissleBought)
+        // {
+        //     sellMagicMissleButton.interactable = false;
+        //     buyMagicMissleButton.interactable = true;
+        //     CmdSellSpell(nameOfSoldSpell);
+        // }
     }
 
     [Command]
