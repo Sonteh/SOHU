@@ -5,9 +5,9 @@ using Mirror;
 
 public class HealingZone : NetworkBehaviour
 {
-    [SerializeField] private GameObject portableZonePrefab;
-    [SerializeField] private float portableZoneCooldown = 2.0f;
-    private float canUsePortableZone = -1.0f;
+    [SerializeField] private GameObject healingZonePrefab;
+    [SerializeField] private float healingZoneCooldown = 2.0f;
+    private float canUseHealingZone = -1.0f;
     private Vector3 _mouse;
     private UIScript uiScript;
 
@@ -18,7 +18,7 @@ public class HealingZone : NetworkBehaviour
 
     public override void OnStartAuthority()
     {
-        uiScript.portableZoneCooldownTime = portableZoneCooldown;
+        uiScript.portableZoneCooldownTime = healingZoneCooldown;
     }
 
     void Update()
@@ -28,10 +28,10 @@ public class HealingZone : NetworkBehaviour
         if (Input.GetKeyDown("j"))
         {
             uiScript.IsPortableZoneUsed = true;
-            canUsePortableZone =  portableZoneCooldown + Time.time;
+            canUseHealingZone =  healingZoneCooldown + Time.time;
             Vector3 mousePosition = GetPlayerMousePosition();
             
-            CmdUsePortableZone(mousePosition);
+            CmdUseHealingZone(mousePosition);
         }
     }
 
@@ -47,14 +47,14 @@ public class HealingZone : NetworkBehaviour
     }
 
     [Command]
-    private void CmdUsePortableZone(Vector3 mousePosition)
+    private void CmdUseHealingZone(Vector3 mousePosition)
     {
-        RpcUsePortableZone(mousePosition);
+        RpcUseHealingZone(mousePosition);
     }
 
     [ClientRpc]
-    private void RpcUsePortableZone(Vector3 mousePosition)
+    private void RpcUseHealingZone(Vector3 mousePosition)
     {
-        var portableZone = (GameObject)Instantiate(portableZonePrefab, mousePosition, Quaternion.identity);
+        var portableZone = (GameObject)Instantiate(healingZonePrefab, mousePosition, Quaternion.identity);
     }
 }

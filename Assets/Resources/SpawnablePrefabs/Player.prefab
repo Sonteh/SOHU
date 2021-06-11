@@ -731,7 +731,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  healAmount: 0
   quickHealCooldown: 2
   quickHealPrefab: {fileID: 4337615126733713239, guid: 7b252882a2ad20941ba0edb4a23b88ce,
     type: 3}
@@ -749,9 +748,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  portableZonePrefab: {fileID: 8335946808304490518, guid: ca9c64dfee812c741a121b7a175f4258,
+  healingZonePrefab: {fileID: 8335946808304490518, guid: ca9c64dfee812c741a121b7a175f4258,
     type: 3}
-  portableZoneCooldown: 2
+  healingZoneCooldown: 2
 --- !u!1 &2255712706267758122
 GameObject:
   m_ObjectHideFlags: 0

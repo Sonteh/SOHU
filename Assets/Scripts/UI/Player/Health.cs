@@ -53,13 +53,9 @@ public class Health : NetworkBehaviour
     [Command]
     public void CmdHealDamage(float value)
     {
-        //SetHealth(Mathf.Max(currentHealth + value, 0));
-
         if (currentHealth <= 100f)
         {
             SetHealth(Mathf.Max(currentHealth + value, 0));
-            // RpcOnDeath();
-            // roundSystem.GetComponent<RoundSystem>().OnDeath(connectionToClient);
         }
     }
 
@@ -78,7 +74,6 @@ public class Health : NetworkBehaviour
             damage = collider.gameObject.GetComponent<SpellData>().spellDamage;
             CmdDealDamage(damage);
         }
-        //dsdsdsdsdsdsd
         if (collider.tag == "Heal")
         {   
             heal = collider.gameObject.GetComponent<SpellData>().healAmount;
