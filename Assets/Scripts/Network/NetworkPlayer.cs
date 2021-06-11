@@ -6,7 +6,7 @@ public class NetworkPlayer : NetworkBehaviour
 {
     [SerializeField] private RoundSystem roundSystem;
     [SerializeField] private GameObject player;
-    [SerializeField] private Player playerScript;
+    [SerializeField] public Player playerScript;
     public UIScript uiScript;
     [SyncVar]
     public string displayName = "Loading...";
@@ -161,5 +161,21 @@ public class NetworkPlayer : NetworkBehaviour
     public void TargetRecallBought()
     {
         playerScript.IsRecallBought = true;
+    }
+
+    [Server]
+    public void PlayerSoldSpell(string spellSold)
+    {
+        if (spellSold == "MagicMissleSellButton")
+        {
+            GivePlayerGold(50);
+            TargetMagicMissleSold();
+        }
+    }
+
+    [TargetRpc]
+    public void TargetMagicMissleSold()
+    {
+        playerScript.IsMagicMissleBought = false;
     }
 }

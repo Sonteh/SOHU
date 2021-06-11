@@ -63,6 +63,11 @@ public class Player : NetworkBehaviour
             GetComponent<MagicMissle>().enabled = true;
             uiScript.magicMissleImage.gameObject.SetActive(true);
         }
+        else
+        {
+            GetComponent<MagicMissle>().enabled = false;
+            uiScript.magicMissleImage.gameObject.SetActive(false);
+        }
 
         if (IsMeteorBought)
         {
