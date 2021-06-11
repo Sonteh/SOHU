@@ -4930,7 +4930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f582b4d3f699da4aa81e63f5bcf8686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoneDamage: 0.5
+  zoneDamage: 0.3
   zoneSpeed: 0
 --- !u!114 &1919479224320526600
 MonoBehaviour:
@@ -4945,4 +4945,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellDamage: 0
-  spellOutOfRange: 5
+  spellOutOfRange: 3

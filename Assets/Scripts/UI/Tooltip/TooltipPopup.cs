@@ -8,6 +8,7 @@ using Mirror;
 
 public class TooltipPopup : MonoBehaviour
 {
+    [SerializeField] private GameObject gameShop;
     [SerializeField] private GameObject popupCanvasObject;
     [SerializeField] private RectTransform popupObject;
     [SerializeField] private TMP_Text infoText;
@@ -24,6 +25,11 @@ public class TooltipPopup : MonoBehaviour
     private void Update() 
     {
         FollowCursor();
+
+        if (!gameShop.activeSelf)
+        {
+            HideInfo();
+        }
     }
 
     private void FollowCursor()

@@ -173,5 +173,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f7b27556eaeef64785420ba048c34b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellDamage: 50
+  spellDamage: 40
   spellOutOfRange: 10

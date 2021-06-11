@@ -263,6 +263,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 172.25
       objectReference: {fileID: 0}
+    - target: {fileID: 4030295768455879037, guid: aac0a27f4839c404ab5ea58e098c17f4,
+        type: 3}
+      propertyPath: gameShop
+      value: 
+      objectReference: {fileID: 5442931488498243290}
     - target: {fileID: 5145709154166917082, guid: aac0a27f4839c404ab5ea58e098c17f4,
         type: 3}
       propertyPath: m_AssetId

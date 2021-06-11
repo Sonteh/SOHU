@@ -4929,7 +4929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f7b27556eaeef64785420ba048c34b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellDamage: 30
+  spellDamage: 20
   spellOutOfRange: 3
 --- !u!1001 &9154070298126482799
 PrefabInstance:
