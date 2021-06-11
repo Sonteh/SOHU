@@ -64,102 +64,45 @@ public class UIScript : NetworkBehaviour
     {
         if (IsFireballUsed)
         {
-            FireballCooldownUpdate();
+            IsFireballUsed = SpellCooldownVisualization(fireballImage, fireballCooldownTime, IsFireballUsed);
         }
         
         if (IsMagicMissleUsed)
         {
-            MagicMissleCooldownUpdate();
+            IsMagicMissleUsed = SpellCooldownVisualization(magicMissleImage, magicMissleCooldownTime, IsMagicMissleUsed);
         }
 
         if (IsRollingMeteorUsed)
         {
-            RollingMeteorCooldownUpdate();
+            IsRollingMeteorUsed = SpellCooldownVisualization(rollingMeteorImage, rollingMeteorCooldownTime, IsRollingMeteorUsed);
         }
 
         if (IsPortableZoneUsed)
         {
-            PortableZoneCooldownUpdate();
+            IsPortableZoneUsed = SpellCooldownVisualization(portableZoneImage, portableZoneCooldownTime, IsPortableZoneUsed);
         }
 
         if (IsTacticalRecallUsed)
         {
-            TacticalRecallCooldownUpdate();
+            IsTacticalRecallUsed = SpellCooldownVisualization(tacticalRecallImage, tacticalRecallCooldownTime, IsTacticalRecallUsed);
         }
     }
 
-    private void FireballCooldownUpdate()
+    private bool SpellCooldownVisualization(Image spellImage, float spellCooldown, bool IsSpellUsed)
     {
-        if (fireballImage.fillAmount == 1f)
+        if (spellImage.fillAmount == 1f)
         {
-            fireballImage.fillAmount = 0f;
+            spellImage.fillAmount = 0f;
         }
 
-        fireballImage.fillAmount += 1f / fireballCooldownTime * Time.deltaTime;
+        spellImage.fillAmount += 1f / spellCooldown * Time.deltaTime;
 
-        if (fireballImage.fillAmount >= 1f)
+        if (spellImage.fillAmount >= 1f)
         {
-            IsFireballUsed = false;
+            IsSpellUsed = false;
+            return IsSpellUsed;
         }
-    }
-
-    private void MagicMissleCooldownUpdate()
-    {
-        if (magicMissleImage.fillAmount == 1f)
-        {
-            magicMissleImage.fillAmount = 0f;
-        }
-
-        magicMissleImage.fillAmount += 1f / magicMissleCooldownTime * Time.deltaTime;
-
-        if (magicMissleImage.fillAmount >= 1f)
-        {
-            IsMagicMissleUsed = false;
-        }
-    }
-
-    private void RollingMeteorCooldownUpdate()
-    {
-        if (rollingMeteorImage.fillAmount == 1f)
-        {
-            rollingMeteorImage.fillAmount = 0f;
-        }
-
-        rollingMeteorImage.fillAmount += 1f / rollingMeteorCooldownTime * Time.deltaTime;
-
-        if (rollingMeteorImage.fillAmount >= 1f)
-        {
-            IsRollingMeteorUsed = false;
-        }
-    }
-
-    private void PortableZoneCooldownUpdate()
-    {
-        if (portableZoneImage.fillAmount == 1f)
-        {
-            portableZoneImage.fillAmount = 0f;
-        }
-
-        portableZoneImage.fillAmount += 1f / portableZoneCooldownTime * Time.deltaTime;
-
-        if (portableZoneImage.fillAmount >= 1f)
-        {
-            IsPortableZoneUsed = false;
-        }
-    }
-
-    private void TacticalRecallCooldownUpdate()
-    {
-        if (tacticalRecallImage.fillAmount == 1f)
-        {
-            tacticalRecallImage.fillAmount = 0f;
-        }
-
-        tacticalRecallImage.fillAmount += 1f / tacticalRecallCooldownTime * Time.deltaTime;
-
-        if (tacticalRecallImage.fillAmount >= 1f)
-        {
-            IsTacticalRecallUsed = false;
-        }
+        
+        return IsSpellUsed;
     }
 }
