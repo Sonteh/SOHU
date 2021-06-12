@@ -7,6 +7,7 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private RoundSystem roundSystem;
     [SerializeField] private GameObject player;
     [SerializeField] public Player playerScript;
+    [SerializeField] private SpellData magicMissleData;
     public UIScript uiScript;
     [SyncVar]
     public string displayName = "Loading...";
@@ -90,8 +91,9 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void PreparePlayerSpells()
     {
-        playerScript.IsMeteorBought = false;
         playerScript.IsMagicMissleBought = false;
+        magicMissleData.spellDamage = 30;
+        playerScript.IsMeteorBought = false;
         playerScript.IsPortableZoneBought = false;
         playerScript.IsRecallBought = false;
         playerScript.IsHealBought = false;
@@ -248,6 +250,82 @@ public class NetworkPlayer : NetworkBehaviour
 
     [TargetRpc]
     public void TargetHealZoneSold()
+    {
+        playerScript.IsHealZoneBought = false;
+    }
+
+    [Server]
+    public void PlayerUpgradeSpell(string spellUpgrade)
+    {
+        if (spellUpgrade == "MagicMissleUpgradeButton")
+        {
+            TakePlayerGold(50);
+            RpcMagicMissleUpgrade();
+        }
+
+        if (spellUpgrade == "MeteorUpgradeButton")
+        {
+            TakePlayerGold(100);
+            TargetMeteorUpgrade();
+        }
+
+        if (spellUpgrade == "PortableZoneUpgradeButton")
+        {
+            TakePlayerGold(100);
+            TargetPortableZoneUpgrade();
+        }
+
+        if (spellUpgrade == "RecallUpgradeButton")
+        {
+            TakePlayerGold(50);
+            TargetRecallUpgrade();
+        }
+
+        if (spellUpgrade == "HealUpgradeButton")
+        {
+            TakePlayerGold(100);
+            TargetHealUpgrade();
+        }
+
+        if (spellUpgrade == "HealZoneUpgradeButton")
+        {
+            TakePlayerGold(50);
+            TargetHealZoneUpgrade();
+        }
+    }
+
+    [ClientRpc]
+    public void RpcMagicMissleUpgrade()
+    {
+        magicMissleData.spellDamage += 20;
+    }
+
+    [TargetRpc]
+    public void TargetMeteorUpgrade()
+    {
+        playerScript.IsMeteorBought = false;
+    }
+
+    [TargetRpc]
+    public void TargetPortableZoneUpgrade()
+    {
+        playerScript.IsPortableZoneBought = false;
+    }
+
+    [TargetRpc]
+    public void TargetRecallUpgrade()
+    {
+        playerScript.IsRecallBought = false;
+    }
+
+    [TargetRpc]
+    public void TargetHealUpgrade()
+    {
+        playerScript.IsHealBought = false;
+    }
+
+    [TargetRpc]
+    public void TargetHealZoneUpgrade()
     {
         playerScript.IsHealZoneBought = false;
     }

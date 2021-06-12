@@ -72,6 +72,8 @@ MonoBehaviour:
   player: {fileID: 2240174198917530758, guid: 860dd37201f402a48b80e92b92e5e4a5, type: 3}
   playerScript: {fileID: -7441520618668634939, guid: 860dd37201f402a48b80e92b92e5e4a5,
     type: 3}
+  magicMissleData: {fileID: 1529761340923202694, guid: 0b3f3e09ee1183c438ce407ef8e4e25f,
+    type: 3}
   uiScript: {fileID: 5179242441700991369, guid: fd38151ddd968f2469e0d5b207b23051,
     type: 3}
   displayName: Loading...
@@ -822,6 +824,21 @@ PrefabInstance:
       propertyPath: m_AssetId
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1574228039517763788, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7355343606859410631}
+    - target: {fileID: 1574228039517763788, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpellUpgradeButtonName
+      objectReference: {fileID: 0}
+    - target: {fileID: 1574228039517763788, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1576737410698855179, guid: bd85c519fd6db0341a6bafe46316c4a2,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -999,6 +1016,21 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2859972915280011204, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7355343606859410631}
+    - target: {fileID: 2859972915280011204, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpellUpgradeButtonName
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859972915280011204, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3527969129239673880, guid: bd85c519fd6db0341a6bafe46316c4a2,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1059,6 +1091,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5408862980107742513, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7355343606859410631}
+    - target: {fileID: 5408862980107742513, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpellUpgradeButtonName
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408862980107742513, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5800497188046728152, guid: bd85c519fd6db0341a6bafe46316c4a2,
         type: 3}
       propertyPath: m_Delegates.Array.size
@@ -1247,6 +1294,21 @@ PrefabInstance:
       value: SpellBuyButtonName
       objectReference: {fileID: 0}
     - target: {fileID: 6760333200410036781, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7099290789344844031, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7355343606859410631}
+    - target: {fileID: 7099290789344844031, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpellUpgradeButtonName
+      objectReference: {fileID: 0}
+    - target: {fileID: 7099290789344844031, guid: bd85c519fd6db0341a6bafe46316c4a2,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
@@ -1466,6 +1528,21 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8767219967938757791, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7355343606859410631}
+    - target: {fileID: 8767219967938757791, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpellUpgradeButtonName
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767219967938757791, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8814432195869775626, guid: bd85c519fd6db0341a6bafe46316c4a2,
         type: 3}
       propertyPath: m_Delegates.Array.size
@@ -1562,6 +1639,21 @@ PrefabInstance:
       value: SpellSellButtonName
       objectReference: {fileID: 0}
     - target: {fileID: 8927569996482148147, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065063534570622077, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7355343606859410631}
+    - target: {fileID: 9065063534570622077, guid: bd85c519fd6db0341a6bafe46316c4a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpellUpgradeButtonName
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065063534570622077, guid: bd85c519fd6db0341a6bafe46316c4a2,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine

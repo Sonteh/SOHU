@@ -66,6 +66,7 @@ public class PlayerShop : NetworkBehaviour
         {   
             buyMagicMissleButton.interactable = false; 
             sellMagicMissleButton.interactable = true;
+            upgradeMagicMissleButton.interactable = true;
             CmdBuySpell(nameOfBoughtSpell);
         }
 
@@ -73,6 +74,7 @@ public class PlayerShop : NetworkBehaviour
         {
             buyRollingMeteorButton.interactable = false;
             sellRollingMeteorButton.interactable = true;
+            upgradeRollingMeteorButton.interactable = true;
             CmdBuySpell(nameOfBoughtSpell);
         }
 
@@ -80,6 +82,7 @@ public class PlayerShop : NetworkBehaviour
         {
             buyPortableZoneButton.interactable = false;
             sellPortableZoneButton.interactable = true;
+            upgradePortableZoneButton.interactable = true;
             CmdBuySpell(nameOfBoughtSpell);
         }
 
@@ -87,6 +90,7 @@ public class PlayerShop : NetworkBehaviour
         {
             buyTacticalRecallButton.interactable = false;
             sellTacticalRecallButton.interactable = true;
+            upgradeTacticalRecallButton.interactable = true;
             CmdBuySpell(nameOfBoughtSpell);
         }
 
@@ -94,6 +98,7 @@ public class PlayerShop : NetworkBehaviour
         {
             buyHealButton.interactable = false;
             sellHealButton.interactable = true;
+            upgradeHealButton.interactable = true;
             CmdBuySpell(nameOfBoughtSpell);
         }
 
@@ -101,6 +106,7 @@ public class PlayerShop : NetworkBehaviour
         {
             buyHealZoneButton.interactable = false;
             sellHealZoneButton.interactable = true;
+            upgradeHealZoneButton.interactable = true;
             CmdBuySpell(nameOfBoughtSpell);
         }
     }
@@ -119,6 +125,7 @@ public class PlayerShop : NetworkBehaviour
         {
             sellMagicMissleButton.interactable = false;
             buyMagicMissleButton.interactable = true;
+            upgradeMagicMissleButton.interactable = true;
             CmdSellSpell(nameOfSoldSpell);
         }
 
@@ -126,6 +133,7 @@ public class PlayerShop : NetworkBehaviour
         {
             sellRollingMeteorButton.interactable = false;
             buyRollingMeteorButton.interactable = true;
+            upgradeRollingMeteorButton.interactable = true;
             CmdSellSpell(nameOfSoldSpell);
         }
 
@@ -133,6 +141,7 @@ public class PlayerShop : NetworkBehaviour
         {
             sellPortableZoneButton.interactable = false;
             buyPortableZoneButton.interactable = true;
+            upgradePortableZoneButton.interactable = true;
             CmdSellSpell(nameOfSoldSpell);
         }
 
@@ -140,6 +149,7 @@ public class PlayerShop : NetworkBehaviour
         {
             sellTacticalRecallButton.interactable = false;
             buyTacticalRecallButton.interactable = true;
+            upgradeTacticalRecallButton.interactable = true;
             CmdSellSpell(nameOfSoldSpell);
         }
 
@@ -147,6 +157,7 @@ public class PlayerShop : NetworkBehaviour
         {
             sellHealButton.interactable = false;
             buyHealButton.interactable = true;
+            upgradeHealButton.interactable = true;
             CmdSellSpell(nameOfSoldSpell);
         }
 
@@ -154,6 +165,7 @@ public class PlayerShop : NetworkBehaviour
         {
             sellHealZoneButton.interactable = false;
             buyHealZoneButton.interactable = true;
+            upgradeHealZoneButton.interactable = true;
             CmdSellSpell(nameOfSoldSpell);
         }
     }
@@ -162,5 +174,52 @@ public class PlayerShop : NetworkBehaviour
     private void CmdSellSpell(string nameOfSoldSpell)
     {
         networkPlayer.PlayerSoldSpell(nameOfSoldSpell);
+    }
+
+    public void SpellUpgradeButtonName()
+    {
+        string nameOfUpgradeSpell = EventSystem.current.currentSelectedGameObject.name;
+
+        if (nameOfUpgradeSpell == "MagicMissleUpgradeButton" && networkPlayer.playerScript.IsMagicMissleBought)
+        {
+            upgradeMagicMissleButton.interactable = false;
+            CmdUpgradeSpell(nameOfUpgradeSpell);
+        }
+
+        if (nameOfUpgradeSpell == "MeteorUpgradeButton" && networkPlayer.playerScript.IsMeteorBought)
+        {
+            upgradeRollingMeteorButton.interactable = false;
+            CmdUpgradeSpell(nameOfUpgradeSpell);
+        }
+
+        if (nameOfUpgradeSpell == "PortableZoneUpgradeButton" && networkPlayer.playerScript.IsPortableZoneBought)
+        {
+            upgradePortableZoneButton.interactable = false;
+            CmdUpgradeSpell(nameOfUpgradeSpell);
+        }
+
+        if (nameOfUpgradeSpell == "RecallUpgradeButton" && networkPlayer.playerScript.IsRecallBought)
+        {
+            upgradeTacticalRecallButton.interactable = false;
+            CmdUpgradeSpell(nameOfUpgradeSpell);
+        }
+
+        if(nameOfUpgradeSpell == "HealUpgradeButton" && networkPlayer.playerScript.IsHealBought)
+        {
+            upgradeHealButton.interactable = false;
+            CmdUpgradeSpell(nameOfUpgradeSpell);
+        }
+
+        if(nameOfUpgradeSpell == "HealZoneUpgradeButton" && networkPlayer.playerScript.IsHealZoneBought)
+        {
+            upgradeHealZoneButton.interactable = false;
+            CmdUpgradeSpell(nameOfUpgradeSpell);
+        }
+    }
+
+    [Command]
+    public void CmdUpgradeSpell(string nameOfUpgradeSpell)
+    {
+        networkPlayer.PlayerUpgradeSpell(nameOfUpgradeSpell);
     }
 }

@@ -174,4 +174,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellDamage: 30
+  healAmount: 0
   spellOutOfRange: 5
