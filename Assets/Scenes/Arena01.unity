@@ -9527,16 +9527,16 @@ PrefabInstance:
       propertyPath: sceneId
       value: 3458206031
       objectReference: {fileID: 0}
+    - target: {fileID: 5179242441700991368, guid: fd38151ddd968f2469e0d5b207b23051,
+        type: 3}
+      propertyPath: m_AssetId
+      value: fd38151ddd968f2469e0d5b207b23051
+      objectReference: {fileID: 0}
     - target: {fileID: 5179242441700991369, guid: fd38151ddd968f2469e0d5b207b23051,
         type: 3}
       propertyPath: playerGold
       value: 
       objectReference: {fileID: 7229665307191403930}
-    - target: {fileID: 5179242441700991369, guid: fd38151ddd968f2469e0d5b207b23051,
-        type: 3}
-      propertyPath: testObject
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5179242441700991369, guid: fd38151ddd968f2469e0d5b207b23051,
         type: 3}
       propertyPath: fireballImage
@@ -9547,6 +9547,16 @@ PrefabInstance:
       propertyPath: imageHealthBar
       value: 
       objectReference: {fileID: 243564932}
+    - target: {fileID: 5179242441700991369, guid: fd38151ddd968f2469e0d5b207b23051,
+        type: 3}
+      propertyPath: quickHealImage
+      value: 
+      objectReference: {fileID: 7229665307191403932}
+    - target: {fileID: 5179242441700991369, guid: fd38151ddd968f2469e0d5b207b23051,
+        type: 3}
+      propertyPath: healingZoneImage
+      value: 
+      objectReference: {fileID: 7229665307191403931}
     - target: {fileID: 5179242441700991369, guid: fd38151ddd968f2469e0d5b207b23051,
         type: 3}
       propertyPath: magicMissleImage
@@ -9823,5 +9833,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7229665307191403931 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4690991298255105449, guid: c33e13555c608744696d764c1caba88f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7229665307191403924}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7229665307191403932 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2897574726131036866, guid: c33e13555c608744696d764c1caba88f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7229665307191403924}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

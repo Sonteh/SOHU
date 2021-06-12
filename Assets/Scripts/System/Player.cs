@@ -107,23 +107,23 @@ public class Player : NetworkBehaviour
         if (IsHealBought)
         {
             GetComponent<QuickHeal>().enabled = true;
-            //uiScript.tacticalRecallImage.gameObject.SetActive(true);
+            uiScript.quickHealImage.gameObject.SetActive(true);
         }
         else
         {
             GetComponent<QuickHeal>().enabled = false;
-            //uiScript.tacticalRecallImage.gameObject.SetActive(false);
+            uiScript.quickHealImage.gameObject.SetActive(false);
         }
 
         if (IsHealZoneBought)
         {
             GetComponent<HealingZone>().enabled = true;
-            //uiScript.tacticalRecallImage.gameObject.SetActive(true);
+            uiScript.healingZoneImage.gameObject.SetActive(true);
         }
         else
         {
             GetComponent<HealingZone>().enabled = false;
-            //uiScript.tacticalRecallImage.gameObject.SetActive(false);
+            uiScript.healingZoneImage.gameObject.SetActive(false);
         }
     }
 

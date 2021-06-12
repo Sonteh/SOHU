@@ -553,7 +553,7 @@ MonoBehaviour:
   IsPortableZoneBought: 0
   IsRecallBought: 0
   IsHealBought: 0
-  IsHealZoneBought: 0
+  IsHealZoneBought: 1
 --- !u!114 &6963266418059964180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,7 +733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  quickHealCooldown: 2
+  quickHealCooldown: 12
   quickHealPrefab: {fileID: 4337615126733713239, guid: 7b252882a2ad20941ba0edb4a23b88ce,
     type: 3}
 --- !u!114 &-5187773869168733520
@@ -752,7 +752,7 @@ MonoBehaviour:
   syncInterval: 0.1
   healingZonePrefab: {fileID: 8335946808304490518, guid: ca9c64dfee812c741a121b7a175f4258,
     type: 3}
-  healingZoneCooldown: 2
+  healingZoneCooldown: 8
 --- !u!1 &2255712706267758122
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,6 +46,18 @@ public class UIScript : NetworkBehaviour
     public float tacticalRecallCooldownTime;
     public bool IsTacticalRecallUsed;
 
+    [Header("Quick Heal")]
+    [SerializeField] public QuickHeal quickHeal;
+    [SerializeField] public Image quickHealImage;
+    public float quickHealCooldownTime;
+    public bool IsQuickHealUsed;
+
+    [Header("Heal Zone")]
+    [SerializeField] public HealingZone healingZone;
+    [SerializeField] public Image healingZoneImage;
+    public float healingZoneCooldownTime;
+    public bool IsHealingZoneUsed;
+
     #endregion
 
     public void PlayerHealth(float _value)
@@ -85,6 +97,16 @@ public class UIScript : NetworkBehaviour
         if (IsTacticalRecallUsed)
         {
             IsTacticalRecallUsed = SpellCooldownVisualization(tacticalRecallImage, tacticalRecallCooldownTime, IsTacticalRecallUsed);
+        }
+
+        if (IsQuickHealUsed)
+        {
+            IsQuickHealUsed = SpellCooldownVisualization(quickHealImage, quickHealCooldownTime, IsQuickHealUsed);
+        }
+
+        if (IsHealingZoneUsed)
+        {
+            IsHealingZoneUsed = SpellCooldownVisualization(healingZoneImage, healingZoneCooldownTime, IsHealingZoneUsed);
         }
     }
 

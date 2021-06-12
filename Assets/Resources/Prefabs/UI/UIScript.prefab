@@ -65,11 +65,10 @@ MonoBehaviour:
   health: {fileID: 0}
   imageHealthBar: {fileID: 0}
   playerHealth: 0
+  playerGold: {fileID: 0}
   player: {fileID: -7441520618668634939, guid: 860dd37201f402a48b80e92b92e5e4a5, type: 3}
   networkPlayer: {fileID: 5815379166993546133, guid: d4b358e505a8e41a4a01acb404593f56,
     type: 3}
-  playerGold: {fileID: 0}
-  playerGoldAmount: 0
   fireball: {fileID: -6743519811537838179, guid: 860dd37201f402a48b80e92b92e5e4a5,
     type: 3}
   fireballImage: {fileID: 0}
@@ -95,3 +94,13 @@ MonoBehaviour:
   tacticalRecallImage: {fileID: 0}
   tacticalRecallCooldownTime: 0
   IsTacticalRecallUsed: 0
+  quickHeal: {fileID: 2394300637139472045, guid: 860dd37201f402a48b80e92b92e5e4a5,
+    type: 3}
+  quickHealImage: {fileID: 0}
+  quickHealCooldownTime: 0
+  IsQuickHealUsed: 0
+  healingZone: {fileID: -5187773869168733520, guid: 860dd37201f402a48b80e92b92e5e4a5,
+    type: 3}
+  healingZoneImage: {fileID: 0}
+  healingZoneCooldownTime: 0
+  IsHealingZoneUsed: 0

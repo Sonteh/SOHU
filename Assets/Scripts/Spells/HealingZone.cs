@@ -6,7 +6,7 @@ using Mirror;
 public class HealingZone : NetworkBehaviour
 {
     [SerializeField] private GameObject healingZonePrefab;
-    [SerializeField] private float healingZoneCooldown = 2.0f;
+    [SerializeField] private float healingZoneCooldown;
     private float canUseHealingZone = -1.0f;
     private Vector3 _mouse;
     private UIScript uiScript;
@@ -18,16 +18,16 @@ public class HealingZone : NetworkBehaviour
 
     public override void OnStartAuthority()
     {
-        uiScript.portableZoneCooldownTime = healingZoneCooldown;
+        uiScript.healingZoneCooldownTime = healingZoneCooldown;
     }
 
     void Update()
     {
         if (!hasAuthority) {return;}
         
-        if (Input.GetKeyDown("j"))
+        if (Input.GetButtonDown("HealingZone") && Time.time > canUseHealingZone && Chat.isChatActive == false)
         {
-            uiScript.IsPortableZoneUsed = true;
+            uiScript.IsHealingZoneUsed = true;
             canUseHealingZone =  healingZoneCooldown + Time.time;
             Vector3 mousePosition = GetPlayerMousePosition();
             

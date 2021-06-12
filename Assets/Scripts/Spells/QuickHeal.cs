@@ -3,7 +3,7 @@ using Mirror;
 
 public class QuickHeal : NetworkBehaviour
 {
-    [SerializeField] private float quickHealCooldown = 2.0f;
+    [SerializeField] private float quickHealCooldown;
     [SerializeField] GameObject quickHealPrefab;
 
     private float canUseQuickHeal = -1.0f;
@@ -13,14 +13,20 @@ public class QuickHeal : NetworkBehaviour
     {
         uiScript = GameObject.FindObjectOfType<UIScript>();
     }
+
+    public override void OnStartAuthority()
+    {
+        uiScript.quickHealCooldownTime = quickHealCooldown;
+    }
     
     void Update()
     {
         if (!hasAuthority) {return;}
         
-        if (Input.GetKeyDown("h") && Time.time > canUseQuickHeal && Chat.isChatActive == false)// 
+        if (Input.GetButtonDown("QuickHeal") && Time.time > canUseQuickHeal && Chat.isChatActive == false) 
         {
-            canUseQuickHeal =  quickHealCooldown + Time.time;
+            uiScript.IsQuickHealUsed = true;
+            canUseQuickHeal = quickHealCooldown + Time.time;
             
             CmdUseQuickHeal();
         }
