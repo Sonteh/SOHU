@@ -6,7 +6,6 @@ public class Fireball : NetworkBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject fireballPrefab;
     [SerializeField] private GameObject spawnLocation;
-    [SerializeField] private PlayerUI playerUI;
     [SerializeField] private float speed;
     [SerializeField] private float fireballCooldown;
     private float canUseFireball = -1.0f;
