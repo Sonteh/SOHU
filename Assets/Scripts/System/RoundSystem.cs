@@ -107,30 +107,22 @@ public class RoundSystem : NetworkBehaviour
     {
         //TODO: Display player nickname and scoreboard.
         Debug.Log("Player " + remainingPlayers[0].displayName + " WON!");
-        // Room.RoomPlayers.Clear();
-        // Room.GamePlayers.Clear();
        
-        //Room.RestartServer();
         NetworkManager.singleton.ServerChangeScene("Menus");
-        
-        // NetworkManager.singleton.StopClient();
-        // NetworkManager.singleton.StopHost();
-        
-        // Room.StopHost();
-        // Room.StopClient();
-        // Room.StopServer();
     }
 
     [ClientRpc]
     private void RpcStartCountdown()
     {
         animator.enabled = true;
+        Chat.isChatActive = true;
     }
 
     [ClientRpc]
     private void RpcStartRound()
     {
-        Debug.Log("Start");
+        animator.enabled = false;
+        Chat.isChatActive = false;
     }
 
     [Server]
