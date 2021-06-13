@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 35bb9aea672dbd846b2ad2b1ad11a669
+guid: 54edc9b3af83448469a553e270f9523e
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,8 +7,9 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Pebble
-    second: {fileID: 2100000, guid: e50cb287b7fad4d4494c655e0804a75f, type: 2}
+      name: Material
+    second: {fileID: 5259109766400634658, guid: 0b6d462d6d2b68e4dbd1374afd68f9e8,
+      type: 3}
   materials:
     materialImportMode: 1
     materialName: 0
