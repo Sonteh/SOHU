@@ -6,8 +6,8 @@ public class MagicMissle : NetworkBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject magicMisslePrefab;
     [SerializeField] private GameObject spawnLocation;
-    [SerializeField] private float speed = 10.0f;
-    [SerializeField] private float magicMissleCooldown = 2.0f;
+    [SerializeField] public float speed = 10.0f;
+    [SerializeField] public float magicMissleCooldown = 2.0f;
     private float canUseMagicMissle = -1.0f;
     private UIScript uiScript;
 

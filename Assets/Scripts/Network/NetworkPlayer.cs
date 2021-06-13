@@ -8,6 +8,7 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] public Player playerScript;
     [SerializeField] private SpellData magicMissleData;
+    [SerializeField] private MagicMissle magicMissleScript;
     public UIScript uiScript;
     [SyncVar]
     public string displayName = "Loading...";
@@ -92,7 +93,6 @@ public class NetworkPlayer : NetworkBehaviour
     private void PreparePlayerSpells()
     {
         playerScript.IsMagicMissleBought = false;
-        magicMissleData.spellDamage = 30;
         playerScript.IsMeteorBought = false;
         playerScript.IsPortableZoneBought = false;
         playerScript.IsRecallBought = false;
@@ -260,7 +260,7 @@ public class NetworkPlayer : NetworkBehaviour
         if (spellUpgrade == "MagicMissleUpgradeButton")
         {
             TakePlayerGold(50);
-            RpcMagicMissleUpgrade();
+            TargetMagicMissleUpgrade();
         }
 
         if (spellUpgrade == "MeteorUpgradeButton")
@@ -294,10 +294,11 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-    [ClientRpc]
-    public void RpcMagicMissleUpgrade()
+    [TargetRpc]
+    public void TargetMagicMissleUpgrade()
     {
-        magicMissleData.spellDamage += 20;
+        //magicMissleData.spellDamage += 20;
+        magicMissleScript.magicMissleCooldown = 1f;
     }
 
     [TargetRpc]

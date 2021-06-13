@@ -74,6 +74,8 @@ MonoBehaviour:
     type: 3}
   magicMissleData: {fileID: 1529761340923202694, guid: 0b3f3e09ee1183c438ce407ef8e4e25f,
     type: 3}
+  magicMissleScript: {fileID: -5924406194954916334, guid: 860dd37201f402a48b80e92b92e5e4a5,
+    type: 3}
   uiScript: {fileID: 5179242441700991369, guid: fd38151ddd968f2469e0d5b207b23051,
     type: 3}
   displayName: Loading...
