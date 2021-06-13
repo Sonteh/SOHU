@@ -68,6 +68,7 @@ public class EnvironmentDurability : NetworkBehaviour
             damage = collider.gameObject.GetComponent<SpellData>().spellDamage;
             Debug.Log("DEMEJDZ: "+ damage);
             CmdDealDamage(damage);
+            Destroy(collider.gameObject);
         }
         if (collider.tag == "Heal")
         {   

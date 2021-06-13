@@ -9398,6 +9398,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1670567570}
     m_Modifications:
+    - target: {fileID: -8236396076112795408, guid: 5c8b72c8785c8224d86e05c1f99d457a,
+        type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 189115762484608326, guid: 5c8b72c8785c8224d86e05c1f99d457a,
         type: 3}
       propertyPath: sceneId
@@ -9473,7 +9478,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillar
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 5c8b72c8785c8224d86e05c1f99d457a, type: 3}
 --- !u!4 &543450653048198699 stripped
 Transform:
