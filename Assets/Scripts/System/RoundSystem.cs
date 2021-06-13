@@ -121,7 +121,6 @@ public class RoundSystem : NetworkBehaviour
     [ClientRpc]
     private void RpcStartRound()
     {
-        animator.enabled = false;
         Chat.isChatActive = false;
     }
 
