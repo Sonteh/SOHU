@@ -54,8 +54,8 @@ public class EnvironmentDurability : NetworkBehaviour
     [ClientRpc]
     private void RpcOnDeath()
     {
-        gameObject.SetActive(false);
         destroyedModel.SetActive(true);
+        gameObject.SetActive(false);
     }
     
     private void OnTriggerEnter(Collider collider)
