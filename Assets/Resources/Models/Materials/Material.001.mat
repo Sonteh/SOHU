@@ -10,7 +10,7 @@ Material:
   m_Name: Material.001
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 0
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -90,5 +90,5 @@ Material:
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 0.010004395, g: 0, b: 1, a: 1}
-    - _EmissionColor: {r: 0.11311853, g: 0.121252835, b: 0.5849056, a: 1}
+    - _EmissionColor: {r: 0.19800758, g: 0.21166328, b: 1.0173494, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}

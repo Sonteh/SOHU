@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25bbc1a4f2bd66641ba66dac42718784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameShop: {fileID: 0}
   popupCanvasObject: {fileID: 1434833655829365618}
   popupObject: {fileID: 1434833657072373849}
   infoText: {fileID: 1434833655535435381}
