@@ -85,17 +85,17 @@ public class RoundSystem : NetworkBehaviour
             remainingPlayers[0].GivePlayerGold(100);
             remainingPlayers[0].IncrementPlayerScore();
 
+            if (remainingPlayers[0].playerScore == scoreToWin)
+            {
+                HandleGameEnd();
+                return;
+            }
+
             foreach (var player in Room.GamePlayers)
             {
                 player.IsShopTime = true;
-                
-                if (player.playerScore == scoreToWin)
-                {
-                    HandleGameEnd();
-
-                    return;
-                }
             }
+
             HandleRoundEnd();
             
             return;
@@ -107,8 +107,7 @@ public class RoundSystem : NetworkBehaviour
     {
         //TODO: Display player nickname and scoreboard.
         Debug.Log("Player " + remainingPlayers[0].displayName + " WON!");
-       
-        NetworkManager.singleton.ServerChangeScene("Menus");
+        StartCoroutine(EndGame());
     }
 
     [ClientRpc]
@@ -135,5 +134,12 @@ public class RoundSystem : NetworkBehaviour
         yield return new WaitForSecondsRealtime(8);
         
         Room.StartGame();
+    }
+
+    private IEnumerator EndGame()
+    {
+        yield return new WaitForSecondsRealtime(5);
+
+        NetworkManager.singleton.ServerChangeScene("Menus");
     }
 }

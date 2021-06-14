@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Item_Spell_MagicMissle
   m_EditorClassIdentifier: 
   itemName: Magic Missle
-  itemDescription: Flying fast
+  itemDescription: Fast traveling missle
   itemBuyPrice: 50
+  itemUpgradePrice: 50
   itemSpellType: {fileID: 11400000, guid: b24072d46395577439a327c5ad4fa1c8, type: 2}
-  useText: Deals damage
+  useText: Flies in a straight line

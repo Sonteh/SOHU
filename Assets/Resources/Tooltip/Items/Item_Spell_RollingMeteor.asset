@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd15a7efb0757845ad6650562b4a97c, type: 3}
   m_Name: Item_Spell_RollingMeteor
   m_EditorClassIdentifier: 
-  itemName: Meteor
+  itemName: Rolling Meteor
   itemDescription: Flying rocks
   itemBuyPrice: 100
+  itemUpgradePrice: 100
   itemSpellType: {fileID: 11400000, guid: b24072d46395577439a327c5ad4fa1c8, type: 2}
-  useText: RockAlone2k
+  useText: Summons from the sky rolling meteor

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Item_Spell_PortableZone
   m_EditorClassIdentifier: 
   itemName: Portable Zone
-  itemDescription: OP Meta
+  itemDescription: Damaging zome
   itemBuyPrice: 100
+  itemUpgradePrice: 75
   itemSpellType: {fileID: 11400000, guid: b24072d46395577439a327c5ad4fa1c8, type: 2}
-  useText: Something something
+  useText: Summons damaging zone

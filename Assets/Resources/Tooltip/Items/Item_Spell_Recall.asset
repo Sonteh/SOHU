@@ -15,5 +15,6 @@ MonoBehaviour:
   itemName: Recall
   itemDescription: Nothing personal kid
   itemBuyPrice: 50
+  itemUpgradePrice: 25
   itemSpellType: {fileID: 11400000, guid: 859751b97995d16468ee6155b2032338, type: 2}
-  useText: Omae Wa Mou Shindeiru
+  useText: Teleports player to the center of arena

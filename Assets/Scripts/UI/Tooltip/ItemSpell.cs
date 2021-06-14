@@ -24,7 +24,8 @@ public class ItemSpell : Item
 
         builder.Append(ItemSpellType.SpellTypeName).AppendLine();
         builder.Append("<color=green>Use: ").Append(useText).Append("</color>").AppendLine();
-        builder.Append("Buy Price: ").Append(ItemBuyPrice).Append(" Gold");
+        builder.Append("Buy and Sell Price: <color=yellow>").Append(ItemBuyPrice).Append(" Gold</color>").AppendLine();
+        builder.Append("Upgrade Price: <color=yellow>").Append(ItemBuyPrice).Append(" Gold</color>");
 
         return builder.ToString();
     }

@@ -81,7 +81,6 @@ public class Chat : NetworkBehaviour
     private void CmdSendMessage(string message)
     {
         // Validate message
-        //RpcHandleMessage($"[{PlayerPrefs.GetString("PlayerName")}]: {message}");
         RpcHandleMessage($"[{player.playerName}]: {message}");
     }
 

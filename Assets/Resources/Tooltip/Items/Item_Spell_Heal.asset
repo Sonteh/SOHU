@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1cd15a7efb0757845ad6650562b4a97c, type: 3}
-  m_Name: Item_Spell_Fireball
+  m_Name: Item_Spell_Heal
   m_EditorClassIdentifier: 
-  itemName: Fireball
-  itemDescription: Basic spell of every mage
-  itemBuyPrice: 50
-  itemUpgradePrice: 0
-  itemSpellType: {fileID: 11400000, guid: b24072d46395577439a327c5ad4fa1c8, type: 2}
-  useText: Flies in a straight line
+  itemName: Heal
+  itemDescription: 
+  itemBuyPrice: 100
+  itemUpgradePrice: 75
+  itemSpellType: {fileID: 11400000, guid: 859751b97995d16468ee6155b2032338, type: 2}
+  useText: Instantly heals sorcerer
