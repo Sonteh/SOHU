@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogColor: {r: 1, g: 1, b: 1, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
@@ -33,12 +33,12 @@ RenderSettings:
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
-  m_DefaultReflectionResolution: 128
+  m_DefaultReflectionResolution: 512
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.24607241, g: 0.108925395, b: 0.22427991, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -706,7 +706,7 @@ PrefabInstance:
     - target: {fileID: 819092227909918250, guid: 42a55e2d2633f42bfaef288df33ac4f0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 819092227909918250, guid: 42a55e2d2633f42bfaef288df33ac4f0,
         type: 3}
@@ -3101,7 +3101,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &550277671
 PrefabInstance:
@@ -3983,7 +3983,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.65841967, g: 0.07075471, b: 1, a: 1}
-  m_Intensity: 4.32
+  m_Intensity: 2.08
   m_Range: 100
   m_SpotAngle: 55
   m_InnerSpotAngle: 21.80208
@@ -4506,7 +4506,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &834006237
 PrefabInstance:
@@ -10303,7 +10303,7 @@ PrefabInstance:
     - target: {fileID: 129839532307769284, guid: 01fa035243fca40478ec02eca625c05e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 129839532307769284, guid: 01fa035243fca40478ec02eca625c05e,
         type: 3}
