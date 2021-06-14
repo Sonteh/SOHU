@@ -3,7 +3,7 @@ using Mirror;
 
 public class QuickHeal : NetworkBehaviour
 {
-    [SerializeField] private float quickHealCooldown;
+    [SerializeField] public float quickHealCooldown;
     [SerializeField] GameObject quickHealPrefab;
 
     private float canUseQuickHeal = -1.0f;

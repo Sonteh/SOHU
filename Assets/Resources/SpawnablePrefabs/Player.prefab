@@ -549,10 +549,10 @@ MonoBehaviour:
   playerName: 
   playerColor: {r: 1, g: 1, b: 1, a: 1}
   IsMagicMissleBought: 0
-  IsMeteorBought: 0
-  IsPortableZoneBought: 0
-  IsRecallBought: 0
-  IsHealBought: 0
+  IsMeteorBought: 1
+  IsPortableZoneBought: 1
+  IsRecallBought: 1
+  IsHealBought: 1
   IsHealZoneBought: 1
 --- !u!114 &6963266418059964180
 MonoBehaviour:
@@ -642,9 +642,7 @@ MonoBehaviour:
   fireballPrefab: {fileID: 6187910128149532311, guid: 9ccfa4ec2ee7b354abd4aa2067f371fa,
     type: 3}
   spawnLocation: {fileID: 3784797328459715476}
-  playerUI: {fileID: 7759362165135734161, guid: d4b358e505a8e41a4a01acb404593f56,
-    type: 3}
-  speed: 17
+  speed: 20
   fireballCooldown: 1
 --- !u!114 &-5924406194954916334
 MonoBehaviour:
@@ -665,7 +663,7 @@ MonoBehaviour:
     type: 3}
   spawnLocation: {fileID: 3784797328459715476}
   speed: 25
-  magicMissleCooldown: 3
+  magicMissleCooldown: 5
 --- !u!114 &3812387528697924627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,7 +680,7 @@ MonoBehaviour:
   syncInterval: 0.1
   tacticalRecallPrefab: {fileID: 4088538914222714413, guid: 3f6e93ad88a77334a8ae7e49bb41b8d9,
     type: 3}
-  tacticalRecallCooldown: 6
+  tacticalRecallCooldown: 15
 --- !u!114 &1329919760385669758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,8 +697,8 @@ MonoBehaviour:
   syncInterval: 0.1
   rollingMeteorPrefab: {fileID: 6292829246202993604, guid: e8d71eb4bee4e424ea39b63513b86969,
     type: 3}
-  speed: 13
-  rollingMeteorCooldown: 7
+  speed: 22.5
+  rollingMeteorCooldown: 7.5
   spawnLocation: {fileID: 3108130781839489492}
 --- !u!114 &637620085326477380
 MonoBehaviour:
@@ -718,7 +716,7 @@ MonoBehaviour:
   syncInterval: 0.1
   portableZonePrefab: {fileID: 8335946808304490518, guid: 4fa78c5ca29b4f34bae71a892349290d,
     type: 3}
-  portableZoneCooldown: 6
+  portableZoneCooldown: 4
 --- !u!114 &2394300637139472045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,7 +750,7 @@ MonoBehaviour:
   syncInterval: 0.1
   healingZonePrefab: {fileID: 8335946808304490518, guid: ca9c64dfee812c741a121b7a175f4258,
     type: 3}
-  healingZoneCooldown: 8
+  healingZoneCooldown: 4
 --- !u!1 &2255712706267758122
 GameObject:
   m_ObjectHideFlags: 0

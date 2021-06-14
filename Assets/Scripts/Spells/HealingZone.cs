@@ -6,7 +6,7 @@ using Mirror;
 public class HealingZone : NetworkBehaviour
 {
     [SerializeField] private GameObject healingZonePrefab;
-    [SerializeField] private float healingZoneCooldown;
+    [SerializeField] public float healingZoneCooldown;
     private float canUseHealingZone = -1.0f;
     private Vector3 _mouse;
     private UIScript uiScript;

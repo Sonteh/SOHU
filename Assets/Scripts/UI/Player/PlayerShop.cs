@@ -180,37 +180,37 @@ public class PlayerShop : NetworkBehaviour
     {
         string nameOfUpgradeSpell = EventSystem.current.currentSelectedGameObject.name;
 
-        if (nameOfUpgradeSpell == "MagicMissleUpgradeButton" && networkPlayer.playerScript.IsMagicMissleBought)
+        if (nameOfUpgradeSpell == "MagicMissleUpgradeButton" && networkPlayer.playerScript.IsMagicMissleBought && networkPlayer.playerGold >= 50)
         {
             upgradeMagicMissleButton.interactable = false;
             CmdUpgradeSpell(nameOfUpgradeSpell);
         }
 
-        if (nameOfUpgradeSpell == "MeteorUpgradeButton" && networkPlayer.playerScript.IsMeteorBought)
+        if (nameOfUpgradeSpell == "MeteorUpgradeButton" && networkPlayer.playerScript.IsMeteorBought && networkPlayer.playerGold >= 100)
         {
             upgradeRollingMeteorButton.interactable = false;
             CmdUpgradeSpell(nameOfUpgradeSpell);
         }
 
-        if (nameOfUpgradeSpell == "PortableZoneUpgradeButton" && networkPlayer.playerScript.IsPortableZoneBought)
+        if (nameOfUpgradeSpell == "PortableZoneUpgradeButton" && networkPlayer.playerScript.IsPortableZoneBought && networkPlayer.playerGold >= 75)
         {
             upgradePortableZoneButton.interactable = false;
             CmdUpgradeSpell(nameOfUpgradeSpell);
         }
 
-        if (nameOfUpgradeSpell == "RecallUpgradeButton" && networkPlayer.playerScript.IsRecallBought)
+        if (nameOfUpgradeSpell == "RecallUpgradeButton" && networkPlayer.playerScript.IsRecallBought && networkPlayer.playerGold >= 25)
         {
             upgradeTacticalRecallButton.interactable = false;
             CmdUpgradeSpell(nameOfUpgradeSpell);
         }
 
-        if(nameOfUpgradeSpell == "HealUpgradeButton" && networkPlayer.playerScript.IsHealBought)
+        if(nameOfUpgradeSpell == "HealUpgradeButton" && networkPlayer.playerScript.IsHealBought && networkPlayer.playerGold >= 75)
         {
             upgradeHealButton.interactable = false;
             CmdUpgradeSpell(nameOfUpgradeSpell);
         }
 
-        if(nameOfUpgradeSpell == "HealZoneUpgradeButton" && networkPlayer.playerScript.IsHealZoneBought)
+        if(nameOfUpgradeSpell == "HealZoneUpgradeButton" && networkPlayer.playerScript.IsHealZoneBought && networkPlayer.playerGold >= 25)
         {
             upgradeHealZoneButton.interactable = false;
             CmdUpgradeSpell(nameOfUpgradeSpell);

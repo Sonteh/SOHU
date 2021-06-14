@@ -7,7 +7,7 @@ using Mirror;
 public class TacticalRecall : NetworkBehaviour
 {
     [SerializeField] private GameObject tacticalRecallPrefab;
-    [SerializeField] private float tacticalRecallCooldown = 2.0f;
+    [SerializeField] public float tacticalRecallCooldown = 2.0f;
     private float canUseTacticalRecall = -1.0f;
     private UIScript uiScript;
 

@@ -31,6 +31,13 @@ public class Health : NetworkBehaviour
     {
         currentHealth = value;
         EventHealthUpdate?.Invoke(currentHealth, maxHealth);
+        TargetSetHealthInPlayerUi(currentHealth);
+
+        if (currentHealth == 0f)
+        {
+            RpcOnDeath();
+            roundSystem.GetComponent<RoundSystem>().OnDeath(connectionToClient);
+        }
     }
 
     public override void OnStartServer()
@@ -38,16 +45,16 @@ public class Health : NetworkBehaviour
         SetHealth(maxHealth);
     }
 
+    [TargetRpc]
+    private void TargetSetHealthInPlayerUi(float currentHealth)
+    {
+        uiScript.PlayerHealth(currentHealth);
+    }
+
     [Command]
     private void CmdDealDamage(float value)
     {
         SetHealth(Mathf.Max(currentHealth - value, 0));
-
-        if (currentHealth == 0f)
-        {
-            RpcOnDeath();
-            roundSystem.GetComponent<RoundSystem>().OnDeath(connectionToClient);
-        }
     }
 
     [Command]
@@ -95,12 +102,5 @@ public class Health : NetworkBehaviour
             heal = collider.gameObject.GetComponent<SpellData>().healAmount;
             CmdHealDamage(heal);
         }
-    }
-
-    private void Update() 
-    {
-        if (!hasAuthority) {return;}
-
-        uiScript.PlayerHealth(currentHealth);
     }
 }

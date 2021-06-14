@@ -6,8 +6,8 @@ using Mirror;
 public class RollingMeteor : NetworkBehaviour
 {
     [SerializeField] private GameObject rollingMeteorPrefab;
-    [SerializeField] private float speed = 7.0f;
-    [SerializeField] private float rollingMeteorCooldown = 0.5f;
+    [SerializeField] public float speed = 7.0f;
+    [SerializeField] public float rollingMeteorCooldown = 0.5f;
     [SerializeField] private GameObject spawnLocation;
     private float canUseRollingMeteor = -1.0f;
     private UIScript uiScript;

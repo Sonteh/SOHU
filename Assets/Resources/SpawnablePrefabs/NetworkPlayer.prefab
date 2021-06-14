@@ -76,6 +76,16 @@ MonoBehaviour:
     type: 3}
   magicMissleScript: {fileID: -5924406194954916334, guid: 860dd37201f402a48b80e92b92e5e4a5,
     type: 3}
+  rollingMeteorScript: {fileID: 1329919760385669758, guid: 860dd37201f402a48b80e92b92e5e4a5,
+    type: 3}
+  portableZoneScript: {fileID: 637620085326477380, guid: 860dd37201f402a48b80e92b92e5e4a5,
+    type: 3}
+  tacticalRecallScript: {fileID: 3812387528697924627, guid: 860dd37201f402a48b80e92b92e5e4a5,
+    type: 3}
+  quickHealScript: {fileID: 2394300637139472045, guid: 860dd37201f402a48b80e92b92e5e4a5,
+    type: 3}
+  healingZoneScript: {fileID: -5187773869168733520, guid: 860dd37201f402a48b80e92b92e5e4a5,
+    type: 3}
   uiScript: {fileID: 5179242441700991369, guid: fd38151ddd968f2469e0d5b207b23051,
     type: 3}
   displayName: Loading...

@@ -7,8 +7,17 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private RoundSystem roundSystem;
     [SerializeField] private GameObject player;
     [SerializeField] public Player playerScript;
+
+    [Header("Spell Scripts")]
     [SerializeField] private SpellData magicMissleData;
     [SerializeField] private MagicMissle magicMissleScript;
+    [SerializeField] private RollingMeteor rollingMeteorScript;
+    [SerializeField] private PortableZone portableZoneScript;
+    [SerializeField] private TacticalRecall tacticalRecallScript;
+    [SerializeField] private QuickHeal quickHealScript;
+    [SerializeField] private HealingZone healingZoneScript;
+
+    [Header("")]
     public UIScript uiScript;
     [SyncVar]
     public string displayName = "Loading...";
@@ -93,11 +102,24 @@ public class NetworkPlayer : NetworkBehaviour
     private void PreparePlayerSpells()
     {
         playerScript.IsMagicMissleBought = false;
+        magicMissleScript.magicMissleCooldown = 5f;
+        magicMissleScript.speed = 25f;
+        
         playerScript.IsMeteorBought = false;
+        rollingMeteorScript.rollingMeteorCooldown = 10f;
+        rollingMeteorScript.speed = 15f;
+
         playerScript.IsPortableZoneBought = false;
+        portableZoneScript.portableZoneCooldown = 8f;
+
         playerScript.IsRecallBought = false;
+        tacticalRecallScript.tacticalRecallCooldown = 15f;
+
         playerScript.IsHealBought = false;
+        quickHealScript.quickHealCooldown = 12f;
+
         playerScript.IsHealZoneBought = false;
+        healingZoneScript.healingZoneCooldown = 8f;
     }
 
     [Server]
@@ -271,25 +293,25 @@ public class NetworkPlayer : NetworkBehaviour
 
         if (spellUpgrade == "PortableZoneUpgradeButton")
         {
-            TakePlayerGold(100);
+            TakePlayerGold(75);
             TargetPortableZoneUpgrade();
         }
 
         if (spellUpgrade == "RecallUpgradeButton")
         {
-            TakePlayerGold(50);
+            TakePlayerGold(25);
             TargetRecallUpgrade();
         }
 
         if (spellUpgrade == "HealUpgradeButton")
         {
-            TakePlayerGold(100);
+            TakePlayerGold(75);
             TargetHealUpgrade();
         }
 
         if (spellUpgrade == "HealZoneUpgradeButton")
         {
-            TakePlayerGold(50);
+            TakePlayerGold(25);
             TargetHealZoneUpgrade();
         }
     }
@@ -297,37 +319,38 @@ public class NetworkPlayer : NetworkBehaviour
     [TargetRpc]
     public void TargetMagicMissleUpgrade()
     {
-        //magicMissleData.spellDamage += 20;
-        magicMissleScript.magicMissleCooldown = 1f;
+        magicMissleScript.magicMissleCooldown *= 0.5f;
+        magicMissleScript.speed *= 1.50f;
     }
 
     [TargetRpc]
     public void TargetMeteorUpgrade()
     {
-        playerScript.IsMeteorBought = false;
+        rollingMeteorScript.rollingMeteorCooldown *= 0.75f;
+        rollingMeteorScript.speed *= 1.25f;
     }
 
     [TargetRpc]
     public void TargetPortableZoneUpgrade()
     {
-        playerScript.IsPortableZoneBought = false;
+        portableZoneScript.portableZoneCooldown *= 0.5f;
     }
 
     [TargetRpc]
     public void TargetRecallUpgrade()
     {
-        playerScript.IsRecallBought = false;
+        tacticalRecallScript.tacticalRecallCooldown *= 0.75f;
     }
 
     [TargetRpc]
     public void TargetHealUpgrade()
     {
-        playerScript.IsHealBought = false;
+        quickHealScript.quickHealCooldown *= 0.75f;
     }
 
     [TargetRpc]
     public void TargetHealZoneUpgrade()
     {
-        playerScript.IsHealZoneBought = false;
+        healingZoneScript.healingZoneCooldown *= 0.5f;
     }
 }

@@ -82,14 +82,15 @@ public class RoundSystem : NetworkBehaviour
         
         if (remainingPlayers.Count == 1)
         {
-            remainingPlayers[0].GivePlayerGold(100);
             remainingPlayers[0].IncrementPlayerScore();
-
+            
             if (remainingPlayers[0].playerScore == scoreToWin)
             {
                 HandleGameEnd();
                 return;
             }
+
+            remainingPlayers[0].GivePlayerGold(100);
 
             foreach (var player in Room.GamePlayers)
             {

@@ -6,7 +6,7 @@ using Mirror;
 public class PortableZone : NetworkBehaviour
 {
     [SerializeField] private GameObject portableZonePrefab;
-    [SerializeField] private float portableZoneCooldown = 2.0f;
+    [SerializeField] public float portableZoneCooldown = 2.0f;
     private float canUsePortableZone = -1.0f;
     private Vector3 _mouse;
     private UIScript uiScript;
