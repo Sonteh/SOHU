@@ -15,7 +15,7 @@ public class PlayerGameEndStats : NetworkBehaviour
 
     public void HandlePlayerNameWon(string _old, string _new)
     {
-        playerWon.SetText(_new);
+        playerWon.SetText(_new.ToString());
     }
 
     private void Update() 
@@ -25,6 +25,7 @@ public class PlayerGameEndStats : NetworkBehaviour
         if (networkPlayer.IsGameFinished) 
         {
             Debug.Log("TEST GAMEEND");
+            playerWon.SetText(playerNameWon);
             endGameStats.SetActive(true);
         }
     }

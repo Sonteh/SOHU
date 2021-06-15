@@ -89,6 +89,8 @@ public class RoundSystem : NetworkBehaviour
                 foreach (var player in Room.GamePlayers)
                 {
                     player.IsGameFinished = true;
+                    //networkPlayer.SetStatsActive(remainingPlayers[0].displayName);
+                    player.SetStatsActive(remainingPlayers[0].displayName);
                 }
                 
                 HandleGameEnd();
@@ -113,7 +115,7 @@ public class RoundSystem : NetworkBehaviour
     {
         //TODO: Display player nickname and scoreboard.
         Debug.Log("Player " + remainingPlayers[0].displayName + " WON!");
-        networkPlayer.SetStatsActive(remainingPlayers[0].displayName);
+        //networkPlayer.SetStatsActive(remainingPlayers[0].displayName);
         //networkPlayer
         //playerGameEndStatsScript.CmdSetPlayerWon(remainingPlayers[0].displayName);
         StartCoroutine(EndGame());
