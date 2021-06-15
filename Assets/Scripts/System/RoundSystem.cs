@@ -86,6 +86,11 @@ public class RoundSystem : NetworkBehaviour
             
             if (remainingPlayers[0].playerScore == scoreToWin)
             {
+                foreach (var player in Room.GamePlayers)
+                {
+                    player.IsGameFinished = true;
+                }
+                
                 HandleGameEnd();
                 return;
             }

@@ -106,8 +106,9 @@ public class NetworkPlayer : NetworkBehaviour
     [Server]
     public void SetStatsActive(string value)
     {
-        IsGameFinished = true;
+        //IsGameFinished = true;
         playerGameEndStatsScript.playerNameWon = value;
+        //Debug.Log(playerGameEndStatsScript.playerNameWon + " testo");
     }
 
     private void PreparePlayerSpells()
