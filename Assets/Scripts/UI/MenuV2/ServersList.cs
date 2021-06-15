@@ -13,6 +13,8 @@ public class ServersList : MonoBehaviour
     [SerializeField] private Button sortArenasButton;
     [SerializeField] private TMP_InputField filterPlayersInput;
     [SerializeField] private TMP_InputField filterArenasInput;
+    [SerializeField] private Button statusButton;
+    [SerializeField] private TMP_Text statusText;
 
     private bool toggle;
     private string dir;
@@ -23,9 +25,9 @@ public class ServersList : MonoBehaviour
 
         resetArrows();
 
-        var pd = APIHelper.GetServers();
+        var response = APIHelper.GetServers();
 
-        unpackResponse(pd);
+        unpackResponse(response);
     }
 
     public void SortPlayers()
@@ -34,9 +36,9 @@ public class ServersList : MonoBehaviour
 
         toggleArrow(sortPlayersButton);
 
-        var pd = APIHelper.GetSortedByPlayers(dir);
+        var response = APIHelper.GetSortedByPlayers(dir);
 
-        unpackResponse(pd);
+        unpackResponse(response);
     }
 
     public void SortArena()
@@ -45,9 +47,9 @@ public class ServersList : MonoBehaviour
 
         toggleArrow(sortArenasButton);
 
-        var pd = APIHelper.GetSortedByArena(dir);
+        var response = APIHelper.GetSortedByArena(dir);
 
-        unpackResponse(pd);
+        unpackResponse(response);
 
     }
 
@@ -60,9 +62,14 @@ public class ServersList : MonoBehaviour
         string player = filterPlayersInput.text;
         string arena = filterArenasInput.text;
 
-        var pd = APIHelper.Filter(player, arena);
+        var response = APIHelper.Filter(player, arena);
 
-        unpackResponse(pd);
+        unpackResponse(response);
+    }
+
+    public void CheckStatus()
+    {
+
     }
 
     private void cleanList()
@@ -73,9 +80,9 @@ public class ServersList : MonoBehaviour
         }
     }
 
-    private void unpackResponse(Servers pd)
+    private void unpackResponse(Servers response)
     {
-        foreach (var el in pd.data)
+        foreach (var el in response.data)
         {
             var element = Instantiate(serverListElement);
             element.transform.GetChild(0).GetComponent<TMP_Text>().text = el.PlayerName;
