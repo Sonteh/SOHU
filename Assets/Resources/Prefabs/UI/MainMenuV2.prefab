@@ -3698,7 +3698,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6471186687935074305}
-        m_MethodName: Refresh
+        m_MethodName: CheckStatus
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 using System.Net;
+using System.Net.Sockets;
 using System;
 
 public class APIHelper
@@ -116,6 +117,7 @@ public class APIHelper
 
     private static Servers parseResponse(HttpWebRequest request)
     {
+ 
         HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
         StreamReader reader = new StreamReader(response.GetResponseStream());
@@ -123,6 +125,7 @@ public class APIHelper
         string json = reader.ReadToEnd();
 
         return JsonUtility.FromJson<Servers>(json);
+
     }
 
     private static void GetIP()

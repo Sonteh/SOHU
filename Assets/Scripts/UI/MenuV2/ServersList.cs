@@ -69,7 +69,16 @@ public class ServersList : MonoBehaviour
 
     public void CheckStatus()
     {
+        var response = APIHelper.GetServers();
 
+        if (response != null)
+        {
+            statusText.text = "UP";
+        }
+        else
+        {
+            statusText.text = "DOWN";
+        }
     }
 
     private void cleanList()
