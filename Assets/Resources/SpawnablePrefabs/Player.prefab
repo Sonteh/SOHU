@@ -553,7 +553,7 @@ MonoBehaviour:
   IsPortableZoneBought: 0
   IsRecallBought: 0
   IsHealBought: 0
-  IsHealZoneBought: 1
+  IsHealZoneBought: 0
 --- !u!114 &6963266418059964180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,8 +642,6 @@ MonoBehaviour:
   fireballPrefab: {fileID: 6187910128149532311, guid: 9ccfa4ec2ee7b354abd4aa2067f371fa,
     type: 3}
   spawnLocation: {fileID: 3784797328459715476}
-  playerUI: {fileID: 7759362165135734161, guid: d4b358e505a8e41a4a01acb404593f56,
-    type: 3}
   speed: 17
   fireballCooldown: 1
 --- !u!114 &-5924406194954916334

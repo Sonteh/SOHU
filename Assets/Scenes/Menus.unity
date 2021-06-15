@@ -510,6 +510,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2649841195669248159, guid: 8614d815481f5034a8a36a47d4980709,
+        type: 3}
+      propertyPath: m_Value
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649841195669248159, guid: 8614d815481f5034a8a36a47d4980709,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649841195669248159, guid: 8614d815481f5034a8a36a47d4980709,
+        type: 3}
+      propertyPath: m_MinValue
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649841195669248159, guid: 8614d815481f5034a8a36a47d4980709,
+        type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4513862332013810778, guid: 8614d815481f5034a8a36a47d4980709,
         type: 3}
       propertyPath: m_SizeDelta.x
