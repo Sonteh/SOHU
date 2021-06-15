@@ -189,23 +189,6 @@ public class NetworkRoom : NetworkBehaviour
         RoundAmount--;
     }
 
-    [Command]
-    public void CmdKickPlayer1()
-    {
-        Debug.Log("here");
-        Room.RoomPlayers[1].connectionToClient.Disconnect();
-        //GetComponent<NetworkIdentity>().connectionToClient.
-        //Debug.Log(id);
-    }
-
-    public void CmdKickPlayer2()
-    {
-        Debug.Log("HERE 2");
-        Room.RoomPlayers[2].connectionToClient.Disconnect();
-        //GetComponent<NetworkIdentity>().connectionToClient.
-        //Debug.Log(id);
-    }
-
     public void LeaveLobby()
     {
 
@@ -242,5 +225,41 @@ public class NetworkRoom : NetworkBehaviour
             NetworkManager.singleton.StopClient();
         }
     }
+
+    public void CmdKickPlayer1()
+    {
+        Room.RoomPlayers[1].connectionToClient.Disconnect();
+    }
+
+    public void CmdKickPlayer2()
+    {
+        Room.RoomPlayers[2].connectionToClient.Disconnect();
+    }
+
+    public void CmdKickPlayer3()
+    {
+        Room.RoomPlayers[3].connectionToClient.Disconnect();
+    }
+
+    public void CmdKickPlayer4()
+    {
+        Room.RoomPlayers[4].connectionToClient.Disconnect();
+    }
+
+    public void CmdKickPlayer5()
+    {
+        Room.RoomPlayers[5].connectionToClient.Disconnect();
+    }
+
+    public void CmdKickPlayer6()
+    {
+        Room.RoomPlayers[6].connectionToClient.Disconnect();
+    }
+
+    public void CmdKickPlayer7()
+    {
+        Room.RoomPlayers[7].connectionToClient.Disconnect();
+    }
+
 
 }
