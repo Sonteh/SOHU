@@ -96,6 +96,7 @@ public class ServersList : MonoBehaviour
             var element = Instantiate(serverListElement);
             element.transform.GetChild(0).GetComponent<TMP_Text>().text = el.PlayerName;
             element.transform.GetChild(1).GetComponent<TMP_Text>().text = el.map;
+            element.transform.GetChild(2).GetComponent<Text>().text = el.IP;
             element.transform.SetParent(serverListContent.transform, false);
         }
     }
