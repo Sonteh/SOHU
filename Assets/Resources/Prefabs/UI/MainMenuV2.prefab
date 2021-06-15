@@ -3535,7 +3535,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ipAddressInputField: {fileID: 5721722627818904655}
   joinButton: {fileID: 4363014854114976496}
-  closeButton: {fileID: 4702627067742557793}
 --- !u!1 &2322430815025083467
 GameObject:
   m_ObjectHideFlags: 0

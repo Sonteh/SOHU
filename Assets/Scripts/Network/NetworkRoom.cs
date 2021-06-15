@@ -10,6 +10,7 @@ public class NetworkRoom : NetworkBehaviour
     [SerializeField] private RoundSystem roundSystem;
     [SerializeField] private GameObject lobbyUI = null;
     [SerializeField] private TMP_Text[] playerNameTexts = new TMP_Text[8];
+    [SerializeField] private Button[] removePlayerButtons = new Button[8];
     [SerializeField] private Button startGameButton = null;
     [SerializeField] private Button changeArenaButton = null;
     [SerializeField] private Button changeAmountButtonUp = null;
@@ -40,6 +41,10 @@ public class NetworkRoom : NetworkBehaviour
             changeAmountButtonUp.gameObject.SetActive(value);
             changeAmountButtonDown.gameObject.SetActive(value);
             changeArenaButton.gameObject.SetActive(value);
+            foreach (var el in removePlayerButtons)
+            {
+                el.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -55,8 +60,6 @@ public class NetworkRoom : NetworkBehaviour
 
     public override void OnStartAuthority()
     {
-        //Debug.Log(PlayerPrefs.GetString("PlayerName"));
-        //CmdSetDisplayName(PlayerName.displayName);
         CmdSetDisplayName(PlayerPrefs.GetString("PlayerName"));
 
         lobbyUI.SetActive(true);
@@ -66,7 +69,6 @@ public class NetworkRoom : NetworkBehaviour
     {
         Room.RoomPlayers.Add(this);
 
-        // Update UI
         UpdateDisplay();
     }
 
@@ -84,7 +86,6 @@ public class NetworkRoom : NetworkBehaviour
 
     private void UpdateDisplay()
     {
-        // if a player doesn't have authority, find a player that does and update their display
         if (!hasAuthority)
         {
             foreach (var player in Room.RoomPlayers)
@@ -102,7 +103,7 @@ public class NetworkRoom : NetworkBehaviour
         for (int i = 0; i < playerNameTexts.Length; i++)
         {
             playerNameTexts[i].text = "WAITING...";
-            //playerReadyTexts[i].text = string.Empty;
+        
         }
 
         for (int i = 0; i < Room.RoomPlayers.Count; i++)
@@ -190,9 +191,12 @@ public class NetworkRoom : NetworkBehaviour
 
     public void LeaveLobby()
     {
+
         if (NetworkServer.active && NetworkClient.isConnected)
         {
             NetworkManager.singleton.StopHost();
+            APIHelper.DeleteServer(PlayerPrefs.GetString("PlayerName"));
+
         }
         else
         {
@@ -200,5 +204,10 @@ public class NetworkRoom : NetworkBehaviour
 
             SceneManager.LoadScene(0);
         }
+    }
+
+    public void UpdateServer()
+    {
+        APIHelper.UpdateServer(arenaTitle.text, PlayerPrefs.GetString("PlayerName"));
     }
 }
