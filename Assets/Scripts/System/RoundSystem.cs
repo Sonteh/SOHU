@@ -108,6 +108,9 @@ public class RoundSystem : NetworkBehaviour
     {
         //TODO: Display player nickname and scoreboard.
         Debug.Log("Player " + remainingPlayers[0].displayName + " WON!");
+        networkPlayer.SetStatsActive(remainingPlayers[0].displayName);
+        //networkPlayer
+        //playerGameEndStatsScript.CmdSetPlayerWon(remainingPlayers[0].displayName);
         StartCoroutine(EndGame());
     }
 

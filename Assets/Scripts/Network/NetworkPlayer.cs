@@ -7,6 +7,8 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private RoundSystem roundSystem;
     [SerializeField] private GameObject player;
     [SerializeField] public Player playerScript;
+    [SerializeField] private GameObject playerGameEndStats;
+    [SerializeField] private PlayerGameEndStats playerGameEndStatsScript;
 
     [Header("Spell Scripts")]
     [SerializeField] private SpellData magicMissleData;
@@ -27,6 +29,8 @@ public class NetworkPlayer : NetworkBehaviour
     public bool IsShopTime = false;
     [SyncVar]
     public int playerGold = 0;
+    [SyncVar]
+    public bool IsGameFinished = false;
 
     private Network room;
     private Network Room
@@ -97,6 +101,13 @@ public class NetworkPlayer : NetworkBehaviour
     private void TakePlayerGold(int goldAmount)
     {
         playerGold -= goldAmount;
+    }
+    
+    [Server]
+    public void SetStatsActive(string value)
+    {
+        IsGameFinished = true;
+        playerGameEndStatsScript.playerNameWon = value;
     }
 
     private void PreparePlayerSpells()
