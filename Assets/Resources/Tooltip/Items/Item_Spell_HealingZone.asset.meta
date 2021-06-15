@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Resources/Tooltip/Items/Item_Spell_HealingZone.asset.meta
 guid: f0bfc828a58a0a04f9218d55ef8b174f
 NativeFormatImporter:
+=======
+guid: ee51c34489174dd4087ce2ea9fe5ef6e
+folderAsset: yes
+DefaultImporter:
+>>>>>>> feature/environment_destruction:Assets/Prefabs/Camera.meta
   externalObjects: {}
   mainObjectFileID: 11400000
   userData: 
