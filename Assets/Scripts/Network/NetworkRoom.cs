@@ -10,7 +10,7 @@ public class NetworkRoom : NetworkBehaviour
     [SerializeField] private RoundSystem roundSystem;
     [SerializeField] private GameObject lobbyUI = null;
     [SerializeField] private TMP_Text[] playerNameTexts = new TMP_Text[8];
-    [SerializeField] private Button[] removePlayerButtons = new Button[8];
+    [SerializeField] private Button[] removePlayerButtons = new Button[7];
     [SerializeField] private Button startGameButton = null;
     [SerializeField] private Button changeArenaButton = null;
     [SerializeField] private Button changeAmountButtonUp = null;
@@ -189,6 +189,23 @@ public class NetworkRoom : NetworkBehaviour
         RoundAmount--;
     }
 
+    [Command]
+    public void CmdKickPlayer1()
+    {
+        Debug.Log("here");
+        Room.RoomPlayers[1].connectionToClient.Disconnect();
+        //GetComponent<NetworkIdentity>().connectionToClient.
+        //Debug.Log(id);
+    }
+
+    public void CmdKickPlayer2()
+    {
+        Debug.Log("HERE 2");
+        Room.RoomPlayers[2].connectionToClient.Disconnect();
+        //GetComponent<NetworkIdentity>().connectionToClient.
+        //Debug.Log(id);
+    }
+
     public void LeaveLobby()
     {
 
@@ -210,4 +227,20 @@ public class NetworkRoom : NetworkBehaviour
     {
         APIHelper.UpdateServer(arenaTitle.text, PlayerPrefs.GetString("PlayerName"));
     }
+
+    public void KickPlayer()
+    {
+
+        if (NetworkServer.active && NetworkClient.isConnected)
+        {
+            Debug.Log("can't kick the host");
+
+        }
+        else
+        {
+            Debug.Log("kicking player");
+            NetworkManager.singleton.StopClient();
+        }
+    }
+
 }
