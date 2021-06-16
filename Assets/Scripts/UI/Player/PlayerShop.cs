@@ -9,6 +9,8 @@ public class PlayerShop : NetworkBehaviour
     [SerializeField] private GameObject shopUI;
     [SerializeField] private NetworkPlayer networkPlayer;
     [SerializeField] private TMP_Text playerGold;
+    [SerializeField] public TMP_Text timeText;
+    private float timeRemaining = 16;
 
     #region Button References
     
@@ -45,11 +47,29 @@ public class PlayerShop : NetworkBehaviour
         if (networkPlayer.IsShopTime)
         {
             ShowPlayerShop();
+
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+                DisplayTime(timeRemaining);
+            }
+            else
+            {
+                timeRemaining = 0;
+                DisplayTime(timeRemaining);
+            }
         }
         else
         {
             shopUI.SetActive(false);
         }
+    }
+
+    private void DisplayTime(float timeToDisplay)
+    {
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        timeText.SetText(seconds.ToString());
     }
 
     public void ShowPlayerShop()

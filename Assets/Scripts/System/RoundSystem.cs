@@ -89,7 +89,6 @@ public class RoundSystem : NetworkBehaviour
                 foreach (var player in Room.GamePlayers)
                 {
                     player.IsGameFinished = true;
-                    //networkPlayer.SetStatsActive(remainingPlayers[0].displayName);
                     player.SetStatsActive(remainingPlayers[0].displayName);
                 }
                 
@@ -113,11 +112,6 @@ public class RoundSystem : NetworkBehaviour
     [Server]
     private void HandleGameEnd()
     {
-        //TODO: Display player nickname and scoreboard.
-        Debug.Log("Player " + remainingPlayers[0].displayName + " WON!");
-        //networkPlayer.SetStatsActive(remainingPlayers[0].displayName);
-        //networkPlayer
-        //playerGameEndStatsScript.CmdSetPlayerWon(remainingPlayers[0].displayName);
         StartCoroutine(EndGame());
     }
 
@@ -142,14 +136,14 @@ public class RoundSystem : NetworkBehaviour
 
     private IEnumerator ShowShop()
     {
-        yield return new WaitForSecondsRealtime(8);
+        yield return new WaitForSecondsRealtime(15);
         
         Room.StartGame();
     }
 
     private IEnumerator EndGame()
     {
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(10);
 
         NetworkManager.singleton.ServerChangeScene("Menus");
     }

@@ -11,7 +11,8 @@ public class PlayerGameEndStats : NetworkBehaviour
     [SerializeField] private TMP_Text playerWon;
     [SyncVar(hook = nameof(HandlePlayerNameWon))]
     public string playerNameWon = "Winner";
-    //public bool IsGameFinished;
+    [SerializeField] public TMP_Text timeText;
+    private float timeRemaining = 11;
 
     public void HandlePlayerNameWon(string _old, string _new)
     {
@@ -24,9 +25,26 @@ public class PlayerGameEndStats : NetworkBehaviour
         
         if (networkPlayer.IsGameFinished) 
         {
-            Debug.Log("TEST GAMEEND");
             playerWon.SetText(playerNameWon);
             endGameStats.SetActive(true);
+
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+                DisplayTime(timeRemaining);
+            }
+            else
+            {
+                timeRemaining = 0;
+                DisplayTime(timeRemaining);
+            }
         }
+    }
+
+    private void DisplayTime(float timeToDisplay)
+    {
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        timeText.SetText(seconds.ToString());
     }
 }
