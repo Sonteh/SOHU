@@ -5,18 +5,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class JoinToLobby : MonoBehaviour
+public class JoinFromList : MonoBehaviour
 {
-    [Header("UI")]
-    [SerializeField] private TMP_InputField ipAddressInputField;
+    [SerializeField] private Text ipAddressText;
     [SerializeField] private Button joinButton;
-    [SerializeField] private Button closeButton;
 
     public void JoinLobby()
     {
-        string ipAddress = ipAddressInputField.text;
+        Debug.Log("IP ADDRESS");
+        Debug.Log(ipAddressText);
+
+        string ipAddress = ipAddressText.text;
 
         NetworkManager.singleton.networkAddress = ipAddress;
         NetworkManager.singleton.StartClient();
+
     }
 }

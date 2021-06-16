@@ -4,11 +4,11 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 using System.Net;
+using System.Net.Sockets;
 using System;
 
 public class APIHelper
 {
-    //TODO better URL handling
     private static string GetUrl()
     {
         string baseUrl = "http://167.71.32.118:3000/servers";
@@ -18,10 +18,6 @@ public class APIHelper
     public static Servers GetServers()
     {
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetUrl() + "/getAll");
-
-        //string ip = GetIP();
-
-        //Debug.Log("Local: " + ip);
 
         GetIP();
 
@@ -71,11 +67,6 @@ public class APIHelper
     {
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetUrl() + "/add");
 
-        //Debug.Log("Inside");
-        //Debug.Log(ip);
-        //Debug.Log(host);
-        //Debug.Log(map);
-
         var postData = "IP=" + Uri.EscapeDataString(ip);
         postData += "&PlayerName=" + Uri.EscapeDataString(host);
         postData += "&map=" + Uri.EscapeDataString(map);
@@ -94,8 +85,39 @@ public class APIHelper
 
     }
 
+    public static Servers UpdateServer(string map, string host)
+    {
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetUrl() + "/update");
+
+        var postData = "map=" + Uri.EscapeDataString(map);
+        postData += "&PlayerName=" + Uri.EscapeDataString(host);
+        var data = Encoding.ASCII.GetBytes(postData);
+
+        request.Method = "PUT";
+        request.ContentType = "application/x-www-form-urlencoded";
+        request.ContentLength = data.Length;
+
+        using (var stream = request.GetRequestStream())
+        {
+            stream.Write(data, 0, data.Length);
+        }
+
+        return parseResponse(request);
+
+    }
+
+    public static Servers DeleteServer(string host)
+    {
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetUrl() + "/delete/" + host);
+
+        request.Method = "DELETE";
+
+        return parseResponse(request);
+    }
+
     private static Servers parseResponse(HttpWebRequest request)
     {
+ 
         HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
         StreamReader reader = new StreamReader(response.GetResponseStream());
@@ -103,14 +125,12 @@ public class APIHelper
         string json = reader.ReadToEnd();
 
         return JsonUtility.FromJson<Servers>(json);
+
     }
 
     private static void GetIP()
     {
         string localComputerName = Dns.GetHostName();
-        //Debug.Log(localComputerName);
         IPAddress[] localIPs = Dns.GetHostAddresses("");
-       // Debug.Log(localIPs[0]);
-        //Debug.Log(localIPs[1]);
     }
 }

@@ -3,19 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using System.Net;
+using System.Linq;
 
 public class HostGame : MonoBehaviour
 {
     public void HostLobby()
     {
-        //Debug.Log(PlayerPrefs.GetString("PlayerName"));
         NetworkManager.singleton.StartHost();
+        IPAddress[] localIPsFromDns = Dns.GetHostAddresses("");
+        IPAddress[] localIPsV4;
 
-        //string player = filterPlayersInput.text;
-        //string arena = filterArenasInput.text;
-        IPAddress[] localIPs = Dns.GetHostAddresses("");
-        //Debug.Log(localIPs[0]);
-        APIHelper.RegisterServer(localIPs[0].ToString(), PlayerPrefs.GetString("PlayerName"), "arena01");
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            localIPsV4 = localIPsFromDns.Reverse().Take(2).ToArray();
+            APIHelper.RegisterServer(FindIp(localIPsV4), PlayerPrefs.GetString("PlayerName"), "Arena01");
+        }
+        else if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer)
+        {
+            localIPsV4 = localIPsFromDns.Take(2).ToArray();
+            APIHelper.RegisterServer(FindIp(localIPsV4), PlayerPrefs.GetString("PlayerName"), "Arena01");
 
+        }
+    }
+
+
+    private string FindIp(IPAddress[] ips)
+    {
+        string ip;
+
+        if (ips[1].ToString().Contains("25."))
+        {
+            ip = ips[1].ToString();
+        }
+        else
+        {
+            ip = ips[0].ToString();
+        }
+
+        return ip;
     }
 }
