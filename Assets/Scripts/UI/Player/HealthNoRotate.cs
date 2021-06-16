@@ -6,7 +6,7 @@ public class HealthNoRotate : MonoBehaviour
 
     void Start()
     {
-        rotation = transform.rotation;
+        rotation = Quaternion.Euler(0, 90, 0);
     }
 
     void Update()
