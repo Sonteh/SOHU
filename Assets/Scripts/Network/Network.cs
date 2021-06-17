@@ -192,6 +192,7 @@ public class Network : NetworkManager
             StopClient();
             StopHost();
             NetworkServer.Shutdown();
+            APIHelper.DeleteServer(PlayerPrefs.GetString("PlayerName"));
             
             RoomPlayers.Clear();
             GamePlayers.Clear();
