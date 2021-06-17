@@ -9,6 +9,7 @@ public class Health : NetworkBehaviour
     [SerializeField] NetworkPlayer networkPlayer;
     private float damage;
     private float heal;
+    private bool IsDead = false;
     GameObject roundSystem; 
     [SyncVar]
     public float currentHealth;
@@ -33,8 +34,9 @@ public class Health : NetworkBehaviour
         EventHealthUpdate?.Invoke(currentHealth, maxHealth);
         TargetSetHealthInPlayerUi(currentHealth);
 
-        if (currentHealth == 0f)
+        if (currentHealth == 0f && !IsDead)
         {
+            IsDead = true;
             RpcOnDeath();
             roundSystem.GetComponent<RoundSystem>().OnDeath(connectionToClient);
         }
